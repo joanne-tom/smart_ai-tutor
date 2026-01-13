@@ -1,0 +1,13 @@
+# virtual environments
+venv/
+smartaivenv/
+
+# python cache
+__pycache__/
+*.pyc
+
+# secrets
+.env
+
+# outputs
+output_folder/
