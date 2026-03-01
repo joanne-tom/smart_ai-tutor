@@ -6,15 +6,12 @@ import chromadb
 from chromadb.utils import embedding_functions
 
 
-BASE = Path(r"C:\Users\Joanne\Documents\smart_ai_tutor\smartaivenv\output_folder\text")
+##CHUNK_FILES = [
+   #$$$ BASE / "CST206 M5.chunks.json",
+#]
+BASE = Path(__file__).parent.parent / "output_text"
 
-CHUNK_FILES = [
-    BASE / "CST206 M1.chunks.json",
-    BASE / "CST206 M2.chunks.json",
-    BASE / "CST206 M3.chunks.json",
-    BASE / "CST206 M4.chunks.json",
-    BASE / "CST206 M5.chunks.json",
-]
+CHUNK_FILES = []
 
 COLLECTION_NAME = "cst206_all"
 
@@ -63,8 +60,8 @@ collection = client.create_collection(
     name=COLLECTION_NAME,
     embedding_function=embedding_fn,
 )
-
-collection.add(
+if all_documents:
+ collection.add(
     documents=all_documents,
     metadatas=all_metadatas,
     ids=all_ids,

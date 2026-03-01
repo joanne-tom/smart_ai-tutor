@@ -1,0 +1,682 @@
+[
+  {
+    "id": "5_0",
+    "module": 5,
+    "topic": "1. MAIN MEMORY",
+    "page_hint": null,
+    "content": "Memory is central to the operation of a modern computer system,. Memory\n consists of a large array of words or bytes, each with its own address. The CPU fetches\n instructions from memory according to the value of the program counter. These\n instructions may cause additional loading from and storing to specific memory\n addresses. A typical instruction-execution cycle, for example, first fetches an instruction\n m\n from memory The instruction is then decoded and may cause operands to be fetched\n from memory. After the instruction has been executed oon the operands, results may be\n stored back in memory. The memory unit sees only a stream of memory addresses; it\n c\n does not know how they are generated (by the instruction counter, indexing, indirection,\n .",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_1",
+    "module": 5,
+    "topic": "1. MAIN MEMORY",
+    "page_hint": null,
+    "content": "c\n does not know how they are generated (by the instruction counter, indexing, indirection,\n .\n literal addresses, and so on) or what they are fosr (instructions or data). Accordingly, we\n can ignore how a program generates a memory address.\n e\n • Basic Hardware\n t\n Main memory and the registers obuilt into the processor itself are the only storage\n that the CPU can access directly. There are machine instructions that take memory\n n\n addresses as arguments, but none that take disk addresses. Therefore, any instructions\n a\n in execution, and any data being used by the instructions, must be in one of these\n direct-access storage devicesl. If the data are not in memory, they must be moved there\n a\n before the CPU can operate on them.\n r",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_2",
+    "module": 5,
+    "topic": "1. MAIN MEMORY",
+    "page_hint": null,
+    "content": "direct-access storage devicesl. If the data are not in memory, they must be moved there\n a\n before the CPU can operate on them.\n r\n Registers that are built into the CPU are generally accessible within one cycle of\n e\n the CPU clock. Most CPUs can decode\n k\n instructions and perform simple\n operations on register contents at the\n rate of one or more operations per clock\n tick. The same cannot be said of main\n memory, which is accessed via a\n transaction on the memory bus. Memory\n access may take many cycles of the\n CPU clock to complete, in which case the\n processor normally needs to stall, since\n it does not have the data required to\n complete the instruction that it is\n executing. This situation is intolerable\n because of the frequency of memory\n accesses. The remedy is to add fast\n 1",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_3",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "memory between the CPU and main memory. A memory buffer used to accommodate a\n speed differential, called a cache.\n Not only are we concerned with the relative speed of accessing physical\n memory, but we also must ensure correct operation, has to protect the operating system\n from access by user processes and, in addition, to protect user processes from one\n another. This protection must be provided by the hardware.\n We first need to make sure that each process has a separate memory space. To\n do this, we need the ability to determine the range of legal addresses that the process\n may access and to ensure that the process can access only these legal addresses. We\n can provide this protection by using two registers, usually a base and a limit, as",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_4",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "can provide this protection by using two registers, usually a base and a limit, as\n illustrated in Figure 8.1. The base register holds the smallest legal physical memory\n m\n address; the limit register specifies the size of the range.\n For example, if the base register holds 300040 and limit register is 120900, then\n o\n the program can legally access all addresses from 300040 through 420940 (inclusive).\n Protection c\n of memory space .\n s\n is accomplished\n by having the e\n CPU hardware t\n o\n compare even/\n address n\n generated in user\n a\n mode with the\n l\n registers. Any a\n attempt by a\n r\n program e\n executing in user\n k\n mode to access\n operating-system\n memory or other\n users' memory\n results in a trap to the operating system, which treats the attempt as a fatal error (Figure",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_5",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "operating-system\n memory or other\n users' memory\n results in a trap to the operating system, which treats the attempt as a fatal error (Figure\n 8.2). This scheme prevents a user program from (accidentally or deliberately) modifying\n the code or data structures of either the operating system or other users. The base and\n limit registers can be loaded only by the operating system, which uses a special\n privileged instruction. Since privileged instructions can be executed only in kernel mode,\n and since only the operating system executes in kernel mode, only the operating\n system can load the base and limit registers. This scheme allows the operating system\n to change the value of the registers but prevents user programs from changing the",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_6",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "to change the value of the registers but prevents user programs from changing the\n registers' contents. The operating system, executing in kernel mode, is given\n 2",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_7",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "unrestricted access to both operating system and users' memory. This provision allows\n the operating system to load users' programs into users' memory, to dump out those\n programs in case of errors, to access and modify parameters of system calls, and so\n on.\n • Address Binding\n Usually, a program resides on a disk as a binary executable file. To be executed,\n the program must be brought into memory and placed within a process.\n Depending on the memory\n management in use, the process\n may be moved between disk and\n m\n memory during its execution. The\n processes on the disk that are\n o\n waiting to be brought into memory\n for execution form the input c\n queue. The normal procedure is to .\n s\n select one of the processes in the\n input queue and to load that e\n process into memory. As the t\n o",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_8",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "queue. The normal procedure is to .\n s\n select one of the processes in the\n input queue and to load that e\n process into memory. As the t\n o\n process is executed, it accesses\n instructions and data fromn\n memory. Eventually, the process\n a\n terminates, and its memory space\n l\n is declared availablea. Most\n systems allow a user process to\n r\n reside in any part eof the physical\n memory. Thus, although the\n k\n address space of the computer\n starts at 00000, the first address of\n the user process need not be\n 00000. This approach affects the\n addresses that the user program\n can use. In most cases, a user\n program will go through several\n steps—some of which maybe\n optional-—before being executed (Figure 8.3). Addresses may be represented in\n different ways during these steps.",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_9",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "steps—some of which maybe\n optional-—before being executed (Figure 8.3). Addresses may be represented in\n different ways during these steps.\n Addresses in the source program are generally symbolic (such as count). A\n compiler will typically bind these symbolic addresses to relocatable addresses (such as\n \"14 bytes from the beginning of this module''). The linkage editor or loader will in turn\n 3",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_10",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "bind the relocatable addresses to absolute addresses (such as 74014). Each binding is\n a mapping from one address space to another. Classically, the binding of instructions\n and data to memory addresses can be done at any step along the way:\n • Compile time. If you know at compile time where the process will reside in memory,\n then absolute code can be generated. For example, if you know that a user process\n will reside starting at location R, then the generated compiler code will start at that\n location and extend up from there. If, at some later time, the starting location changes,\n then it will be necessary to recompile this code. The MS-DOS .COM-format programs\n are bound at compile time.\n • Load time. If it is not known at compile time where the process will reside in memory,",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_11",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "are bound at compile time.\n • Load time. If it is not known at compile time where the process will reside in memory,\n then the compiler must generate relocatable code. In this case, final binding is delayed\n m\n until load time. If the starting address changes, we need only reload the user code to\n incorporate this changed value.\n o\n • Execution time. If the process can be moved during its execution from one memory\n segment to another, then binding must be delayed unctil run time. Special hardware must\n be available for this scheme to work. Most general.-purpose operating systems use this\n s\n method.\n e\n • Logical Versus Physical Addresst Space\n o\n An address generated by the CPU is commonly referred to as a logical address,",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_12",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "s\n method.\n e\n • Logical Versus Physical Addresst Space\n o\n An address generated by the CPU is commonly referred to as a logical address,\n whereas an address seen by thne memory unit—that is, the one loaded into the\n memory-address register of the memory—is commonly referred to as a physical\n a\n address. The compile-time and load-time address-binding methods generate identical\n l\n logical and physical addraesses. However, the execution-time address binding scheme\n results in differing logical and physical addresses. In this case, we usually refer to the\n r\n logical address as ae virtual address.\n We use logical address and virtual address interchangeably in this text. The set\n k\n of all logical addresses generated by a program is a logical address space; the set of",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_13",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "k\n of all logical addresses generated by a program is a logical address space; the set of\n all physical addresses corresponding to these logical addresses is a physical address\n space. Thus, in the\n execution-time\n address-binding\n scheme, the logical\n and physical\n address spaces\n differ. The run-time\n mapping from\n virtual to physical\n addresses is done\n by a hardware\n 4",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_14",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "device called the memory-management unit (MMU). We can choose from many\n different methods to accomplish such mapping.\n The base register is now called a relocation register. The value in the relocation\n register is added to every address generated by a user process at the time it is sent to\n memory (see Figure 8.4). For example, if the base is at 14000, then an attempt by the\n user to address location 0 is dynamically relocated to location 14000; an access to\n location 346 is mapped to location 14346. The MS-DOS operating system running on\n the Intel 80x86 family of processors uses four relocation registers when loading and\n running processes. The user program never sees the real physical addresses.\n The program can create a pointer to location 346, store it in memory, manipulate",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_15",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "The program can create a pointer to location 346, store it in memory, manipulate\n it, and compare it with other addresses—all as the number 346. Only when it is used as\n m\n a memory address (in an indirect load or store, perhaps) is it relocated relative to the\n base register. The user program deals with logical addresses. The memory-mapping\n o\n hardware converts logical addresses into physical addresses.\n The final location of a referenced memory adcdress is not determined until the\n reference is made. We now have two different type.s of addresses: logical addresses (in\n s\n the range 0 to max) and physical addresses (in the range R + 0 to R + max for a base\n value R). The user generates only logical adedresses and thinks that the process runs in",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_16",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "value R). The user generates only logical adedresses and thinks that the process runs in\n locations 0 to max. The user programt supplies logical addresses; these logical\n o\n addresses must be mapped to physical addresses before they are used. The concept of\n a logical address space that is bounnd to a separate physical address space is central to\n proper memory management.\n a\n l\n • Dynamic Loadinga\n In our discussion so far, the entire program and all data of a process must be in\n r\n physical memory foer the process to execute. The size of a process is thus limited to the\n size of physical memory. To obtain better memory-space utilization, we can use\n k\n dynamic loading. With dynamic loading, a routine is not loaded until it is called. All",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_17",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "k\n dynamic loading. With dynamic loading, a routine is not loaded until it is called. All\n routines are kept on disk in a relocatable load format. The main program is loaded into\n memory and is executed.\n When a routine needs to call another routine, the calling routine first checks to\n see whether the other routine has been loaded. If not, the relocatable linking loader is\n called to load the desired routine into memory and to update the program's address\n tables to reflect this change. Then control is passed to the newly loaded routine.\n The advantage of dynamic loading is that an unused routine is never loaded.\n This method is particularly useful when large amounts of code are needed to handle\n infrequently occurring cases, such as error routines. In this case, although the total",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_18",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "infrequently occurring cases, such as error routines. In this case, although the total\n program size may be large, the portion that is used (and hence loaded) may be much\n smaller.\n 5",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_19",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "Dynamic loading does not require special support from the operating system. It is\n the responsibility of the users to design their programs to take advantage of such a\n method. Operating systems may help the programmer, however, by providing library\n routines to implement dynamic loading.\n • Dynamic Linking and Shared Libraries\n Figure 8.3 also shows dynamically linked libraries. Some operating systems support\n only static linking, in which system language libraries are treated like any other object\n module and are combined by the loader into the binary program image. The concept of\n dynamic linking is similar to that of dynamic loading. Here, though, linking, rather than\n loading, is postponed until execution time. This feature is usually used with system\n m",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_20",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "loading, is postponed until execution time. This feature is usually used with system\n m\n libraries, such as language subroutine libraries. Without this facility, each program on a\n system must include a copy of its language library (or at least the routines referenced by\n o\n the program) in the executable image. This requirement wastes both disk space and\n main memory. c\n With dynamic linking, a stub is included in. the image for each library routine\n s\n reference. The stub is a small piece of code that indicates how to locate the appropriate\n memory-resident library routine or how to leoad the library if the routine is not already\n present. When the stub is executed, it cthecks to see whether the needed routine is\n o\n already in memory. If not, the program loads the routine into memory.",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_21",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "o\n already in memory. If not, the program loads the routine into memory.\n Either way, the stub replacens itself with the address of the routine and executes\n the routine. Thus, the next time that particular code segment is reached, the library\n a\n routine is executed directly, incurring no cost for dynamic linking. Under this scheme, all\n l\n processes that use a lanaguage library execute only one copy of the library code. This\n feature can be extended to library updates (such as bug fixes).\n r\n A library maye be replaced by a new version, and all programs that reference the\n library will automatically use the new version. Without dynamic linking, all such\n k\n programs would need to be relinked to gain access to the new library. So that programs",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_22",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "k\n programs would need to be relinked to gain access to the new library. So that programs\n will not accidentally execute new, incompatible versions of libraries, version information\n is included in both the program and the library.\n More than one version of a library may be loaded into memory, and each\n program uses its version information to decide which copy of the library to use. Minor\n changes retain the same version number, whereas major changes increment the\n version number. Thus, only programs that are compiled with the new library version are\n affected by the incompatible changes incorporated in it.\n Other programs linked before the new library was installed will continue using the\n older library. This system is also known as shared libraries. Unlike dynamic loading,",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_23",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "older library. This system is also known as shared libraries. Unlike dynamic loading,\n dynamic linking generally requires help from the operating system. If the processes in\n memory are protected from one another, then the operating system is the only entity\n 6",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_24",
+    "module": 5,
+    "topic": "2. SWAPPING",
+    "page_hint": null,
+    "content": "A process must be in memory to be executed. A process, however, can be\n swapped temporarily out of memory to a backing store and then brought into memory\n for continued execution. For example, assume a multiprogramming environment with a\n round-robin CPU-scheduling algorithm. When a quantum expires, the memory manager\n will start to swap out the process that just finished and to swap another process into the\n memory space that has been freed (Figure 4.2). In the meantime, the CPU scheduler\n will allocate a time slice to some other process in memory. When each process finishes\n m\n its quantum, it will be swapped with another process. Ideally, the memory manager can\n swap processes fast enough that some processes will be in memory, ready to execute,\n o",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_25",
+    "module": 5,
+    "topic": "2. SWAPPING",
+    "page_hint": null,
+    "content": "swap processes fast enough that some processes will be in memory, ready to execute,\n o\n when the CPU scheduler wants to reschedule the CPU. In addition, the quantum must\n be large enough to allow reasonable amounts of comcputing to be done between swaps.\n .\n s\n e\n t\n o\n n\n a\n l\n a\n r\n e\n k\n Fig:4.2 Swapping of two processes using a disk as a backing store.\n A variant of this swapping policy is used for priority-based scheduling algorithms. If a\n higher-priority process arrives and wants service, the memory manager can swap out\n the lower-priority process and then load and execute the higher-priority process. When\n the higher-priority process finishes, the lower-priority process can be swapped back in\n and continued. This variantof swapping is sometimes called rollout,roll in.",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_26",
+    "module": 5,
+    "topic": "2. SWAPPING",
+    "page_hint": null,
+    "content": "and continued. This variantof swapping is sometimes called rollout,roll in.\n Normally, a process that is swapped out will be swapped back into the same\n memory space it occupied previously. This restriction is dictated by the method of\n address binding. If binding is done at assembly or load time, then the process\n cannot be easily moved to a different location. If execution-time binding is being\n 7",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_27",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "used, however, then a process can be swapped into a different memory space,\n because the physical addresses are computed during execution time.\n Swapping requires a backing store. The backing store is commonly a fastdisk. It\n must be large enough to accommodate copies of all memory imagesfor all users, and it\n must provide direct access to these memory images. Thesystem maintains a ready\n queueconsisting of all processes whose memoryimages are on the backing store or in\n memory and are ready to run. Wheneverthe CPU scheduler decides to execute a\n process, it calls the dispatcher. Thedispatcher checks to see whether the next process\n in the queue is in memory.If it is not, and if there is no free memory region, the",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_28",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "in the queue is in memory.If it is not, and if there is no free memory region, the\n dispatcher swaps out aprocess currently in memory and swaps in the desired process.\n It then reloadsregisters and transfers control to the selected process.\n m\n The context-switch time in such a swapping system is fairly high.\n o\n Swapping is constrained by other factors as well. If we want to swap a process, we\n must be sure that it is completely idle. Of particuclar concern is any pending I/0. A\n process may be waiting for an I/0 operation when .\n s\n we want to swap that process to free up memory. However, if the I/0 is asynchronously\n accessing the user memory for I/0 buffers, tehen the process cannot be swapped.Never\n swap a process with pending I/0. t\n o",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_29",
+    "module": 5,
+    "topic": "3. CONTIGUOUS MEMORY AnLLOCATION",
+    "page_hint": null,
+    "content": "The main memory must accommodate both the operating system and the various\n a\n user processes. We therefore need to allocate main memory in the most efficient way\n l\n possible. a\n The memory is usually divided into two partitions: one for the resident operating\n r\n system and one fore the user processes. We can place the operating system in either\n low memory or high memory. The major factor affecting this decision is the location of\n k\n the interrupt vector. Since the interrupt vector is often in low memory, programmers\n usually place the operating system in low memory as well.\n We usually want several user processes to reside in memory at the same time.\n We therefore need to consider how to allocate available memory to the processes that",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_30",
+    "module": 5,
+    "topic": "3. CONTIGUOUS MEMORY AnLLOCATION",
+    "page_hint": null,
+    "content": "We therefore need to consider how to allocate available memory to the processes that\n are in the input queue waiting to be brought into memory. In contiguous memory\n allocation, each process is contained in a single contiguous section of memory.\n • Memory Mapping and Protection\n Memory mapping and protection is done with the help of relocation register,\n together with a limit register. The relocation register contains the value of the smallest\n physical address; the limit register contains the range of logical addresses.\n 8",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_31",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "With relocation and limit registers, each logical address must be less than the\n limit register; the MMU maps the logical address dynamically by adding the value in the\n relocation register. This mapped address is sent to memory (Figure 4.3).\n m\n o\n Fig:4.3Hardware supportfor relocation and limit registers.\n c\n .\n s\n • Memory Allocation\n e\n One of the simplest methods for allocating memory is to divide memory into\n t\n several fixed-sizedpartitions. Each partition may contain exactly one process. Thus,\n o\n the degree of multiprogramming is bound by the number of partitions. In this multiple\n n\n partition method when a partition is free, a process is selected from the input\n queue and is loaded into tahe free partition. When the process terminates, the",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_32",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "queue and is loaded into tahe free partition. When the process terminates, the\n partition becomes available folr another process.\n a\n In the variable partition scheme, the operating system keeps a tableindicating which\n parts of memory are avrailable and which are occupied.Initially, all memory is available\n e\n for user processes and is considered onelarge block of available memory a hole.\n Eventually as yoku will see, memorycontains a set of holes of various sizes.\n As processes enter the system, they are put into an input queue. The operating\n system takes into account the memory requirements of each process and the amount of\n available memory space in determining which processes are allocated memory. When a",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_33",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "available memory space in determining which processes are allocated memory. When a\n process is allocated space, it is loaded into memory, and it can then compete for CPU\n time. When a process terminates, it releases its memory which the operating system\n may then fill with another process from the input queue.\n At any given time, we have a list of available block sizes and the input queue.\n The operating system can order the input queue according to a scheduling algorithm.\n Memory is allocated to processes until, finally, the memory requirements of the next\n process cannot be satisfied—that is, no available block of memory (or hole) is large\n enough to hold that process. The operating system can then wait until a large enough",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_34",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "enough to hold that process. The operating system can then wait until a large enough\n blocks is available, or it can skip down the input queue to see whether the smaller\n memory requirements of some other process can be met.\n 9",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_35",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "In general, at any given time we have a set of holes of various sizes scattered\n throughout memory. When a process arrives and needs memory, the system searches\n the set for a hole that is large enough for this process. If the hole is too large, it is split\n into two parts. One part is allocated to the arriving process; the other is returned to the\n set of holes. When a process terminates, it releases its block of memory, which is then\n placed back in the set of holes. If the new hole is adjacent to other holes, these adjacent\n holes are merged to form one larger hole. At this point, the system may need to check\n whether there are processes waiting for memory and whether this newly freed and\n recombined memory could satisfy the demands of any of these waiting processes.",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_36",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "recombined memory could satisfy the demands of any of these waiting processes.\n This procedure is a particular instance of the general dynamic storage\n allocation problem, which concerns how to satisfy a request of size n from a list of free\n m\n holes. There are many solutions to this problem. The first-fit, best-fit, and worst-fit\n strategies are the ones most commonly used to select a free hole from the set of\n o\n available holes.\n • Memory allocation strategies: c\n • First fit. Allocate the first hole that is big en.ough. Searching can start either at\n s\n the beginning of the set of holes or at the location where the previous first-fit\n e\n search ended. We can stop searching as soon as we find a free hole that is large\n enough. t\n o",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_37",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "e\n search ended. We can stop searching as soon as we find a free hole that is large\n enough. t\n o\n • Next Fit:It works same as first fit, but after allotting a memory to a process, start\n your search for the next allnocation from the last block allotted rather than from\n the starting block. This saves from looking at blocks you already allotted at the\n a\n beginning and thus you are able to do a faster job at allotting blocks to various\n l\n processes. a\n • Best fit. Allocater the smallest hole that is big enough. We must search the entire\n list, unless thee list is ordered by size. This strategy produces the smallest leftover\n hole.\n k\n • Worst fit. Allocate the largest hole. Again, we must search the entire list, unless",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_38",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "hole.\n k\n • Worst fit. Allocate the largest hole. Again, we must search the entire list, unless\n it is sorted by size. This strategy produces the largest leftover hole, which may be\n more useful than the smaller leftover hole from a best-fit approach.\n Simulations have shown that next fit, first fit and best fit are better than wors tfit in\n terms of decreasing time and storage utilization. But worst fit is better than the others in\n terms of storage utilization,.\n • Fragmentation\n Memory fragmentation can be internal as well as external.\n Internal Fragmentation:The general approach is to break the physical memory into\n fixed-sized blocks and allocate memory in units based on block size. With this\n approach, the memory allocated to a process may be slightly larger than the requested\n 10",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_39",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "memory. The difference between these two numbers is internal fragmentation-\n unused memory that is internal to a partition.\n External Fragmentation:Both the first-fit and best-fit strategies for memory\n allocation suffer from external fragmentation.As processes are loaded and removed\n from memory, the free memory space is broken into little pieces. External fragmentation\n exists when there is enough total memory space to satisfy a request but the available\n spaces are not contiguous; storage is fragmented into a large number of small holes.\n This fragmentation problem can be severe. In the worst case, we could have a block of\n free (or wasted) memory between every two processes. If all these small pieces of\n memory were in one big free block instead, we might be able to run several more\n m",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_40",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "memory were in one big free block instead, we might be able to run several more\n m\n processes.\n o\n Statistical analysis of first fit, for instance, reveals that, even with some\n optimization, given N allocated blocks, another c0.5 N blocks will be lost to\n fragmentation. That is, one-third of memory may be. unusable! This property is known as\n s\n the 50-percent rule.\n e\n One solution to the problem of extetrnal fragmentation is Compaction.Thegoal is\n o\n to shuffle the memory contents so as to place all free memory together in one large\n block. Compaction is not alwayns possible, If relocation is static and is done at\n assembly or load time, compaction cannot be done; compaction is possible only\n a\n if relocation is dynamic and is done at execution time. If addresses are relocated\n l",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_41",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "a\n if relocation is dynamic and is done at execution time. If addresses are relocated\n l\n dynamically, relocation reaquires only moving the program and data and then changing\n the base register to reflect the new base address. When compaction is possible, we\n r\n must determine itse cost. The simplest compaction algorithm is to move all\n processes toward one end of memory; all holes move in the other direction,\n k\n producing one large hole of available memory. This scheme can be expensive.\n Another possible solution to the external-fragmentation problem is to permit the\n logical address space of the processes to be noncontiguous, thus allowing a process to\n be allocated physical memory wherever such memory is available. Two complementary",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_42",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "be allocated physical memory wherever such memory is available. Two complementary\n techniques achieve this solution: paging and segmentation.",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_43",
+    "module": 5,
+    "topic": "4. SEGMENTATION",
+    "page_hint": null,
+    "content": "• Basic Method\n Segmentation is a memory-\n management scheme that supports this user\n view of memory. A logical address space is\n a collection of segments. Each segment has\n a name and a length. The addresses specify\n 11",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_44",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "both the segment name and the offset within the segment. The user therefore specifies\n each address by two quantities: a segment name and an offset. (Contrast this scheme\n with the paging scheme, in which the user specifies only a single address, which is\n partitioned by the hardware into a page number and an offset, all invisible to the\n programmer.) For simplicity of implementation, segments are numbered and are\n referred to by a segment number, rather than by a segment name. Thus, a logical\n address consists of a two tuple:\n <segment-number, offset>.\n Normally, the user program is compiled, and the compiler automatically\n constructs segments reflecting the input program.\n A C compiler might create separate segments for the following:\n • The code m\n • Global variables\n o",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_45",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "A C compiler might create separate segments for the following:\n • The code m\n • Global variables\n o\n • The heap, from which memory is allocated\n • The stacks used by each thread c\n • The standard C library .\n s\n e\n Fig:4.12 User's view of a program.\n • Hardware t\n o\n Thus, we must define an implementation to map two dimensional user-defined\n n\n addresses into one-dimensional physical addresses. This mapping is effected by a\n Each entry in the segment taable has a segment base and a segment limit. The\n segment base contains the starting physical address where the segment resides in\n l\n memory, and the segmeant limit specifies the length of the segment. The use of a\n segment table is illustrarted in Figure 4.13.\n e",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_46",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "l\n memory, and the segmeant limit specifies the length of the segment. The use of a\n segment table is illustrarted in Figure 4.13.\n e\n A logicalk address consists of two parts: a segment number, s, and an offset\n into that segment, d. The segment number is used as an index to the segment table.\n The offset d of the logical address must be between 0 and the segment limit. If it is not,\n we trap to the operating system (logical addressing attempt beyond end of segment).\n When an offset is legal, it is added\n to the segment base to produce\n the address in physical memory of\n the desired byte. The segment\n table is thus essentially an array\n of base-limit register pairs.",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_47",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "As an example, consider the situation shown in Figure 8.20. We have five\n segments numbered from 0 through 4. The segments are stored in physical memory as\n shown. The segment table has a separate entry for each segment, giving the beginning\n address of the segment in physical memory (or base) and the length of that segment (or\n limit). For example, segment 2 is 400 bytes long and begins at location 4300. Thus, a\n reference to byte 53 of segment 2 is mapped onto location 4300 +53= 4353. A\n reference to segment 3, byte 852, is mapped to 3200 (the base of segment 3) + 852 =\n 4052. A reference to byte 1222 of segment 0 would result in a trap to the operating\n system, as this segment is only 1000 bytes long.\n m\n o\n c\n .\n s\n e\n t\n o\n n\n a\n l\n a\n r\n e\n k",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_48",
+    "module": 5,
+    "topic": "5. PAGING",
+    "page_hint": null,
+    "content": "Paging is a memory-management scheme that permits the physical address space of a\n process to be noncontiguous. Paging avoids external fragmentation and the need for\n compaction. It also solves the considerable problem of fitting memory chunks of varying\n sizes onto the backing store. Most memory-management schemes used before the\n introduction of paging suffered from this problem. The problem arises because, when\n 13",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_49",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "some code fragments or data residing in main memory need to be swapped out, space\n must be found on the backing store.\n • Basic Method\n The basic method for implementing paging involves breaking physical memory\n into fixed-sized blocks called frames and breaking logical memory into blocks of the\n same size called Pages. When a process is to be executed, its pages are loaded into\n any available memory frames from their source (a file system or the backing store). The\n backing store is divided into fixed-sized blocks that are of the same size as the memory\n frames.\n m\n o\n c\n .\n s\n e\n t\n o\n n\n a",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_50",
+    "module": 5,
+    "topic": "Fig:4.4 Paging Hardware",
+    "page_hint": null,
+    "content": "l\n a\n The hardware support for paging is illustrated in Figure 4.4. Every address\n r\n generated the CPUe is divided into two parts: a page number(p) and a offset(d). . The\n page number is used as an index into a The page table contains the base address of\n k\n each page in physical memory. This base address is combined with the page offset to\n define the physical memory address that is sent to the memory unit. The paging model\n of memory is shown in Figure 4.5\n The page size (like the frame size) is defined by the hardware. The size of a\n page is typically a power of 2, varying between 512 bytes and 16 MB per page,\n depending on the computer architecture. The selection of a power of 2 as a page size\n makes the translation of a logical address into a page number and page offset",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_51",
+    "module": 5,
+    "topic": "Fig:4.4 Paging Hardware",
+    "page_hint": null,
+    "content": "makes the translation of a logical address into a page number and page offset\n particularly easy.\n 14",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_52",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "m\n Fig:4.5 Paging model of logical ando physical memory.\n If the size of the logical address space is , and a page size is 1addressing\n c\n units (bytes or words) then the high-order m- n bits of a logical address designate the\n .\n page number, and the n low-order bits designsate the page offset. Thus, the logical\n address is as follows: e\n t\n o\n n\n where p is an index into the page\n a\n table and d is the displacement\n within the page. l\n a\n For example, consider the\n r\n memory in Figure 8.9. Using a page\n e\n size of 4 bytes and a physical\n k\n memory of 32 bytes (8 pages), we\n show how the user's view of\n memory can be mapped into\n physical memory. Logical address 0\n is page 0, offset 0. Indexing into the\n page table, we find that page 0 is in\n frame 5. Thus, logical address 0",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_53",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "physical memory. Logical address 0\n is page 0, offset 0. Indexing into the\n page table, we find that page 0 is in\n frame 5. Thus, logical address 0\n maps to physical address 20 (= (5 x\n 4) + 0). Logical address 3 (page 0,\n offset 3) maps to physical address\n 23 {- (5x4) + 3). Logical address 4\n is page 1, offset 0; according to the\n page table, page 1 is mapped to\n frame 6. Thus, logical address 4\n 15",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_54",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "maps to physical address 24 (= (6x4) + 0). Logical address 13 maps to physical address\n 9.\n When a process arrives in the system to be executed, its size, expressed in\n pages, is examined. Each page of the process needs one frame. Thus, if the process\n requires n pages, at least n frames must be available in memory. If n frames are\n available, they are allocated to this arriving process. The first page of the process is\n loaded inJo one of the allocated frames, and the frame number is put in the page table\n for this process. The next page is loaded into another frame, its frame number is put\n into the page table, and so on (Figure 4.6).\n m\n o\n c\n .\n s\n e\n t\n o\n n\n a\n Fig:4.6 Free frames (a) before allocation and (b) after allocation\n l\n a",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_55",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "into the page table, and so on (Figure 4.6).\n m\n o\n c\n .\n s\n e\n t\n o\n n\n a\n Fig:4.6 Free frames (a) before allocation and (b) after allocation\n l\n a\n An important aspect of paging is the clear separation between the user's view of\n r\n memory and the actual physical memory. The user program views memory as one\n e\n single space, containing only this one program. In fact, the user program is scattered\n k\n throughout physical memory, which also holds other programs. The difference between\n the user's view of memory and the actual physical memory is reconciled by the address-\n translation hardware. The logical addresses are translated into physical addresses. This\n mapping is hidden from the user and is controlled by the operating system. Notice that",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_56",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "mapping is hidden from the user and is controlled by the operating system. Notice that\n the user process by definition is unable to access memory it does not own. It has no\n way of addressing memory outside of its page table, and the table includes only those\n pages that the process owns.\n Since the operating system is managing physical memory, it must be aware of\n the allocation details of physical memory-which frames are allocated, which frames are\n available, how many total frames there are, and so on. This information is generally kept\n in a data structure called a frame table. The frame table has one entry for each\n physical page frame, indicating whether the latter is free or allocated and, if it is\n allocated, to which page of which process or processes.\n 16",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_57",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "If a user makes a system call and provides an address as a parameter that\n address must be mapped to produce the correct physical address. The operating\n system maintains a copy of the page table for each process, just as it maintains a copy\n of the instruction counter and register contents.This copy is used to translate logical\n addresses to physical addresses whenever the operating system must map a logical\n address to a physical address manually.\n • Hardware Support\n Each operating system has its own methods for storing page tables. Most\n allocate a page table for each process. A pointer to the page table is stored with the\n other register values (like the instruction counter) in the process control block.The",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_58",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "other register values (like the instruction counter) in the process control block.The\n hardware implementation of the page table can be done in several In the simplest case,\n m\n the page table is implemented as a set of dedicated registers. These registers should\n be built with very high-speed logic to make the paging-address translation efficient.\n o\n The use of registers for the page table is satisfactory if the page table is\n reasonably small (for example, 256 entries). Most ccontemporary computers, however,\n allow the page table to be very large (for exam.ple, 1 million entries). For these\n s\n machines, the use of fast registers to implement the page table is not feasible. Rather,\n the page table is kept in main memory, ande a page table base register(PTBR) points",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_59",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "the page table is kept in main memory, ande a page table base register(PTBR) points\n to the page table. Changing page tablets requires changing only this one register,\n o\n substantially reducing context-switch time.\n The problem with this apprnoach is the time required to access a user memory\n location. If we want to access location i, we must first index into the page table, using\n a\n the value in the PTBR offset by the page number fori. This task requires a memory\n l\n access. It provides us witha the frame number, which is combined with the page offset to\n produce the actual address. We can then access the desired place in memory. With this\n r\n scheme, two memoery accesses are needed to access a byte (one for the page-table",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_60",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "r\n scheme, two memoery accesses are needed to access a byte (one for the page-table\n entry, one for the byte). Thus, memory access is slowed by a factor of 2. This delay\n k\n would be intolerable under most circumstances.\n The standard solution to this problem is to use a special, small, fast lookup\n hardware cache, called a\n translation lookaside\n buffer(TLB)The TLB is\n associative, high-speed\n memory. Each entry in the\n TLB consists of two parts: a\n key (or tag) and a value.\n When the associative\n memory is presented with\n an item, the item is\n compared with all keys\n 17",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_61",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "simultaneously. If the item is found, the corresponding value field is returned. The\n search is fast; the hardware, however, is expensive. Typically, the number of entries\n in a TLB is small, often numbering between 64 and 1,024.\n The TLB is used with page tables in the following way. The TLB contains only a\n few of the page-table entries. When a logical address is generated by the CPU, its page\n number is presented to the TLB. If the page number is found,(TLB hit) its frame number\n is immediately available and is used to access memory. The whole task may take less\n than 10 percent longer than it would if an unmapped memory reference were used.\n If the page number is not in the TLB (TLB miss) a memory reference to the page",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_62",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "If the page number is not in the TLB (TLB miss) a memory reference to the page\n table must be made. When the frame number is obtained, we can use it to access\n memory (Figure 8.11). In addition, we add the page number and frame number to the\n m\n TLB, so that they will be found quickly on the next reference. If the TLB is already full of\n entries, the operating system must select one for replacement. Replacement policies\n o\n range from least recently used (LRU) to random replacement.\n Some TLBs store address space identifiersc (ASIDs) in each TLB entry. An\n ASID uniquely identifies each process and is used .to provide address-space protection\n s\n for that process. When the TLB attempts to resolve virtual page numbers, it ensures",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_63",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "s\n for that process. When the TLB attempts to resolve virtual page numbers, it ensures\n that the ASID for the currently running preocess matches the ASID associated with\n the virtual page. If the ASIDs do not mattch, the attempt is treated as a TLB miss. In\n o\n addition to providing address-space protection, an ASID allows the TLB to\n contain entries for several differennt processes simultaneously.\n The percentage of times that a particular page number is found in the TLB\n a\n is called the hit ratio.\n l\n An 80-percent hit raatio means that we find the desired page number in the TLB\n 80 percent of the time. If it takes 20 nanoseconds to search the TLB and 100\n r\n nanoseconds to eaccess memory, then a mapped-memory access takes 120",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_64",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "r\n nanoseconds to eaccess memory, then a mapped-memory access takes 120\n nanoseconds when the page number is in the TLB. If we fail to find the page number in\n k\n the TLB (20 nanoseconds), then we must first access memory for the page table and\n frame number (100 nanoseconds) and then access the desired byte in memory (100\n nanoseconds), for a total of 220 nanoseconds.\n To find the effective memory-access time, we weight each case by its\n probability: effective access time = 0.80 x 120 + 0.20 x 220 = 140 nanoseconds.\n In this example, we suffer a 40-percent slowdown in memory-access time (from 100 to\n 140 nanoseconds).\n For a 98-percent hit ratio, we have\n effective access time = 0.98 x 120 + 0.02 x 220 = 122 nanoseconds.",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_65",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "140 nanoseconds).\n For a 98-percent hit ratio, we have\n effective access time = 0.98 x 120 + 0.02 x 220 = 122 nanoseconds.\n This increased hit rate produces only a 22 percent slowdown in access time.\n • Protection\n 18",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_66",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "Memory protection in a paged environment is accomplished by protection bits\n associated with each frame. Normally, these bits are kept in the page table.\n One bit can define a page to be read-write or read-only. Every reference to\n memory goes through the page table to find the correct frame number. At the same time\n that the physical address is being computed, the protection bits can be checked to verify\n that no writes are being made to a read-only page. An attempt to write to a read-only\n page causes a hardware trap to the operating system (or memory-protection violation).\n One additional bit\n is generally attached to\n each entry in the page\n table: a valid-invalid bit.\n m\n When this bit is set to\n \"valid,\" the associated\n o\n page is in the process's\n logical address space or c",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_67",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "table: a valid-invalid bit.\n m\n When this bit is set to\n \"valid,\" the associated\n o\n page is in the process's\n logical address space or c\n present in the main .\n s\n memory and is thus a\n legal (or valid) page. e\n When the bit is set to t\n o\n \"invalid,\" the page is not\n in the process's logical n\n address space or not\n a\n present in the main\n l\n memory. Illegaal\n addresses are trapped by\n r\n use of the valid -einvalid\n bit. The operating system sets this bit for each page to allow or disallow access to the\n k\n page.\n Suppose, for example, that in a system with a 14-bit address space (0 to 16383),\n we have a program that should use only addresses 0 to 10468. Given a page size of 2\n KB, we get the situation shown in Figure 8.12. Addresses in pages 0,1, 2,3, 4, and 5 are",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_68",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "KB, we get the situation shown in Figure 8.12. Addresses in pages 0,1, 2,3, 4, and 5 are\n mapped normally through the page table. Any attempt to generate an address in pages\n 6 or 7, however, will find that the valid-invalid bit is set to invalid, and the computer will\n trap to the operating system (invalid page reference).\n • Shared Pages\n An advantage of paging is the possibility of sharing common code. Consider a system\n that supports 40 users, each of whom executes a text editor. If the text editor consists of\n 150 KB of code and 50 KB of data space, we need 8,000 KB to support the 40 users. If\n the code is reentrant (or pure code) however, I tcan be shared, as shown in Figure\n 19",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_69",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "4.7. Here we see a three-page editor-each page 50 KB in size (the large page size is\n used to simplify the figure)-being shared among three processes. Each process has its\n own data page.\n Reentrant code is non-self-modifying code: it never changes during execution.\n Thus, two or more processes can execute the same code at the same time. Each\n process has its own copy of registers and data storage to hold the data for the process's\n execution. The data for two different processes will of course, be different.\n Only one copy of the editor need be kept in physical memory. Each user's page\n table maps onto the same physical copy of the editor, but data pages are mapped onto\n different frames.\n m\n o\n c\n .\n s\n e\n t\n o\n n\n a\n l\n a\n r\n e\n k\n Fig:4.7 Sharing of code in a paging environment.",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_70",
+    "module": 5,
+    "topic": "6. DEMAND PAGING",
+    "page_hint": null,
+    "content": "Virtual memory involves the separation of logical memory as perceived by users\n from physical memory. This separation allows an extremely large virtual memory to be\n provided for programmers when only a smaller physical memory is available. The\n virtual address space of a process refers to the logical (or virtual) view of how a\n process is stored in memory. Physical memory may be organized in page frames and\n that the physical page frames assigned to a process may not be contiguous. It is up to\n the memory management unit (MMU) to map logical pages to physical page frames in\n memory.\n 20",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_71",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "When an executable program is loaded from disk in to memory it is not\n necessary to load the entire program in physical memory at program execution time.\n We may not initially need the entire program in memory. Consider a program that starts\n with a list of available options from which the user is to select. Loading the entire\n program into memory results in loading the executable code for all options, regardless\n of whether an option is ultimately selected by the user or not. An alternative strategy is\n to load pages only as they are needed. This technique is known as demand paging\n and is commonly used in virtual memory systems. With demand-paged virtual memory,\n pages are only loaded when they are demanded during program execution; pages that",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_72",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "pages are only loaded when they are demanded during program execution; pages that\n are never accessed are thus never loaded into physical memory.\n A demand-paging system is similar to a paging system with swapping (Fig 4.14)\n m\n where processes reside in secondary memory (usually a disk).When we want to\n execute a process, we swap it into memory. Rather than swapping the entire process\n o\n into memory, however, we use a lazy swapper. A lazy swapper never swaps a page\n into memory unless that page will be needed. Since wce are now viewing a process as a\n sequence of pages, rather than as one large contig.uous address space, use of the term\n s\n swapper is technically incorrect. A swapper manipulates entire processes, whereas a",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_73",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "s\n swapper is technically incorrect. A swapper manipulates entire processes, whereas a\n pager is concerned with the individual pagees of a process. We thus use pager, rather\n than swapper, in connection with demand tpaging.\n o\n Fig 4.14:Transfer of a pagedn\n memory to contiguous disk space.\n a\n l\n • Basic Concepts a\n With this scheme, we need\n r\n some form of haerdware support to\n distinguish between the pages that are\n k\n in memory and the pages that are on\n the disk. The valid -invalid bit\n scheme can be used for this purpose.\n This time, however, when this bit is set\n to \"valid/' the associated page is both\n legal and in memory. If the bit is set to\n \"invalid” the page either is not valid\n (that is, not in the logical address space of the process) or is valid but is currently on the",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_74",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "\"invalid” the page either is not valid\n (that is, not in the logical address space of the process) or is valid but is currently on the\n disk. The page-table entry for a page that is brought into memory is set as usual but the\n page-table entry for a page that is not currently in memory is either simply marked\n invalid or contains the address of the page on disk. This situation is depicted in Figure\n 4.15.\n 21",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_75",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "Fig 4.15:Page table when\n some pages are not in main\n memory.\n If the process tries to\n access a page that was not\n brought into memory (access to a\n page marked as invalid) causes a\n page fault. The paging hardware,\n in translating the address through\n the page table, will notice that the\n m\n invalid bit is set, causing a trap to\n the operating system. This trap is\n o\n the result of the operating\n system's failure to bring the c\n desired page into memory. The .\n s\n procedure for handling this page\n fault is straightforward (Figure 4.16): e\n t\n o\n n\n a\n l\n a\n r\n e\n k\n Fig 4.16: Steps in handling a page fault.\n 1. We check an internal table (usually kept with the process control block)for this\n process to determine whether the reference was a valid or aninvalid memory\n access.\n 22",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_76",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "2. If the reference was invalid, we terminate the process. If it was valid, butwe have\n not yet brought in that page, we now page it in.\n 3. We find a free frame (by taking one from the free-frame list, for example).\n 4. We schedule a disk operation to read the desired page into the newlyallocated\n frame.\n 5. When the disk read is complete, we modify the internal table kept withthe\n process and the page table to indicate that the page is now in memory.\n 6. We restart the instruction that was interrupted by the trap. The processcan now\n access the page as though it had always been in memory.\n In the extreme case, we can start executing a process with no pages inmemory.\n m\n When the operating system sets the instruction pointer to the firstinstruction of the",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_77",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "m\n When the operating system sets the instruction pointer to the firstinstruction of the\n process, which is on a non-memory-resident page, the processimmediately faults for the\n o\n page. After this page is brought into memory, theprocess continues to execute, faulting\n as necessary until every page that itneeds is in mecmory. At that point it can execute\n with no more faults. This scheme is pure demand. paging, that is never bring a page\n s\n into memory until it isrequired.\n The hardware to support demand paging ise the same as the hardware forpaging and\n swapping: t\n • Page table: This table has the o ability to mark an entry invalid through avalid -\n invalid bit or a special value nof protection bits.\n • Secondary memory: This memory holds those pages that are not presentin\n a",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_78",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "invalid bit or a special value nof protection bits.\n • Secondary memory: This memory holds those pages that are not presentin\n a\n main memory. The secondary memory is usually a high-speed disk. It isknown as\n l\n the swap device, aand the section of disk used for this purpose isknown asswap\n space.\n r\n A crucial requireement for demand paging is the ability to restart anyinstruction\n after a page fault. Because we save the state (registers, conditioncode, instruction\n k\n counter) of the interrupted process when the page faultoccurs, we must be able to\n restart the process in exactly the same place andstate, except that the desired page is\n now in memory and is accessible. In mostcases, this requirement is easy to meet. A",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_79",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "now in memory and is accessible. In mostcases, this requirement is easy to meet. A\n page fault may occur at any memoryreference. If the page fault occurs on the instruction\n fetch, we can restart byfetching the instruction again. If a page fault occurs while we are\n fetching anoperand, we must fetch and decode the instruction again and then fetch the\n operand.\n As a worst-case example, consider a three-address instruction such as ADD the\n content of A to B, placing the result in C. These are the steps to execute this instruction:\n 1. Fetch and decode the instruction (ADD).",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_80",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "5. Store the sum in C.\n If we fault when we try to store in C (because C is in a page not currently in memory),\n we will have to get the desired page, bring it in, correct the page table, and restart the\n instruction. The restart will require fetching the instruction again, decoding it again,\n fetching the two operands again, and then adding again. However, there is not much\n repeated work (less than one complete instruction), and the repetition is necessary only\n when a page fault occurs.\n • Performance of Demand Paging\n Demand paging can significantly affect the performance of a computer\n system.To see why, let's compute the effective access time for a demand-\n m\n pagedmemory. For most computer systems, the memory-access time, denoted",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_81",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "system.To see why, let's compute the effective access time for a demand-\n m\n pagedmemory. For most computer systems, the memory-access time, denoted\n ma,ranges from 10 to 200 nanoseconds. As long as we have no page faults,\n o\n theeffective access time is equal to the memory access time. If, howevera pagefault\n occurs, we must first read the relevant page from diskc and then access thedesired word.\n Let p be the probability of a page fault (0≤p ≤1). W.e would expect p tobe close to zero-\n s\n that is, we would expect to have only a few page faults. Theeffective access time is then\n e\n effective access time=[(1 - p) *ma]+ [p *page fault time]\n To compute the effective access timte, we must know how much time is needed\n o",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_82",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "e\n effective access time=[(1 - p) *ma]+ [p *page fault time]\n To compute the effective access timte, we must know how much time is needed\n o\n to service a page fault. A page fault causes the following sequence to occur:\n 1. Trap to the operating system. n\n 2. Save the user registers and process state.\n a\n 3. Determine that the interrupt was a page fault. '\n l\n 4. Check that the page reaference was legal and determine the location of the page on\n the disk.\n r\n 5. Issue a read frome the disk to a free frame:\n a. Wait in a queue for this device until the read request is serviced.\n k\n b. Wait for the device seek and /or latency time.\n c. Begin the transfer of the page to a free frame.\n 6. While waiting, allocate the CPU to some other user (CPU scheduling, optional).",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_83",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "c. Begin the transfer of the page to a free frame.\n 6. While waiting, allocate the CPU to some other user (CPU scheduling, optional).\n 7. Receive an interrupt from the disk I/O subsystem (I/O completed).\n 8. Save the registers and process state for the other user (if step 6 is executed).\n 9. Determine that the interrupt was from the disk.\n 10. Correct the page table and other tables to show that the desired page is now in\n memory.\n 11. Wait for the CPU to be allocated to this process again.\n 12. Restore the user registers, process state, and new page table, and then resume the\n interrupted instruction.\n Not all of these steps are necessary in every case. For example, we are\n assuming that, in step 6, the CPU is allocated to another process while the I/O occurs.\n 24",
+    "source_file": "CST206 M4.txt"
+  },
+  {
+    "id": "5_84",
+    "module": 5,
+    "topic": "Module 4 Memory Management",
+    "page_hint": null,
+    "content": "This arrangement allows multiprogramming to maintain CPU utilization but requires\n additional time to resume the page-fault service routine when the I/O transfer is\n complete.\n In any case, we are faced with three major components of the page-fault service time:\n 1. Service the page-fault interrupt.\n 2. Read in the page.\n 3. Restart the process.\n The first and third tasks can be reduced, with careful coding, to several hundred\n instructions.\n m\n o\n c\n .\n s\n e\n t\n o\n n\n a\n l\n a\n r\n e\n k\n 25",
+    "source_file": "CST206 M4.txt"
+  }
+]

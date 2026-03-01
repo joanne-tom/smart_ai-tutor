@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart AI Tutor — Faculty Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0a0e1a; --surface:#111827; --surface2:#1a2235; --border:#1f2d45;
+    --accent:#3b82f6; --accent2:#06b6d4; --success:#10b981;
+    --warn:#f59e0b; --error:#ef4444; --text:#e2e8f0; --muted:#64748b;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'DM Mono',monospace;background:var(--bg);color:var(--text);min-height:100vh;
+    background-image:radial-gradient(ellipse 80% 60% at 50% -20%,rgba(59,130,246,.08) 0%,transparent 70%),
+                     radial-gradient(ellipse 40% 40% at 90% 80%,rgba(6,182,212,.05) 0%,transparent 60%)}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;
+    border-bottom:1px solid var(--border);background:rgba(10,14,26,.8);
+    backdrop-filter:blur(12px);position:sticky;top:0;z-index:100}
+  .logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;display:flex;align-items:center;gap:.5rem}
+  .logo-icon{width:28px;height:28px;background:linear-gradient(135deg,var(--accent),var(--accent2));
+    border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.8rem}
+  .nav-status{display:flex;align-items:center;gap:1rem;font-size:.7rem;color:var(--muted)}
+  .status-dot{width:6px;height:6px;border-radius:50%;background:var(--muted);display:inline-block;margin-right:4px}
+  .status-dot.online{background:var(--success);box-shadow:0 0 6px var(--success);animation:pulse 2s infinite}
+  .status-dot.offline{background:var(--error)}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+  .container{max-width:1200px;margin:0 auto;padding:2rem}
+  .header{text-align:center;padding:2.5rem 0 2rem}
+  .header h1{font-family:'Syne',sans-serif;font-size:2.5rem;font-weight:800;
+    background:linear-gradient(135deg,#e2e8f0 0%,var(--accent) 60%,var(--accent2) 100%);
+    background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.5rem}
+  .header p{color:var(--muted);font-size:.8rem;letter-spacing:.05em}
+  .pipeline{display:flex;align-items:center;justify-content:center;gap:0;
+    margin:1.5rem 0 2.5rem;font-size:.65rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+  .pipe-step{display:flex;align-items:center;gap:.4rem;padding:.4rem .8rem;
+    border:1px solid var(--border);border-radius:3px;transition:all .3s}
+  .pipe-step.active{border-color:var(--accent);color:var(--accent);background:rgba(59,130,246,.08)}
+  .pipe-step.done{border-color:var(--success);color:var(--success);background:rgba(16,185,129,.05)}
+  .pipe-arrow{color:var(--border);padding:0 .3rem}
+  .main-grid{display:grid;grid-template-columns:380px 1fr;gap:1.5rem;align-items:start}
+  .left-col{display:flex;flex-direction:column;gap:1.5rem}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.5rem;transition:border-color .3s}
+  .card:hover{border-color:rgba(59,130,246,.3)}
+  .card-header{display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem;padding-bottom:.8rem;border-bottom:1px solid var(--border)}
+  .card-icon{width:32px;height:32px;background:linear-gradient(135deg,rgba(59,130,246,.2),rgba(6,182,212,.2));
+    border:1px solid rgba(59,130,246,.3);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.9rem}
+  .card-title{font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:.05em}
+  .card-sub{font-size:.65rem;color:var(--muted);margin-top:.1rem}
+  label{display:block;font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem;margin-top:.8rem}
+  label:first-child{margin-top:0}
+  input,select,textarea{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:6px;
+    padding:.6rem .8rem;color:var(--text);font-family:'DM Mono',monospace;font-size:.8rem;
+    outline:none;transition:border-color .2s,box-shadow .2s}
+  input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(59,130,246,.1)}
+  select option{background:var(--surface)}
+  .drop-zone{border:2px dashed var(--border);border-radius:8px;padding:1.5rem 2rem;
+    text-align:center;cursor:pointer;transition:all .3s;position:relative}
+  .drop-zone:hover,.drop-zone.drag-over{border-color:var(--accent);background:rgba(59,130,246,.04)}
+  .drop-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;border:none;background:none}
+  .drop-zone .drop-icon{font-size:1.8rem;margin-bottom:.4rem}
+  .drop-zone .drop-text{font-size:.75rem;color:var(--muted)}
+  .drop-zone .drop-hint{font-size:.62rem;color:var(--muted);opacity:.6;margin-top:.3rem}
+  .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.65rem 1.2rem;border:none;
+    border-radius:7px;font-family:'DM Mono',monospace;font-size:.75rem;font-weight:500;
+    cursor:pointer;transition:all .2s;letter-spacing:.03em}
+  .btn-primary{background:linear-gradient(135deg,var(--accent),#2563eb);color:white;box-shadow:0 4px 12px rgba(59,130,246,.25)}
+  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(59,130,246,.35)}
+  .btn-primary:active{transform:translateY(0)}
+  .btn:disabled{opacity:.4;cursor:not-allowed;transform:none!important}
+  .btn-row{display:flex;gap:.8rem;margin-top:1rem}
+  .inline-status{font-size:.72rem;padding:.5rem .8rem;border-radius:6px;margin-top:.6rem;display:none;white-space:pre-wrap}
+  .inline-status.loading{background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);color:#818cf8;display:block}
+  .inline-status.success{background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);color:var(--success);display:block}
+  .inline-status.error{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);color:var(--error);display:block}
+  .file-list{font-size:.68rem;color:var(--muted);margin-top:.4rem;max-height:72px;overflow-y:auto;line-height:1.6}
+  .sys-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:.8rem}
+  .sys-item{background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:.8rem;text-align:center}
+  .sys-value{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;color:var(--accent)}
+  .sys-label{font-size:.6rem;color:var(--muted);margin-top:.2rem;text-transform:uppercase;letter-spacing:.05em}
+  .notif-preview{background:var(--bg);border:1px solid var(--border);border-left:3px solid var(--accent2);
+    border-radius:6px;padding:.8rem 1rem;margin-top:1rem;font-size:.72rem;color:var(--muted);display:none}
+  .notif-preview.show{display:block}
+  .notif-preview strong{color:var(--text)}
+  .output-box{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:1.5rem;
+    min-height:180px;font-size:.8rem;line-height:1.8;white-space:pre-wrap;color:var(--text);
+    position:relative;overflow:auto;max-height:420px}
+  .output-empty{color:var(--muted);font-size:.75rem;display:flex;align-items:center;
+    justify-content:center;height:120px;border:2px dashed var(--border);border-radius:6px;text-align:center}
+  .output-meta{display:flex;gap:1rem;margin-top:.8rem;font-size:.65rem;color:var(--muted);flex-wrap:wrap}
+  .meta-item{display:flex;align-items:center;gap:.3rem}
+  .copy-btn{position:absolute;top:.6rem;right:.6rem;padding:.3rem .6rem;background:var(--surface2);
+    border:1px solid var(--border);border-radius:4px;font-size:.6rem;color:var(--muted);
+    cursor:pointer;font-family:'DM Mono',monospace;transition:all .2s}
+  .copy-btn:hover{color:var(--text);border-color:var(--accent)}
+  #toast{position:fixed;bottom:2rem;right:2rem;padding:.8rem 1.2rem;border-radius:8px;
+    font-size:.75rem;display:none;z-index:999;animation:slideIn .3s ease;max-width:320px}
+  @keyframes slideIn{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+  .toast-success{background:var(--success);color:white}
+  .toast-error{background:var(--error);color:white}
+  .toast-info{background:var(--accent);color:white}
+  .loader{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,.3);
+    border-top-color:white;border-radius:50%;animation:spin .7s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .progress-bar{height:3px;background:var(--border);border-radius:2px;margin:.5rem 0;overflow:hidden}
+  .progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));
+    width:0%;transition:width .4s ease;border-radius:2px}
+  @media(max-width:900px){.main-grid{grid-template-columns:1fr}.header h1{font-size:1.8rem}.pipeline{display:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><div class="logo-icon">🤖</div>Smart AI Tutor</div>
+  <div class="nav-status">
+    <span><span class="status-dot" id="ollamaStatus"></span><span id="ollamaLabel">Checking...</span></span>
+    <span><span class="status-dot" id="dbStatus"></span><span id="dbLabel">DB: —</span></span>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="header">
+    <h1>Faculty Portal</h1>
+    <p>Upload Syllabus → Upload Notes → Select Topic → Generate AI Content</p>
+  </div>
+
+  <div class="pipeline">
+    <div class="pipe-step" id="pipe1">① Upload Syllabus</div><div class="pipe-arrow">→</div>
+    <div class="pipe-step" id="pipe2">② Parse Tree</div><div class="pipe-arrow">→</div>
+    <div class="pipe-step" id="pipe3">③ Index Notes</div><div class="pipe-arrow">→</div>
+    <div class="pipe-step" id="pipe4">④ RAG Generate</div><div class="pipe-arrow">→</div>
+    <div class="pipe-step" id="pipe5">⑤ Verified Output</div>
+  </div>
+
+  <div class="progress-bar" id="mainProgress" style="display:none">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+
+  <div class="main-grid">
+    <!-- LEFT COLUMN -->
+    <div class="left-col">
+
+      <!-- STEP 1: SYLLABUS -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">📋</div>
+          <div><div class="card-title">Step 1 — Upload Syllabus</div>
+               <div class="card-sub">Extracts Module → Topic → Subtopic hierarchy</div></div>
+        </div>
+        <label>Subject Name</label>
+        <input type="text" id="subjectInput" placeholder="e.g. Operating Systems" />
+        <label>KTU Syllabus PDF</label>
+        <div class="drop-zone" id="dropZoneSyllabus">
+          <input type="file" id="syllabusFile" accept=".pdf" />
+          <div class="drop-icon">📂</div>
+          <div class="drop-text" id="syllabusDragText">Drop Syllabus PDF here or click</div>
+          <div class="drop-hint">Detects Module → Topic → Subtopic structure</div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-primary" id="uploadSyllabusBtn" onclick="uploadSyllabus()">
+            <span id="uploadSyllabusBtnText">Parse Syllabus</span>
+          </button>
+        </div>
+        <div class="inline-status" id="syllabusStatus"></div>
+        <div class="sys-grid">
+          <div class="sys-item"><div class="sys-value" id="topicCount">—</div><div class="sys-label">Modules</div></div>
+          <div class="sys-item"><div class="sys-value" id="chunkCount">—</div><div class="sys-label">Chunks</div></div>
+          <div class="sys-item"><div class="sys-value" id="modelStatus">—</div><div class="sys-label">LLM</div></div>
+        </div>
+      </div>
+
+      <!-- STEP 2: NOTES -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">📚</div>
+          <div><div class="card-title">Step 2 — Upload Notes</div>
+               <div class="card-sub">Chunk &amp; embed multiple PDFs into ChromaDB</div></div>
+        </div>
+        <label>Notes / Textbook PDFs</label>
+        <div class="drop-zone" id="dropZoneNotes">
+          <input type="file" id="notesFiles" accept=".pdf" multiple />
+          <div class="drop-icon">📄</div>
+          <div class="drop-text" id="notesDragText">Drop PDFs here — multiple files OK</div>
+          <div class="drop-hint">All files will be chunked &amp; indexed together</div>
+        </div>
+        <div class="file-list" id="notesFileList"></div>
+        <div class="btn-row">
+          <button class="btn btn-primary" id="uploadNotesBtn" onclick="uploadNotes()">
+            <span id="uploadNotesBtnText">Index Notes</span>
+          </button>
+        </div>
+        <div class="inline-status" id="notesStatus"></div>
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div>
+      <!-- STEP 3: TOPIC SELECTION -->
+      <div class="card" style="margin-bottom:1.5rem">
+        <div class="card-header">
+          <div class="card-icon">🎯</div>
+          <div><div class="card-title">Step 3 — Select Topic</div>
+               <div class="card-sub">Navigate the syllabus tree to pick a teaching focus</div></div>
+        </div>
+
+        <div id="dropdownsContainer" style="opacity:.45;pointer-events:none;transition:opacity .3s">
+          <label>Module</label>
+          <select id="moduleSelect" onchange="populateTopics()">
+            <option value="">— Upload syllabus first —</option>
+          </select>
+          <label>Topic</label>
+          <select id="topicSelect" onchange="populateSubtopics()">
+            <option value="">— Select a module —</option>
+          </select>
+          <label>Subtopic (optional — leave on "All" for full topic overview)</label>
+          <select id="subtopicSelect" onchange="updateNotifPreview()">
+            <option value="">— Select a topic —</option>
+          </select>
+        </div>
+
+        <div class="notif-preview" id="notifPreview">
+          📲 <strong>RAG Query Ready:</strong><br>
+          <span id="notifText"></span>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-primary" id="generateBtn" onclick="generateContent()"
+                  disabled style="opacity:.4;width:100%">
+            <span id="generateBtnText">Generate Lecture / Questions</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- RAG OUTPUT -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">🧠</div>
+          <div><div class="card-title">RAG Output — Drafter + Verifier</div>
+               <div class="card-sub">Syllabus-grounded content via Ollama &amp; Patronus API</div></div>
+        </div>
+        <div id="outputContainer">
+          <div class="output-empty">Select a topic and click "Generate" to see RAG output here</div>
+        </div>
+        <div class="output-meta" id="outputMeta" style="display:none">
+          <span class="meta-item">⏱️ <span id="metaTime">—</span></span>
+          <span class="meta-item">🎯 <span id="metaFilter">—</span></span>
+          <span class="meta-item">✅ <span id="metaStatus">—</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+const API = 'http://localhost:5000/api';
+const LS_KEY = 'smart_ai_tutor_syllabus';  // localStorage key for persistence
+let parsedSyllabusData = {};
+
+// ─── INIT ────────────────────────────────────────────────────────────────────
+window.onload = async () => {
+  checkStatus();
+  setupDropZone('dropZoneSyllabus', 'syllabusFile', 'syllabusDragText', false);
+  setupDropZone('dropZoneNotes',    'notesFiles',   'notesDragText',    true);
+
+  document.getElementById('syllabusFile').addEventListener('change', e => {
+    const f = e.target.files[0];
+    if (f) document.getElementById('syllabusDragText').textContent = '✓ ' + f.name;
+  });
+  document.getElementById('notesFiles').addEventListener('change', e => {
+    const files = Array.from(e.target.files);
+    if (files.length) {
+      document.getElementById('notesDragText').textContent = `✓ ${files.length} file(s) selected`;
+      document.getElementById('notesFileList').innerHTML = files.map(f => '📄 ' + f.name).join('<br>');
+    }
+  });
+
+  // FIX: Restore syllabus from localStorage FIRST (instant, no network needed)
+  const stored = localStorage.getItem(LS_KEY);
+  if (stored) {
+    try {
+      parsedSyllabusData = JSON.parse(stored);
+      enableDropdowns();
+      const n = Object.keys(parsedSyllabusData).length;
+      showStatus('syllabusStatus', 'success', `✅ Syllabus restored (${n} modules) — upload new to update`);
+      document.getElementById('topicCount').textContent = n;
+    } catch(e) { localStorage.removeItem(LS_KEY); }
+  }
+
+  // Then also try backend (in case syllabus was uploaded in a different browser)
+  try {
+    const r = await fetch(API + '/syllabus');
+    if (r.ok) {
+      const d = await r.json();
+      if (d.data && Object.keys(d.data).length > 0) {
+        parsedSyllabusData = d.data;
+        localStorage.setItem(LS_KEY, JSON.stringify(d.data));
+        enableDropdowns();
+        const n = Object.keys(d.data).length;
+        document.getElementById('topicCount').textContent = n;
+        showStatus('syllabusStatus', 'success', `✅ Syllabus loaded (${n} modules)`);
+      }
+    }
+  } catch(e) { /* backend may not be running yet */ }
+};
+
+function setupDropZone(zoneId, inputId, textId, multi) {
+  const dz = document.getElementById(zoneId);
+  dz.addEventListener('dragover',  e => { e.preventDefault(); dz.classList.add('drag-over'); });
+  dz.addEventListener('dragleave', () => dz.classList.remove('drag-over'));
+  dz.addEventListener('drop', e => {
+    e.preventDefault(); dz.classList.remove('drag-over');
+    const files = e.dataTransfer.files;
+    if (files.length)
+      document.getElementById(textId).textContent = multi
+        ? `✓ ${files.length} file(s) dropped` : `✓ ${files[0].name}`;
+  });
+}
+
+// ─── STATUS CHECK ─────────────────────────────────────────────────────────────
+async function checkStatus() {
+  try {
+    const r = await fetch(API + '/status');
+    const d = await r.json();
+    if (d.ollama) {
+      document.getElementById('ollamaStatus').className = 'status-dot online';
+      const model = d.models.length ? d.models[0].split(':')[0] : 'Ollama';
+      document.getElementById('ollamaLabel').textContent = model;
+      document.getElementById('modelStatus').textContent = model;
+    } else {
+      document.getElementById('ollamaStatus').className = 'status-dot offline';
+      document.getElementById('ollamaLabel').textContent = 'Ollama offline';
+      document.getElementById('modelStatus').textContent = 'off';
+    }
+    document.getElementById('dbStatus').className = 'status-dot online';
+    document.getElementById('dbLabel').textContent = `DB: ${d.indexed_chunks} chunks`;
+    document.getElementById('chunkCount').textContent = d.indexed_chunks;
+  } catch(e) {
+    document.getElementById('ollamaStatus').className = 'status-dot offline';
+    document.getElementById('ollamaLabel').textContent = 'Backend offline';
+    document.getElementById('dbStatus').className = 'status-dot offline';
+    document.getElementById('dbLabel').textContent = 'DB: offline';
+  }
+}
+
+// ─── STEP 1: UPLOAD SYLLABUS ──────────────────────────────────────────────────
+async function uploadSyllabus() {
+  const subject = document.getElementById('subjectInput').value.trim();
+  const file    = document.getElementById('syllabusFile').files[0];
+  if (!file)    return showToast('Please select a syllabus PDF', 'error');
+  if (!subject) return showToast('Please enter a subject name', 'error');
+
+  const btn = document.getElementById('uploadSyllabusBtn');
+  btn.disabled = true;
+  document.getElementById('uploadSyllabusBtnText').innerHTML = '<span class="loader"></span> Parsing...';
+  document.getElementById('mainProgress').style.display = 'block';
+  showStatus('syllabusStatus', 'loading', '⏳ Parsing syllabus PDF...');
+
+  try {
+    const form = new FormData();
+    form.append('file', file);
+    form.append('subject', subject);
+    document.getElementById('progressFill').style.width = '40%';
+
+    const res  = await fetch(API + '/upload_syllabus', { method:'POST', body:form });
+    const data = await res.json();
+    document.getElementById('progressFill').style.width = '100%';
+
+    if (res.ok && data.data) {
+      parsedSyllabusData = data.data;
+      // FIX: Save to localStorage so dropdowns survive page refresh
+      localStorage.setItem(LS_KEY, JSON.stringify(data.data));
+      const n = Object.keys(data.data).length;
+      document.getElementById('topicCount').textContent = n;
+      showStatus('syllabusStatus', 'success', `✅ ${n} modules parsed — dropdowns ready`);
+      setPipeActive(2, 'done');
+      enableDropdowns();
+      showToast(`✓ Syllabus parsed! ${n} modules found`, 'success');
+      checkStatus();
+    } else {
+      showStatus('syllabusStatus', 'error', `❌ ${data.error || 'Parsing failed'}`);
+      showToast(data.error || 'Parsing failed', 'error');
+    }
+  } catch(e) {
+    showStatus('syllabusStatus', 'error', '❌ Backend not running — start: python app.py');
+    showToast('Backend not running!', 'error');
+  }
+
+  btn.disabled = false;
+  document.getElementById('uploadSyllabusBtnText').textContent = 'Parse Syllabus';
+  setTimeout(() => {
+    document.getElementById('mainProgress').style.display = 'none';
+    document.getElementById('progressFill').style.width = '0%';
+  }, 800);
+}
+
+// ─── STEP 2: UPLOAD NOTES ────────────────────────────────────────────────────
+async function uploadNotes() {
+  const subject = document.getElementById('subjectInput').value.trim() || 'General';
+  const files   = document.getElementById('notesFiles').files;
+  if (!files || files.length === 0)
+    return showToast('Please select at least one notes PDF', 'error');
+
+  const btn = document.getElementById('uploadNotesBtn');
+  btn.disabled = true;
+  document.getElementById('uploadNotesBtnText').innerHTML =
+    `<span class="loader"></span> Indexing ${files.length} file(s)...`;
+  setPipeActive(3);
+  showStatus('notesStatus', 'loading',
+    `⏳ Ingesting ${files.length} file(s)... this may take a minute`);
+
+  try {
+    const form = new FormData();
+    for (const f of files) form.append('files', f);
+    form.append('subject', subject);
+
+    const res  = await fetch(API + '/upload_notes', { method:'POST', body:form });
+    const data = await res.json();
+
+    if (res.ok && data.success) {
+      const lines = data.files.map(f =>
+        f.error ? `⚠️ ${f.file}: ${f.error}` : `✓ ${f.file} — ${f.chunks} chunks`
+      ).join('\n');
+      showStatus('notesStatus', 'success',
+        `✅ ${data.total_chunks} chunks indexed from ${files.length} file(s)\n${lines}`);
+      setPipeActive(3, 'done');
+      showToast(`✓ ${data.total_chunks} chunks indexed!`, 'success');
+      checkStatus();
+    } else {
+      showStatus('notesStatus', 'error', `❌ ${data.error || 'Upload failed'}`);
+    }
+  } catch(e) {
+    showStatus('notesStatus', 'error', '❌ Backend not running — start: python app.py');
+    showToast('Backend not running!', 'error');
+  }
+
+  btn.disabled = false;
+  document.getElementById('uploadNotesBtnText').textContent = 'Index Notes';
+}
+
+// ─── STEP 3: CASCADING DROPDOWNS ─────────────────────────────────────────────
+function enableDropdowns() {
+  const dd = document.getElementById('dropdownsContainer');
+  dd.style.opacity = '1';
+  dd.style.pointerEvents = 'auto';
+  populateModules();
+}
+
+function populateModules() {
+  const sel = document.getElementById('moduleSelect');
+  sel.innerHTML = '<option value="">— Select Module —</option>';
+  document.getElementById('topicSelect').innerHTML   = '<option value="">— Select a module first —</option>';
+  document.getElementById('subtopicSelect').innerHTML = '<option value="">— Select a topic first —</option>';
+
+  Object.keys(parsedSyllabusData).sort().forEach(mod => {
+    const opt = document.createElement('option');
+    opt.value = mod; opt.textContent = mod;
+    sel.appendChild(opt);
+  });
+  updateNotifPreview();
+}
+
+function populateTopics() {
+  const modKey = document.getElementById('moduleSelect').value;
+  const topSel = document.getElementById('topicSelect');
+  topSel.innerHTML = '<option value="">— Select Topic —</option>';
+  document.getElementById('subtopicSelect').innerHTML = '<option value="">— Select a topic first —</option>';
+
+  if (modKey && parsedSyllabusData[modKey]) {
+    Object.keys(parsedSyllabusData[modKey]).forEach(topic => {
+      const opt = document.createElement('option');
+      opt.value = topic; opt.textContent = topic;
+      topSel.appendChild(opt);
+    });
+  }
+  updateNotifPreview();
+}
+
+function populateSubtopics() {
+  const modKey = document.getElementById('moduleSelect').value;
+  const topKey = document.getElementById('topicSelect').value;
+  const subSel = document.getElementById('subtopicSelect');
+  subSel.innerHTML = '';
+
+  // FIX: Always add "All subtopics" as first option so Generate is never blocked
+  const allOpt = document.createElement('option');
+  allOpt.value = '__all__'; allOpt.textContent = '📚 All subtopics (full topic overview)';
+  subSel.appendChild(allOpt);
+
+  const subtopics = parsedSyllabusData[modKey]?.[topKey] ?? [];
+  subtopics.forEach(sub => {
+    const opt = document.createElement('option');
+    opt.value = sub; opt.textContent = sub;
+    subSel.appendChild(opt);
+  });
+
+  // FIX: Auto-select "All" so Generate button is immediately available
+  subSel.value = '__all__';
+  updateNotifPreview();
+}
+
+function updateNotifPreview() {
+  const mod = document.getElementById('moduleSelect').value;
+  const top = document.getElementById('topicSelect').value;
+  const sub = document.getElementById('subtopicSelect').value;
+  const genBtn = document.getElementById('generateBtn');
+
+  if (mod && top) {
+    const subText = (sub && sub !== '__all__') ? ` › ${sub}` : ' (all subtopics)';
+    document.getElementById('notifText').innerHTML =
+      `<strong>${mod}</strong> → <strong>${top}</strong>${subText}<br>
+       <span style="font-size:.65rem;opacity:.7">RAG will search ChromaDB for notes related to this topic</span>`;
+    document.getElementById('notifPreview').classList.add('show');
+    genBtn.disabled = false;
+    genBtn.style.opacity = '1';
+  } else {
+    document.getElementById('notifPreview').classList.remove('show');
+    genBtn.disabled = true;
+    genBtn.style.opacity = '.4';
+  }
+}
+
+// ─── STEP 4: GENERATE ────────────────────────────────────────────────────────
+async function generateContent() {
+  const mod     = document.getElementById('moduleSelect').value;
+  const top     = document.getElementById('topicSelect').value;
+  const sub     = document.getElementById('subtopicSelect').value;
+  const subject = document.getElementById('subjectInput').value || 'Operating Systems';
+
+  // FIX: Build a rich semantic query from syllabus context.
+  // This is what gets embedded and searched against note chunks.
+  // Include the topic + specific subtopic so RAG finds the right content.
+  let queryStr = top;
+  if (sub && sub !== '__all__') {
+    queryStr = `${top}: ${sub}`;
+  }
+  // Add subject context so the search stays relevant
+  queryStr = `${subject} — ${queryStr}`;
+
+  const moduleNumber = parseInt(mod.replace(/[^\d]/g, ''), 10) || null;
+
+  setPipeActive(4);
+  const btn = document.getElementById('generateBtn');
+  btn.disabled = true;
+  document.getElementById('generateBtnText').innerHTML =
+    '<span class="loader"></span> Generating...';
+
+  document.getElementById('outputContainer').innerHTML = `
+    <div style="padding:2rem;text-align:center;color:var(--muted);font-size:.75rem">
+      <div class="loader" style="border-color:rgba(59,130,246,.3);border-top-color:var(--accent);
+           width:24px;height:24px;margin:0 auto 1rem"></div>
+      Searching notes for <em>${top}</em>...<br>
+      <span style="font-size:.65rem;opacity:.6;margin-top:.5rem;display:block">
+        ChromaDB → Ollama Drafter × 3 → Patronus Verifier
+      </span>
+    </div>`;
+
+  const t0 = Date.now();
+  try {
+    const r = await fetch(API + '/generate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ topic: queryStr, module: moduleNumber, subject })
+    });
+    const d = await r.json();
+    const elapsed = ((Date.now() - t0) / 1000).toFixed(1);
+
+    if (d.content) {
+      setPipeActive(5, 'done');
+      document.getElementById('outputContainer').innerHTML = `
+        <div class="output-box" id="outputBox">
+          <button class="copy-btn" onclick="copyOutput()">Copy</button>${escapeHtml(d.content)}
+        </div>
+        <div style="margin-top:12px;font-size:.7rem;color:var(--muted);background:var(--surface2);
+             padding:10px;border-radius:6px;border:1px dashed var(--border)">
+          <strong>Patronus Verifier Rationale:</strong><br>
+          ${escapeHtml(d.rationale || 'No rationale provided.')}
+        </div>`;
+      document.getElementById('outputMeta').style.display = 'flex';
+      document.getElementById('metaTime').textContent   = elapsed + 's';
+      document.getElementById('metaFilter').textContent = mod + ' · ' + top;
+      document.getElementById('metaStatus').textContent = d.status === 'success' ? 'Verified ✓' : d.status;
+      showToast('✓ Content generated!', 'success');
+    } else {
+      showToast(d.error || 'Generation failed', 'error');
+      document.getElementById('outputContainer').innerHTML =
+        `<div class="output-empty">⚠️ ${escapeHtml(d.error || 'Generation failed')}</div>`;
+    }
+  } catch(e) {
+    showToast('Backend not running! Start: python app.py', 'error');
+    document.getElementById('outputContainer').innerHTML =
+      `<div class="output-empty">⚠️ Backend offline — run: python app.py</div>`;
+  }
+
+  btn.disabled = false;
+  document.getElementById('generateBtnText').textContent = 'Generate Lecture / Questions';
+}
+
+// ─── HELPERS ─────────────────────────────────────────────────────────────────
+function showStatus(id, type, msg) {
+  const el = document.getElementById(id);
+  el.className = 'inline-status ' + type;
+  el.textContent = msg;
+}
+
+function setPipeActive(step, mode = 'active') {
+  for (let i = 1; i <= 5; i++) {
+    const el = document.getElementById('pipe' + i);
+    el.className = 'pipe-step';
+    if (i < step) el.classList.add('done');
+    else if (i === step) el.classList.add(mode);
+  }
+}
+
+function escapeHtml(s) {
+  if (!s) return '';
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function copyOutput() {
+  const box = document.getElementById('outputBox');
+  navigator.clipboard.writeText(box.innerText.replace('Copy','').trim());
+  showToast('Copied to clipboard!', 'success');
+}
+
+function showToast(msg, type='info') {
+  const t = document.getElementById('toast');
+  t.className = 'toast-' + type;
+  t.textContent = msg;
+  t.style.display = 'block';
+  setTimeout(() => t.style.display = 'none', 3500);
+}
+</script>
+</body>
+</html>

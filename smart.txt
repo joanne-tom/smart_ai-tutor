@@ -1,0 +1,25 @@
+So we are doing a project. I will share the details about the project and oru latest presentation
+
+As our major project, we are intending to build Smart AI Tutor. Smart AI Tutor is a modular AI-powered classroom assistant built on five structured layers: a Knowledge Layer (RAG), an MCP-based Flask backend orchestration layer, a Session & Engagement tracking layer, a Flutter-based Application layer (Faculty + Student interfaces), and a Reinforcement Learning layer added after core stabilization. At the beginning of the semester, faculty upload syllabus PDFs and personal notes, which are extracted, cleaned, chunked, embedded, and stored in a vector database with detected topic headings to enable dropdown topic selection later. When a faculty member is suddenly absent, they log in, select subject, date, and topic(s), and schedule a session; the backend creates a session entry and notifies students. Students log in using name and roll number, view the scheduled session, and enter a chat-style interface where the system retrieves relevant syllabus content through RAG, generates grounded explanations, displays them on the laptop/projector, and plays audio using text-to-speech. When a student interrupts with a doubt, the backend embeds the query, retrieves top relevant chunks from the vector store, generates a strictly syllabus-grounded answer, and continues the lecture. The MCP layer, implemented via structured Flask APIs (login, upload_notes, get_topics, schedule_session, start_session, ask_question, mark_attendance, log_engagement), ensures secure tool access, session synchronization, attendance tracking, and clean separation between AI logic and data control. Engagement tracking monitors interruptions, quiz accuracy, idle time, background app events, and attendance duration to maintain an engagement score (e.g., positive for correct responses, negative for repeated doubts or app exits). After MCP is stable, a lightweight Reinforcement Learning module (preferably contextual bandits) is integrated, where the state includes engagement score, interruption count, quiz accuracy, and topic difficulty, actions include detailed explanation, example-based explanation, simplification, summary, or verification question, and rewards are based on learning improvement and engagement; RL does not modify content but selects teaching strategy, while RAG ensures factual correctness. Development should proceed in phases: first stabilize MCP + RAG + basic Flutter interfaces (faculty scheduling, student login, chat, audio playback), then integrate engagement tracking and RL adaptation, followed by synchronization polish and demo stabilization. With three team members dividing backend, RAG/database, and Flutter responsibilities, achieving an 80–85% functional academic demo by mid-March is realistic, provided scope is frozen, UI remains simple, and production-level features are avoided.
+
+
+
+today we have our presentation, we have our rag sysem build as of now, but i have to take it from my friend's github repo system, cant i run rag through ollama in my system?..
+
+so back to the buidling,
+
+IN the faculty's app, sir has teh provision to upload notes,  actual logic is :
+
+sir upload notes and syllubus->all of a sudden sir will be absent one day-> the previous day, sir opens the app->select the subject from dropdown->select module->select topic-> "yes! the topic to be taught for [date] has been selected)->this is the notification that go to the student app->
+
+in backend->when the topic is selected and the syllubus is uploaded->the rag framework , takes up the notes, parses it-> understands the topic to be taught->generates a description about that.
+
+the present rag we have: takes the notes through terminal->pdf plumber parses it and makes it into chunks->gives to rag->through drafter+verifier-> it gives an aswer.
+
+ 
+
+we need a ui for these, backend logic(no mcp now), 
+
+upload notes realtime and the topic-> go through pdf plumber and rag framework->give a description about that.
+
+ we have only 3 hrs left.

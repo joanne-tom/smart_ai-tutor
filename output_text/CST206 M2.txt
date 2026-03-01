@@ -1,0 +1,1101 @@
+
+
+--- Page 1 ---
+      APJ    ABDUL     KALAM      TECHNOLOGICAL            UNIVERSITY
+            SYLLABUS       | STUDY     MATERIALS        | TEXTBOOK
+                   PDF   | SOLVED      QUESTION        PAPERS
+                       www.keralanotes.com
+
+--- Page 2 ---
+                   KTU         S4     CSE       NOTES
+            OPERATING                           SYSTEM
+                            (CST200)
+                      Module                            2
+       Related  Link  :
+        KTU  S4  CSE  NOTES                    KTU   CSE  TEXTBOOKS      S4
+        2019  SCHEME                           B.TECH   PDF   DOWNLOAD
+        KTU  S4  SYLLABUS     CSE              KTU   S4 CSE  NOTES    |
+        COMPUTER      SCIENCE                  SYLLABUS     | QBANK    |
+                                               TEXTBOOKS      DOWNLOAD
+        KTU   PREVIOUS     QUESTION
+        BANK    S4 CSE  SOLVED
+                      www.keralanotes.com
+
+--- Page 3 ---
+                                                                      1
+                                     MODULE    2
+                            Processes and Process Scheduling
+          Syllabus
+               1.1. Processes ,Process states
+               1.2. Process Control Block, Threads
+               1.3. Operations on processes: process creation and termination
+               1.4. Inter-process communication: Shared memory systems, Message Passing
+               1.5. Process Scheduling - Basic concepts, Scheduling Criteria
+               1.6. Scheduling algorithms - Basics
+                                                     m
+               1.7. First come First Served, Shortest Job First
+               1.8. Priority scheduling, Round Robin Scheduling
+                                                  o
+                                                c
+          1.1 Processes ,Process states
+                                              .
+                                            s
+            ●  What is a Process?
+                                         e
+                 ○  Process is the execution of a program that performs the actions specified in
+                                        t
+                    that program.    o
+                 ○  It can be defined as ann execution unit where a programruns.
+                 ○  The OS helps you to create, schedule, and terminate the processes which are
+                                a
+                    used by the CPU.
+                               l
+                 ○  A process craeated by the main process is called a child process.
+                 ○  Process operations can be easily controlled with the help of PCB(Process
+                          r
+                    Contreol Block).
+                 ○  You can consider it as the brain of the process, which contains all the crucial
+                     k
+                    information related to processinglikeprocess id,priority,state,CPU registers,
+                    etc.
+                 ○  What does a process look like in memory?
+                 ○
+                           ●
+                 ○  Text Section: A Process, sometimes known as the Text Section, also includes
+                    the current activity represented by the value of the Program Counter.
+               For More Study Materials : https://www.keralanotes.com/
+
+--- Page 4 ---
+                                                                      2
+                 ○  Data Section: Contains the global variable.
+                 ○  Heap Section:Dynamically allocated memory to processduring its run time.
+                 ○  Stack: The stack contains the temporary data, such as function parameters,
+                    returns addresses, and local variables.
+            ●  Process states
+                 ○  When a process executes, it passes through differentstates.
+                 ○  These stages may differ in different operating systems, andthenamesof these
+                    states are also not standardized.
+                 ○  A process state is a condition of the process at a specific instant of time.
+                 ○  It also defines the current position of the process.
+                 ○
+                                                     m
+                                                  o
+                                                c
+                                              .
+                                            s
+                                         e
+                                        t
+                                     o
+                                  n
+                                a
+                 ○
+                               l
+                 ○  New :   a
+                      ■  Arprogram which is going to be picked up by the OS into the main
+                       e
+                         memory is called a new process.
+                     k
+                 ○  Ready :
+                      ■  Whenever a process is created, it directly enters in the ready state, in
+                         which it waits for the CPU to be assigned.
+                      ■  The OS picks the new processes from the secondary memory and puts
+                         all of them in the main memory.
+                      ■  The processes which arereadyfor theexecutionandresideinthemain
+                         memory are called ready state processes.
+                      ■  There can be many processes present in the ready state.
+                 ○  Run :
+                      ■  One of the processes from the ready state will be chosen by the OS
+                         depending upon the scheduling algorithm.
+                      ■  Hence, if we have only one CPU in our system,thenumberof running
+                         processes for a particular time will always be one.
+                      ■  If we have n processors in the system then we can have n processes
+                         running simultaneously.
+               For More Study Materials : https://www.keralanotes.com/
+
+--- Page 5 ---
+                                                                      3
+                 ○  Block or wait:
+                      ■  From the Running state, a process can makethetransitiontotheblock
+                         or wait state depending upon the scheduling algorithm or the intrinsic
+                         behavior of the process.
+                      ■  When a process waits for a certain resource to be assigned or for the
+                         input from theuser thentheOS movesthisprocess totheblockor wait
+                         state and assigns the CPU to the other processes.
+                 ○  Completion or termination:
+                      ■  When a process finishes its execution, it comes inthe termination state.
+                      ■  All the context of the process (Process Control Block) will also be
+                         deleted and the process will be terminated by theOperating system.
+                 ○  Suspend ready:
+                      ■  A process in the ready state, which is mmoved to secondary memory
+                         from the main memory due to lack of the resources (mainly primary
+                                                  o
+                         memory) is called in the suspended ready state.
+                      ■  If the main memory is full and a hcigher priority process comesfor the
+                         execution then the OS has to m.ake room for the process in the main
+                                            s
+                         memory by throwing the lower priority process out intothesecondary
+                         memory.         e
+                      ■  The suspended ready ptrocesses remain in the secondary memory until
+                                     o
+                         the main memory gets available.
+                 ○  Suspend wait: n
+                      ■  Instead ofaremoving the process from the ready queue, it's better to
+                         remove the blocked process whichiswaitingfor someresourcesinthe
+                               l
+                            a
+                         main memory.
+                      ■  Sirnce it isalreadywaitingfor someresourcetogetavailablehenceitis
+                       e
+                         better if it waits in the secondary memory and makes room for the
+                     khigher priority process.
+                      ■  These processes complete their execution once the main memory gets
+                         available and their wait is finished.
+          1.2 . Process Control Block, Threads
+            ●  Process Control Block (PCB)
+                 ○  A Process Control Block isadatastructuremaintainedbytheOperatingSystem
+                    for every process.
+                 ○  The PCB is identified by an integer process ID (PID).
+                 ○  There is a Process Control Block for eachprocess, enclosingalltheinformation
+                    about the process.
+                 ○  It is also known as the task control block. It is a data structure, which contains
+                    the following:
+               For More Study Materials : https://www.keralanotes.com/
+
+--- Page 6 ---
+                                                                      4
+                                                     m
+                 ○
+                                                  o
+                 ○  Process ID: Unique identification for each of the processes in the operating
+                                                c
+                    system.
+                                              .
+                 ○  Process state: A process can be new, ready, running, waiting, etc.
+                                            s
+                 ○  Pointer :A pointer to the parent process.
+                                         e
+                 ○  Program counter: The program counter lets you knowthe address of the next
+                                        t
+                    instruction, which should be executed for that process.
+                                     o
+                 ○  CPU registers:This componentincludes accumulators,index and
+                                  n
+                    general-purpose registers, and information of conditioncode.
+                                a
+                 ○  CPU scheduling information:This componentincludesa process priority,
+                    pointers for schelduling queues, and various otherscheduling parameters.
+                            a
+                 ○  Accounting and business information: It includes theamount of CPU and
+                          r
+                    time utilities like real time used, job or processnumbers, etc.
+                       e
+                 ○  Memory-management information: This information includesthe value of
+                     k
+                    the base and limit registers, the page, or segmenttables. This depends on the
+                    memory system, which is used by the operating system.
+                 ○  I/O status information: This block includes a listof open files, the list of I/O
+                    devices that are allocated to the process, etc.
+            ●  Threads
+                 ○  What is a Thread?
+                      ■  A thread is a path of execution within a process.
+                      ■  A process can contain multiple threads.
+                 ○  Why Multithreading?
+                      ■  A thread is also known as a lightweight process.
+                      ■  The idea is to achieve parallelism by dividing a process into multiple
+                         threads.
+               For More Study Materials : https://www.keralanotes.com/
+
+--- Page 7 ---
+                                                                      5
+                      ■  For example, in a browser, multiple tabs can be different threads.
+                      ■  MS Word uses multiple threads: one thread to format the text,another
+                         thread to process inputs, etc.
+                 ○  Process vs Thread?
+                      ■  The primary difference is that threads withinthesameprocess run ina
+                         shared memory space, while processes run in separatememory spaces.
+                      ■  Threads are not independentof oneanotherlikeprocesses are,andas a
+                         result threads share with other threads their code section, datasection,
+                         and OS resources (like open files and signals).
+                      ■  But, like a process, athreadhas itsown programcounter(PC), register
+                         set, and stack space.
+                 ○  Advantages of Thread over Process
+                      ■  1. Responsiveness: If the process is divided into multiple threads, if
+                                                     m
+                         one thread completes its execution, then its outputcanbeimmediately
+                         returned.                o
+                      ■  2.Fastercontextswitch: Contextswitchtimebetweenthreadsislower
+                                                c
+                         compared to process context switch. Process context switching
+                                              .
+                         requires more overhead froms the CPU.
+                      ■  3. Effective utilization of a multiprocessor system: If we have
+                                         e
+                         multiple threads in a single process, then we can schedule multiple
+                                        t
+                         threads on multipole processors. This will make process execution
+                         faster.
+                                  n
+                      ■  4.Resource sharing: Resourceslikecode,data,andfilescanbeshared
+                                a
+                         among all threads within a process.(Note: stack and registers can’t be
+                               l
+                         shared among the threads. Each thread has its ownstack and registers.)
+                            a
+                      ■  5. Communication: Communication between multiple threads is
+                          r
+                         easier, as the threads share common address space. While in process
+                       e
+                         we have to follow some specific communication techniques for
+                     k
+                         communication between two processes.
+                      ■  6. Enhanced throughput of the system: If a process is divided into
+                         multiple threads, and each thread function is considered as one job,
+                         then the number of jobs completed per unit of time is increased, thus
+                         increasing the throughput of the system.
+                 ○  Types of Threads
+                      ■  There are two types of threads.
+                           ●  User Level Thread
+                           ●  Kernel Level Thread
+               For More Study Materials : https://www.keralanotes.com/
+
+--- Page 8 ---
+                                                                      6
+          1.3 Operations on processes: process creation and termination
+                 ●  Process Creation
+                      ○  (i). When a new process is created, the operating system assigns a
+                         unique Process Identifier (PID) to it and insertsa new entry in the
+                         primary process table.
+                      ○  (ii). Then the required memory space for all the elements of the
+                         process such as program, data and stack is allocatedincluding space
+                         for its Process Control Block (PCB).
+                      ○  (iii). Next, the various values in PCB are initializedsuch as,
+                                                     m
+                           ■  Process identification part is filled with the PIDassigned to it
+                              in step (1) and also its parent’so PID.
+                           ■  The processor register valuces are mostly filled withzeroes,
+                                              .
+                              except for the stack pointer and program counter.
+                                            s
+                           ■  Stack pointer is feilled with the address of stackallocated to it
+                                        t
+                              in step (ii) and program counter is filled with theaddress of its
+                                     o
+                              program entry point.
+                                  n
+                           ■  Thae process state information would be set to ‘New’.
+                           ■  Plriority would be lowest by default, but users canspecify any
+                            a
+                              priority during creation.
+                          r
+                       e
+                           ■  In the beginning, the process is not allocated toany I/O devices
+                     k
+                              or files.
+                           ■  The user has to request them or if this is a childprocess it may
+                              inherit some resources from its parent.
+                      ○  (vi). Then the operating system will link this process to the scheduling
+                         queue and the process state would be changed from‘New’ to ‘Ready’.
+                         Now the process is competing for the CPU.
+                      ○  (v). Additionally, the operating system will create some other data
+                         structures such as log files or accounting files tokeep track of
+                         processes activity.
+                 ●  Process Termination:
+                      ○  Processes are terminated by themselves when they finish’1executing
+               For More Study Materials : https://www.keralanotes.com/
+
+--- Page 9 ---
+                                                                      7
+                         their last statement, then the operating system USES exit( ) system call
+                         to delete its context.
+                      ○  Then all the resources held by that process like physicaland virtual
+                         memory, 10 buffers, open files etc., are taken backby the operating
+                         system.
+                      ○  A process P can be terminated either by the operating system or by the
+                         parent process of P.
+                      ○  A parent may terminate a process due to one of the following reasons,
+                           ■  (i). When a task given to the child is not required now.
+                           ■  (ii). When a child has taken more rmesources than its limit.
+                           ■  (iii). The parent of the process is exiting, as a result all its
+                                                  o
+                              children are deleted. This is called cascaded termination.
+                                                c
+                                              .
+                                            s
+          1.4 Inter-process communication: Shared memory systems, Message Passing
+                                         e
+                                        t
+                                     o
+            ●  What is Inter Process Commnunication?
+                                a
+                 ○  Inter process communication (IPC) is used for exchangingdata between
+                               l
+                    multiple threaads in one or more processes or programs.
+                 ○  The Procersses may be running on single or multiplecomputers connected by a
+                       e
+                    network.
+                     k
+                 ○  The full form of IPC is Inter-process communication.
+                 ○  It is a set of programming interfaces which allowa programmer to coordinate
+                    activities among various program processes which canrun concurrently in an
+                    operating system.
+                 ○  This allows a specific program to handle many userrequests at the same time.
+                 ○  Since every single user request may result in multipleprocesses running in the
+                    operating system, the process may require communicatingwith each other.
+                 ○  Each IPC protocol approach has its own advantagesand limitations, so it is not
+                    unusual for a single program to use all of the IPCmethods.
+               For More Study Materials : https://www.keralanotes.com/
+
+--- Page 10 ---
+                                                                      8
+                                                     m
+                 ○
+                                                  o
+                                                c
+       ○  Shared Memory:
+                                              .
+                                            s
+            ■  Communication between processes using shared memoryrequires processes to share
+                                         e
+               some variable, and it completely depends on how theprogrammer will implement it.
+                                        t
+            ■  One way of communication usingo shared memory can beimagined like this: Suppose
+                                  n
+               process1 and process2 are executing simultaneously,and they share some resources or
+                                a
+               use some information from another process.
+                               l
+            ■  Process1 generates ainformation about certain computationsor resources being used
+                          r
+               and keeps it as a record in shared memory.
+                       e
+            ■  When process2 needs to use the shared information,it will check in the record stored
+                     k
+               in shared memory and take note of the informationgenerated by process1 and act
+               accordingly.
+            ■  Processes can use shared memory for extracting informationas a record from another
+               process as well as for delivering any specific informationto other processes.
+            ■
+               For More Study Materials : https://www.keralanotes.com/
+
+--- Page 11 ---
+                                                                      9
+            ■  Ex: Producer-Consumer problem
+                 ●  There are two processes: Producer and Consumer.
+                 ●  The producer produces some items and the Consumerconsumes that item.
+                 ●  The two processes share a common space or memory locationknown as a
+                    buffer where the item produced by the Producer isstored and from which the
+                    Consumer consumes the item if needed.
+                 ●  There are two versions of this problem:
+                 ●  The Buffer
+                      ○  The buffer can be of two types:
+                           ●  Unbounded buffer       m
+                           ●  Bounded buffer
+                                                  o
+                 ●  Unbounded buffer
+                                                c
+                      ○  There is no limit on the size of th.e unbounded buffer.
+                                            s
+                      ○  The consumer waits for a new item, however, thereis no restriction on
+                                         e
+                         the producer to producte items.
+                                     o
+                 ●  Bounded buffer
+                                  n
+                      ○  If the buffer is empty, the consumer must wait fora new item.
+                                a
+                      ○  When the buffer is full, the producer waits untilit can produce new
+                               l
+                            a
+                         items
+                          r
+                 ●  We weill discuss the bounded buffer problem.
+                 ●  Fkirst, the Producer and the Consumer will share somecommon memories,
+                    then the producer will start producing items.
+                 ●  If the total produced item is equal to the size ofthe buffer, the producer will
+                    wait to get it consumed by the Consumer.
+                 ●  Similarly, the consumer will first check for the availabilityof the item.
+                 ●  If no item is available, the Consumer will wait forthe Producer to produce it.
+                    If there are items available, consumers will consumethem.
+       ○  Message Passing:
+            ●  In this method, processes communicate with each otherwithout using any kind of
+               shared memory.
+            ●  If two processes p1 and p2 want to communicate witheach other, they proceed as
+               follows:
+               For More Study Materials : https://www.keralanotes.com/
+
+--- Page 12 ---
+                                                                      10
+            ●  Establish a communication link (if a link already exists, no need to establish it again.)
+            ●  Start exchanging messages using basic primitives.
+               We need at least two primitives:
+               –send(message, destination) orsend(message)
+               –receive(message, host) orreceive(message)
+                                                     m
+                                                  o
+            ●                                   c
+                                              .
+            ●  Here are different ways to communicate using messagepassing:
+                                            s
+                 ○  1. Direct or Indirect communicaetion
+                 ○  2. Synchronous or asynchronotus communication
+                                     o
+                 ○  3. Automatic or explicit buffering
+                                  n
+            ●  1. Direct or Indirect comamunication
+                 ○  UnderDirect colmmunication, processes must explicitlyname the sender or
+                            a
+                    receiver in the communication.
+                          r
+                       e
+                 ○  The send() and receive() are defined as:
+                     k
+                      ■  send(P, message) – send a message to process P
+                      ■  receive(Q, message) – receive a message from processQ
+                 ○  The communication link in direct communication hasthe following properties:
+                      ■  The link is established automatically. Processes needeach other’s
+                         identity to send messages.
+                      ■  A link is associated with exactly two processes.
+                      ■  Between two processes, there is only one link.
+                 ○  There is a symmetry in addressing. In asymmetricaladdressing, the sending
+                    process needs to address the receiver, but the recipientdoes not need to
+                    address the sender.
+               For More Study Materials : https://www.keralanotes.com/
+
+--- Page 13 ---
+                                                                      11
+                 ○
+                 ○  The disadvantage in symmetric and asymmetric schemesis in changing the
+                    identifier of a process.
+                 ○  We need to change all the other process definitionsand references to the old
+                    identifier and replace it with the new one.
+                                                     m
+                 ○  Inindirect communication, messages are sent and receivedfrom mailboxes
+                    or ports.                     o
+                 ○  The processes can place messages into a mcailbox orremove messages from
+                                              .
+                    them.
+                                            s
+                 ○  The mailbox has a unique identiefication.
+                 ○  Two processes can communicatte only if they have ashared mailbox.
+                                     o
+                      ■  send(A, message) – send a message to mailbox A
+                                  n
+                      ■  receive(A, message) – receive a message from mailboxA
+                                a
+                 ○  In this scheme, al communication link has the followingproperties:
+                            a
+                      ■  1. A link is established between a pair of processes only if both have
+                          r
+                       ethe same shared mailbox.
+                     k
+                      ■  2. A link may be associated with more than two processes.
+                      ■  3. There may be different links, with each link corresponding to one
+                         mailbox, between pairs of communicating processes.
+                 ○
+               For More Study Materials : https://www.keralanotes.com/
+
+--- Page 14 ---
+                                                                      12
+            ●  2. Synchronous and Asynchronous Communication
+                 ○  Communication happens using send() and receive().
+                 ○  There are many options for these two primitives.
+                 ○  Message passing may be blocking ornon-blocking alsoknown as
+                    synchronousand asynchronous.
+                      ●  Blocking send– sending is blocked, until a messageis received by the
+                         receiving process or mailbox.
+                      ●  Non-blocking send– sending process sends the messageand resumes
+                         operation.
+                      ●  Blocking receive– receiver blocks until a messageis available.
+                      ●  Non-blocking receive – the receiver retrieves eithera valid message or
+                                                     m
+                         a null.
+                                                  o
+            ●  3.Automatic and Explicit Buffering
+                                                c
+                 ○  The messages exchanged between communicating processesreside in a
+                                              .
+                                            s
+                    temporary queue.
+                                         e
+                 ○  The queue can be implemented in three way:
+                                        t
+                      ■  Zero capacity – wioth zero capacity the link cannothave messages
+                                  n
+                         waiting. Blocking send is the correct option.
+                                a
+                      ■  Bounded capacity – the queue is of finite length n.If the queue is not
+                               l
+                         full, athe sender can continue to send messages. Iffull, blocking send.
+                          r
+                      ■  Unbounded capacity – Infinite queue length; any numberof messages
+                       e
+                         wait and sender never blocks.
+                     k
+                 ○  Zero capacity is calledno bufferingand other systemscalled automatic
+                    buffering.
+          1.5 Process Scheduling - Basic concepts, Scheduling Criteria
+            ●  Process Scheduling
+                 ○  The act of determining which process is in the ready state, and should be
+                    moved to the running state is known as Process Scheduling.
+                 ○  The prime aim of the process scheduling system is to keep the CPU busy all
+                    the time and to deliver minimum response time forall programs.
+                 ○  For achieving this, the scheduler must apply appropriate rules for swapping
+                    processes IN and OUT of the CPU.
+                 ○  Scheduling fell into one of the two general categories:
+                      ■  Non Preemptive Scheduling: When the currently executing process
+               For More Study Materials : https://www.keralanotes.com/
+
+--- Page 15 ---
+                                                                      13
+                         gives up the CPU voluntarily.
+                      ■  Preemptive Scheduling: When the operating systemdecidestofavour
+                         another process, pre-empting the currently executingprocess.
+                 ○  What are Scheduling Queues?
+                      ■  All processes, upon entering into the system, are stored in the Job
+                         Queue.
+                      ■  Processes in the ready state are placed in theReady Queue.
+                      ■  Processes waitingfor adevicetobecomeavailableareplacedin Device
+                         Queues.
+                      ■  There are unique device queues available for eachI/O device.
+                      ■  A new process is initially put in the Ready queue.
+                      ■  It waits in the ready queue until it is selected for execution(or
+                         dispatched).
+                                                     m
+                      ■  Once the process is assigned to the CPU and is executing, one of the
+                         following several events can occur: o
+                           ●  The process could issue an I/O request, and then beplaced in
+                                                c
+                              the I/O queue.
+                                              .
+                           ●  The process could cresate a new subprocess and waitfor its
+                              termination.
+                                         e
+                           ●  The process could be removed forcibly from the CPU,as a
+                                        t
+                              result of ano interrupt, and be put back in the readyqueue.
+                                  n
+                                a
+                               l
+                            a
+                          r
+                       e
+                     k
+                      ■
+                      ■  In the first two cases, theprocess eventuallyswitchesfromthewaiting
+                         state to the ready state, and is then put back inthe ready queue.
+                      ■  A process continues this cycle until it terminates, at which time it is
+                         removed from all queues and has its PCB and resourcesdeallocated.
+                 ○  Types of Schedulers
+                      ■  There are three types of schedulers available:
+                           ●  Long Term Scheduler
+                           ●  Short Term Scheduler
+                           ●  Medium Term Scheduler
+               For More Study Materials : https://www.keralanotes.com/
+
+--- Page 16 ---
+                                                                      14
+                      ■  Long Term Scheduler
+                           ●  Long term scheduler runs less frequently.
+                           ●  Long Term Schedulers decide which program mustgetintothe
+                              job queue.
+                           ●  From the job queue, the Job Processor selects processes and
+                              loads them into the memory for execution.
+                           ●  Primary aim of the Job Scheduleristomaintainagooddegree
+                              of Multiprogramming.
+                           ●  An optimal degree of Multiprogramming means the average
+                              rate of process creation isequaltotheaveragedeparturerateof
+                              processes from the execution memory.
+                      ■  Short Term Scheduler
+                           ●  This is also known as CPU Scheduler and runs veryfrequently.
+                                                     m
+                           ●  The primary aim of this scheduler is to enhance CPU
+                              performance and increase procoess execution rate.
+                      ■  Medium Term Scheduler
+                                                c
+                           ●  This scheduler removes the processes from memory (and from
+                                              .
+                              active contention forsthe CPU), and thus reduces the degree of
+                              multiprogrammineg.
+                           ●  At some later time, the process can be reintroduced into
+                                        t
+                              memory anod its execution can be continued where itleft off.
+                           ●  This scnheme is called swapping. The process is swapped out,
+                              and is later swapped in, by the medium term scheduler.
+                                a
+                           ●  Swapping may be necessary to improve the process mix, or
+                               l
+                            abecause a change in memory requirements has overcommitted
+                              available memory, requiring memory to be freed up.
+                          r
+                       e●     This complete process is descripted in the below diagram:
+                     k
+                           ●
+                 ○  What is Context Switch?
+                      ■  Switching the CPU to another process requires saving the state of the
+                         old process and loading the saved state for the newprocess.
+                      ■  This task is known as a Context Switch.
+               For More Study Materials : https://www.keralanotes.com/
+
+--- Page 17 ---
+                                                                      15
+                      ■  The context of a process is represented in the Process Control
+                         Block(PCB) of a process;
+                      ■  it includes the value of the CPU registers, the process state and
+                         memory-management information.
+                      ■  When a context switch occurs, the Kernel saves the context of the old
+                         process in its PCB and loads the saved context of the new process
+                         scheduled to run.
+                      ■  Context switch time is pure overhead, because the system does no
+                         useful work while switching.
+                      ■  Its speed varies from machine to machine, depending on the memory
+                         speed,thenumberof registersthatmustbecopied,andtheexistenceof
+                         special instructions(such as a single instruction to load or store all
+                         registers).
+                                                     m
+                      ■  Typical speeds range from 1 to 1000 microseconds.
+                      ■  Context Switching has become suchoa performance bottleneck that
+                         programmers are using new structures(threads) to avoid it whenever
+                                                c
+                         and wherever possible.
+                                              .
+                                            s
+                                         e
+                 ○  Scheduling Criteria t
+                                     o
+                                  n
+                      ■  CPU utilisation –
+                                a
+                           ●  The main objective of any CPU scheduling algorithmis to keep
+                               l
+                            athe CPU as busy as possible.
+                          r●  Theoretically, CPU utilisation can range from 0 to100 but in a
+                       e
+                              real-time system,
+                     k
+                           ●  it varies from 40 to 90 percent depending on theload upon the
+                              system.
+                      ■  Throughput –
+                           ●  A measure of the work done by CPU is the number of
+                              processes being executed and completed per unit time.
+                           ●  This is called throughput.
+                           ●  The throughput may vary depending upon the lengthor
+                              duration of processes.
+                      ■  Turnaround time –
+                           ●  For a particular process, an important criteria ishow long it
+                              takes to execute that process.
+               For More Study Materials : https://www.keralanotes.com/
+
+--- Page 18 ---
+                                                                      16
+                           ●  The time elapsed from the time of submission of a process to
+                              the time of completion is known as the turnaroundtime.
+                           ●  Turn-around time is the sum of time spent waitingto get into
+                              memory, waiting in the ready queue, executing in CPU,and
+                              waiting for I/O.
+                      ■  Waiting time –
+                           ●  A scheduling algorithm does not affect the time required to
+                              complete the process once it starts execution.
+                           ●  It only affects the waiting time of a process i.e.time spent by a
+                              process waiting in the ready queuem.
+                      ■  Response time –
+                                                  o
+                           ●  In an interactive system, tucrn-around time is notthe best
+                                              .
+                              criteria.
+                                            s
+                           ●  A process may preoduce some output fairly early and continue
+                              computing newt results while previous results are beingoutput
+                                     o
+                              to the user.
+                                  n
+                           ●  Thaus another criteria is the time taken from submissionof the
+                              plrocess of request until the first response is produced.
+                            a
+                           ●  This measure is called response time.
+                          r
+                       e
+                     k
+       ●  1.6 Scheduling algorithms - Basics
+           ●  The Purpose of a Scheduling algorithm
+                 1. Maximum CPU utilization
+                 2. Fare allocation of CPU
+                 3. Maximum throughput
+                 4. Minimum turnaround time
+                 5. Minimum waiting time
+                 6. Minimum response time
+                 7.
+               For More Study Materials : https://www.keralanotes.com/
+
+--- Page 19 ---
+                                                                      17
+            ●  There are mainly six types of process scheduling algorithms
+                 1. First Come First Serve (FCFS)
+                 2. Shortest-Job-First (SJF) Scheduling
+                 3. Shortest Remaining Time
+                 4. Priority Scheduling
+                 5. Round Robin Scheduling
+                 6. Multilevel Queue Scheduling
+                                                     m
+                                                  o
+                                                c
+                                              .
+                                            s
+                                         e
+                                        t
+                                     o
+                                  n
+                                a
+                               l
+                            a
+                          r
+                       e
+                     k
+               For More Study Materials : https://www.keralanotes.com/
+
+--- Page 20 ---
+                                                                      18
+            ●  FCFS Scheduling
+                 ○  First come first serve (FCFS) scheduling algorithmsimply schedules the jobs
+                    according to their arrival time.
+                 ○  The job which comes first in the ready queue willget the CPU first.
+                 ○  The lesser the arrival time of the job, the soonerthe job will get the CPU.
+                 ○  FCFS scheduling may cause the problem of starvationif the burst time of the
+                    first process is the longest among all the jobs.
+                 ○  Advantages of FCFS
+                      ■  Simple
+                      ■  Easy
+                      ■  First come, First serv
+                 ○  Disadvantages of FCFS
+                      ■  The scheduling method is non preemptive,m the processwill run to
+                         completion
+                      ■  Due to the non-preemptive nature of thoe algorithm,the problem of
+                         starvation may occur.  c
+                      ■  Although it is easy to implement, it is poor in performancesince the
+                                              .
+                         average waiting time is highesr as compared to otherscheduling
+                         algorithms.     e
+                 ○  Example
+                                        t
+                      ■  Let's take an examople of The FCFS scheduling algorithm. In the
+                         Following schendule, there are 5 processes with processID P0, P1, P2,
+                         P3 and P4. P0 arrives at time 0, P1 at time 1, P2at time 2, P3 arrives at
+                                a
+                         time 3 and Process P4 arrives at time 4 in the readyqueue. The
+                               l
+                         proceasses and their respective Arrival and Burst time are given in the
+                         following table.
+                          r
+                       e●     The Turnaround time and the waiting time are calculated by
+                              using the following formula.
+                     k
+                                1. Turn Around Time =Completion Time - Arrival Time
+                                2. Waiting Time =Turnaround time - Burst Time
+                           ●  The average waiting Time is determined by summing the
+                              respective waiting time of all the processes and dividingthe
+                              sum by the total number of processes.
+               For More Study Materials : https://www.keralanotes.com/
+
+--- Page 21 ---
+                                                                      19
+                 ●  Solution:
+                 ●  Avg Waiting Time=31/5
+                                                     m
+                 ●  (Gantt chart)
+                                                  o
+                                                c
+                                              .
+                                            s
+                                         e
+                                        t
+                                     o
+            ●  Shortest Job First (SJF) Sncheduling
+                 ○  Till now, we werea scheduling the processes accordingto their arrival time (in
+                    FCFS scheduling).
+                               l
+                            a
+                 ○  However, the SJF scheduling algorithm schedules theprocesses according to
+                    their burstr time.
+                       e
+                 ○  In SJF scheduling, the process with the lowest bursttime, among the list of
+                    avkailable processes in the ready queue, is going tobe scheduled next.
+                 ○  However, it is very difficult to predict the bursttime needed for a process
+                    hence this algorithm is very difficult to implementin the system.
+                 ○  Advantages of SJF
+                      ■  Maximum throughput
+                      ■  Minimum average waiting and turnaround time
+                 ○  Disadvantages of SJF
+                      ■  May suffer with the problem of starvation
+                      ■  It is not implementable because the exact Burst timefor a process can't
+                         be known in advance.
+                 ○  Example
+                      ■  In the following example, there are five jobs namedP1, P2, P3, P4 and
+                         P5. Their arrival time and burst time are given in the table below.
+               For More Study Materials : https://www.keralanotes.com/
+
+--- Page 22 ---
+                                                                      20
+                      ■
+                      ■  Since, No Process arrives at time 0 hence; there willbe an empty slot
+                         in theGantt chart from time 0 to 1 (the time at whichthe first process
+                         arrives).                   m
+                      ■  According to the algorithm, the OS schedules the processwhich is
+                         having the lowest burst time among thoe available processesin the
+                         ready queue.           c
+                      ■  Till now, we have only one process in the ready queuehence the
+                                              .
+                         scheduler will schedule this tso the processor no matterwhat is its burst
+                         time.           e
+                      ■  This will be executed till 8 units of time.
+                                        t
+                      ■  Till then we have tohree more processes arriving inthe ready queue
+                         hence the schenduler will choose the process with thelowest burst time.
+                      ■  Among the processes given in the table, P3 will beexecuted next since
+                                a
+                         it is having the lowest burst time among all the availableprocesses.
+                               l
+                      ■  So thaat's how the procedure will go on in the shortest job first (SJF)
+                         scheduling algorithm.
+                          r
+                       e
+                     k
+                      ■
+                      ■  Avg Waiting Time = 27/5
+            ●  Shortest Remaining Time First (SRTF) Scheduling Algorithm
+                 ○  This Algorithm is the preemptive versionofSJF scheduling.
+                 ○  In SRTF, the execution of the process can be stoppedafter a certain amount of
+                    time.
+                 ○  At the arrival of every process, the short term schedulerschedules the process
+                    with the least remaining burst time among the listof available processes and
+                    the running process.
+                 ○  Once all the processes are available in thereadyqueue, No preemption will
+                    be done and the algorithm will work asSJF scheduling.
+               For More Study Materials : https://www.keralanotes.com/
+
+--- Page 23 ---
+                                                                      21
+                 ○  The context of the process is saved in the Process Control Block when the
+                    process is removed from the execution and the nextprocess is scheduled.
+                 ○  This PCB is accessed on thenext executionof thisprocess.
+                 ○  Example
+                      ■  In this Example, there are five jobs P1, P2, P3, P4,P5 and P6. Their
+                         arrival time and burst time are given below in thetable.
+                                                     m
+                                                  o
+                                                c
+                                              .
+                                            s
+                      ■
+                                         e
+                                        t
+                                     o
+                                  n
+                      ■
+                                a
+                      ■  Avg Waiting Time = 24/6
+                               l
+                      ■  The Gantt chart is prepared according to the arrivaland burst time
+                            a
+                         given in the table.
+                          r
+                       e1.    Since, at time 0, the only available process is P1with CPU
+                     k
+                              burst time 8. This is the only available process in the list
+                              therefore it is scheduled.
+                           2. The next process arrives at time unit 1. Since thealgorithm we
+                              are using is SRTF which is a preemptive one, the current
+                              execution is stopped and the scheduler checks forthe process
+                              with the least burst time.
+                              Till now, there are two processes available in theready queue.
+                              The OS has executed P1 for one unit of time till now;the
+                              remaining burst time of P1 is 7 units. The burst time of Process
+                              P2 is 4 units. Hence Process P2 is scheduled on theCPU
+               For More Study Materials : https://www.keralanotes.com/
+
+--- Page 24 ---
+                                                                      22
+                              according to the algorithm.
+                           3. The next process P3 arrives at time unit 2. At this time, the
+                              execution of process P3 is stopped and the processwith the
+                              least remaining burst time is searched. Since theprocess P3 has
+                              2 units of burst time hence it will be given priorityover others.
+                           4. The Next Process P4 arrives at time unit 3. At this arrival, the
+                              scheduler will stop the execution of P4 and checkwhich
+                              process is having least burst time among the available
+                                                     m
+                              processes (P1, P2, P3 and P4). P1 and P2 are having the
+                                                  o
+                              remaining burst time 7 units and 3 units respectively.
+                                                c
+                           5. P3 and P4 are having the. remaining burst time 1 uniteach.
+                                            s
+                              Since, both are equal hence the scheduling will bedone
+                                         e
+                              according to thteir arrival time. P3 arrives earlierthan P4 and
+                                     o
+                              therefore it will be scheduled again.The Next ProcessP5
+                                  n
+                              arraives at time unit 4. Till this time, the Process P3 has
+                               l
+                            acompleted its execution and it is no longer in thelist. The
+                          rscheduler will compare the remaining burst time ofall the
+                       e
+                              available processes. Since the burst time of processP4 is 1
+                     k
+                              which is least among all hence this will be scheduled.
+                           6. The Next Process P6 arrives at time unit 5, till thistime, the
+                              Process P4 has completed its execution. We have 4 available
+                              processes till now, that are P1 (7), P2 (3), P5 (3)and P6 (2).
+                              The Burst time of P6 is the least among all henceP6 is
+                              scheduled. Since, now, all the processes are availablehence the
+                              algorithm will now work the same as SJF. P6 will beexecuted
+                              till its completion and then the process with theleast remaining
+                              time will be scheduled.
+               For More Study Materials : https://www.keralanotes.com/
+
+--- Page 25 ---
+                                                                      23
+                           7. Once all the processes arrive, No preemption is done and the
+                              algorithm will work as SJF.
+            ●  Round Robin Scheduling Algorithm
+                 ○  Round Robin scheduling algorithm is one of the mostpopular scheduling
+                    algorithms which can actually be implemented in mostof the operating
+                    systems.
+                 ○  This is thepreemptive versionof first come firstserve scheduling.
+                 ○  The Algorithm focuses on Time Sharing.
+                 ○  In this algorithm, every process gets executed ina cyclic way.
+                 ○  A certain time slice is defined in the system which is called time quantum.
+                 ○  Each process present in the ready queue is assignedthe CPU for that time
+                                                     m
+                    quantum, if the execution of the process is completedduring that time then the
+                    process willterminate else the process will go backto the ready queue and
+                                                  o
+                    wait for the next turn to complete the execution.
+                                                c
+                 ○  Advantages
+                                              .
+                      1. It can be actually implementasble in the system becauseit is not
+                                         e
+                         dependent on the burst time.
+                                        t
+                                     o
+                      2. It doesn't suffer from the problem of starvation orconvoy effect.
+                                  n
+                      3. All the jobs get a fair allocation of CPU.
+                                a
+                               l
+                 ○  Disadvantages
+                            a
+                          r
+                      1. The higher the time quantum, the higher the responsetime in the
+                       e
+                     ksystem.
+                      2. The lower the time quantum, the higher the contextswitching overhead
+                         in the system.
+                      3. Deciding a perfect time quantum is really a very difficulttask in the
+                         system.
+                 ○  Example
+                      ■  In the following example, there are six processesnamed as P1, P2, P3,
+                         P4, P5 and P6. Their arrival time and burst time are given below in the
+                         table. The time quantum of the system is 4 units.
+               For More Study Materials : https://www.keralanotes.com/
+
+--- Page 26 ---
+                                                                      24
+                      ■
+                      ■  Avg Waiting Time = (12+16+6+8+15+11)/6 = 76/6 units
+                                                     m
+                                                  o
+                                                c
+                      ■
+                                              .
+                                            s
+            ●  Priority Scheduling
+                                         e
+                 ○  In Priority scheduling, there is a priority numberassigned to each process.
+                                        t
+                 ○  In some systems, the loweor the number, the higherthe priority.
+                 ○  While, in the others, t n he higher the number, thehigher will be the priority.
+                 ○  The Process with the higher priority among the availableprocesses is given
+                                a
+                    the CPU.
+                               l
+                 ○  There are tw a o types of priority scheduling algorithms.
+                 ○  One isPreemptive priority scheduling while the otheris Non Preemptive
+                          r
+                    Prioriety scheduling.
+                 ○  The priority number assigned to each of the processesmay or may not vary.
+                     k
+                 ○  If the priority number doesn't change itself throughoutthe process, it is called
+                    static priority,
+                 ○  while if it keeps changing itself at the regular intervals,it is called dynamic
+                    priority.
+                 ○  Non Preemptive Priority Scheduling
+                      ■  In the Non Preemptive Priority scheduling, The Processes are
+                         scheduled according to the priority number assignedto them.
+                      ■  Once the process gets scheduled, it will run tillthe completion.
+                      ■  Generally, the lower the priority number, the higheris the priority of
+                         the process.
+                      ■  The people might get confused with the priority numbers,hence in the
+                         GATE, they clearly mention which one is the highestpriority and
+                         which one is the lowest one.
+                      ■  Example
+               For More Study Materials : https://www.keralanotes.com/
+
+--- Page 27 ---
+                                                                      25
+                           ●  In the Example, there are 7 processes P1, P2, P3, P4, P5, P6
+                              and P7. Their priorities, Arrival Time and burst time are given
+                              in the table.
+                                                     m
+                           ●
+                           ●  Avg Waiting Time = (0+11+2+o7+12+2+18)/7 = 52/7 units
+                                                c
+                                              .
+                                            s
+                           ●             e
+                 ○  Preemptive Priority Schedulting
+                                     o
+                      ■  In Preemptive Priority Scheduling, at the time ofarrival of a process in
+                                  n
+                         the ready queue, its Priority is compared with thepriority of the other
+                         processes apresent in the ready queue as well as withthe one which is
+                         being executed by the CPU at that point of time.
+                               l
+                            a
+                      ■  The One with the highest priority among all the availableprocesses
+                         wirll be given the CPU next.
+                       e
+                      ■  The difference between preemptive priority schedulingand non
+                     kpreemptive priority scheduling is that, in the preemptivepriority
+                         scheduling, the job which is being executed can bestopped at the
+                         arrival of a higher priority job.
+                      ■  Once all the jobs get available in the ready queue,the algorithm will
+                         behave as non-preemptive priority scheduling, whichmeans the job
+                         scheduled will run till the completion and no preemptionwill be done.
+                      ■  Example
+                           ●  There are 7 processes P1, P2, P3, P4, P5, P6 and P7 given.
+                              Their respective priorities, Arrival Times and Burst times are
+                              given in the table below.
+               For More Study Materials : https://www.keralanotes.com/
+
+--- Page 28 ---
+                                                                      26
+                           ●
+                           ●  Avg Waiting Time = (0+14+0+7+1+25+16)/7 = 63/7 = 9 units
+                                                     m
+                                                  o
+                                                c
+                           ●                  .
+                                            s
+                                         e
+                                        t
+                                     o
+                                  n
+                                a
+                               l
+                            a
+                          r
+                               Exception Handling in Java - Ja
+                       e
+                     k
+               For More Study Materials : https://www.keralanotes.com/

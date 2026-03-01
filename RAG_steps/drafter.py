@@ -34,7 +34,7 @@ Answer format:
 """.strip()
 
     resp = ollama.chat(
-        model="phi3:instruct",  
+        model="gemma3:27b-cloud",  
         messages=[{"role": "user", "content": prompt}],
     )
     full_text = resp["message"]["content"]

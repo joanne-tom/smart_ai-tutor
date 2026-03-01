@@ -2,8 +2,11 @@
 import os
 import requests
 import json
+from dotenv import load_dotenv
+load_dotenv()
 
 PATRONUS_API_KEY = os.environ.get("PATRONUS_API_KEY")  # make sure this is set in your env
+print("PATRONUS KEY:", PATRONUS_API_KEY)
 PATRONUS_URL = "https://api.patronus.ai/v1/evaluate"  # confirm the latest from Patronus docs
 
 def verify_drafts(question: str, drafts: list[dict], chunk_lookup: dict):

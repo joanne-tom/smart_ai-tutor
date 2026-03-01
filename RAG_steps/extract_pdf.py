@@ -5,14 +5,14 @@ import json
 
 
 PDF_PATHS = [
-    (r"C:\Users\Joanne\Documents\smart_ai_tutor\smartaivenv\data\CST206 M1.pdf", 1),
-    (r"C:\Users\Joanne\Documents\smart_ai_tutor\smartaivenv\data\CST206 M2.pdf", 2),
-    (r"C:\Users\Joanne\Documents\smart_ai_tutor\smartaivenv\data\CST206 M3.pdf", 3),
-    (r"C:\Users\Joanne\Documents\smart_ai_tutor\smartaivenv\data\CST206 M4.pdf", 4),
-    (r"C:\Users\Joanne\Documents\smart_ai_tutor\smartaivenv\data\CST206 M5.pdf", 5),
+    (r"C:\Users\malav\smart_ai-tutor\data\CST206 M1.pdf", 1),
+    (r"C:\Users\malav\smart_ai-tutor\data\CST206 M2.pdf", 2),
+    (r"C:\Users\malav\smart_ai-tutor\data\CST206 M3.pdf", 3),
+    (r"C:\Users\malav\smart_ai-tutor\data\CST206 M4.pdf", 4),
+    (r"C:\Users\malav\smart_ai-tutor\data\CST206 M5.pdf", 5),
 ]
 
-BASE_OUTPUT = pathlib.Path(r"C:\Users\Joanne\Documents\smart_ai_tutor\smartaivenv\output_folder")
+BASE_OUTPUT = pathlib.Path(r"C:\Users\malav\smart_ai-tutor\output_folder")
 TEXT_OUTPUT = BASE_OUTPUT / "text"
 IMAGES_OUTPUT = BASE_OUTPUT / "images"
 TEXT_OUTPUT.mkdir(parents=True, exist_ok=True)
