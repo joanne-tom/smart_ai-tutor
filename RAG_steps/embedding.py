@@ -34,6 +34,8 @@ for chunk_file in CHUNK_FILES:
     "id": str(chunk.get("id", "")),  
     "module": int(chunk.get("module", 0)), 
     "topic": str(chunk.get("topic", "")),
+    "subtopic": str(chunk.get("subtopic", "")),
+    "lecture_order": int(chunk.get("lecture_order", 0)),
     "page_hint": str(chunk.get("page_hint", "")),
     "source_file": str(chunk.get("source_file", chunk_file.name)),
 })

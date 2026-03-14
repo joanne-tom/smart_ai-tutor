@@ -77,6 +77,16 @@ def split_by_detected_topics(text: str):
             sections.append((current_topic, section_text))
 
     return sections
+def detect_subtopic(text: str):
+
+    for line in text.split("\n"):
+
+        line = line.strip()
+
+        if len(line.split()) <= 8 and line[0].isupper():
+            return line
+
+    return "General"
 
 
 # -----------------------------------
@@ -107,6 +117,7 @@ def chunk_os_txt(txt_path: pathlib.Path, module_id: int):
 
     chunks = []
     chunk_index = 0
+    
 
     for topic, section_text in topic_sections:
         docs = splitter.create_documents([section_text])
@@ -122,10 +133,12 @@ def chunk_os_txt(txt_path: pathlib.Path, module_id: int):
                 "id": f"{module_id}_{chunk_index}",
                 "module": module_id,
                 "topic": topic,
+                "subtopic": detect_subtopic(content),
+                "lecture_order": chunk_index,
                 "page_hint": extract_page_hint(content),
                 "content": content,
                 "source_file": txt_path.name,
-            })
+})
             chunk_index += 1
 
     out_path = txt_path.with_suffix(".chunks.json")
