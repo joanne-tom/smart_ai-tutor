@@ -80,8 +80,10 @@ def split_by_detected_topics(text: str):
 def detect_subtopic(text: str):
 
     for line in text.split("\n"):
-
         line = line.strip()
+
+        if not line:
+            continue
 
         if len(line.split()) <= 8 and line[0].isupper():
             return line
@@ -151,20 +153,20 @@ def chunk_os_txt(txt_path: pathlib.Path, module_id: int):
 
 
 # -----------------------------------
-# Runner
+# Runner (Dynamic for uploaded notes)
 # -----------------------------------
 if __name__ == "__main__":
-    base = pathlib.Path(
-        r"C:\Users\Joanne\Documents\smart_ai_tutor\smartaivenv\output_folder\text"
-    )
 
-    module_files = [
-        (1, base / "CST206 M1.txt"),
-        (2, base / "CST206 M2.txt"),
-        (3, base / "CST206 M3.txt"),
-        (4, base / "CST206 M4.txt"),
-        (5, base / "CST206 M5.txt"),
-    ]
+    TEXT_FOLDER = pathlib.Path("output_text")
 
-    for module_id, path in module_files:
+    txt_files = sorted(TEXT_FOLDER.glob("*.txt"))
+
+    if not txt_files:
+        print("❌ No extracted text files found in output_text/")
+        exit()
+
+    print(f"📚 Found {len(txt_files)} extracted modules")
+
+    for module_id, path in enumerate(txt_files, start=1):
+        print(f"\n⚙️ Processing {path.name}")
         chunk_os_txt(path, module_id)

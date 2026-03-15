@@ -6,10 +6,13 @@ import os
 import requests
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, 
+     resources={r"/*": {"origins": "*"}},
+     methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+     allow_headers=["Content-Type", "Authorization", "Accept"])
 
 DB_PATH = "student_data.db"
-RAG_URL = "http://localhost:5000"
+RAG_URL = "http://localhost:5001"
 
 def get_db():
     conn = sqlite3.connect(DB_PATH)
@@ -25,13 +28,15 @@ def init_db():
             roll_number TEXT UNIQUE NOT NULL
         );
         CREATE TABLE IF NOT EXISTS sessions (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            subject TEXT NOT NULL,
-            topic TEXT NOT NULL,
-            scheduled_date TEXT NOT NULL,
-            faculty_name TEXT,
-            status TEXT DEFAULT 'scheduled'
-        );
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    subject TEXT NOT NULL,
+    module TEXT,
+    topic TEXT NOT NULL,
+    subtopic TEXT,
+    scheduled_date TEXT NOT NULL,
+    faculty_name TEXT,
+    status TEXT DEFAULT 'scheduled'
+);
         CREATE TABLE IF NOT EXISTS attendance (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             student_id INTEGER,
@@ -115,64 +120,104 @@ def start_lecture():
     conn.close()
     if not session:
         return mcp_response(error="Session not found"), 404
-    topic = session["topic"]
-    subject = session["subject"]
+
+    session = dict(session)
+    topic    = session["topic"]
+    subject  = session["subject"]
 
     try:
-        rag_resp = requests.post(f"{RAG_URL}/api/generate", json={
-            "topic": topic,
-            "subject": subject
-        }, timeout=60)
-        lecture_text = rag_resp.json().get("content", None)
-        if not lecture_text:
-            raise Exception("Empty response")
-    except:
-        lecture_text = f"Welcome to today's session on {topic} in {subject}. Let's begin with the fundamentals. {topic} is a core concept in {subject}. We will explore the key principles, definitions, and practical applications step by step. Pay close attention and feel free to ask any doubts."
+        rag_resp = requests.post(
+            f"{RAG_URL}/api/generate",
+            json={
+                "module":   session.get("module", ""),
+                "topic":    topic,
+                "subtopic": session.get("subtopic", ""),
+                "subject":  subject,
+            },
+            timeout=300,  # ✅ 5 mins — RAG pipeline needs time
+        )
+        rag_resp.raise_for_status()
+        result = rag_resp.json()
+        lecture_text = result.get("content")
 
-    return mcp_response(data={"lecture_text": lecture_text, "topic": topic, "subject": subject})
+        if not lecture_text:
+            raise Exception("Empty response from RAG")
+
+    except Exception as e:
+        print(f"RAG error in start_lecture: {e}")
+        lecture_text = (
+            f"Welcome to today's session on {topic} in {subject}. "
+            f"Let's begin with the fundamentals of {topic}."
+        )
+
+    return mcp_response(data={
+        "lecture_text": lecture_text,
+        "topic":        topic,
+        "subject":      subject,
+    })
 
 @app.route("/mcp/ask_question", methods=["POST"])
 def ask_question():
     data = request.json
     student_id = data.get("student_id")
     session_id = data.get("session_id")
-    question = data.get("question", "").strip()
-    mode = data.get("mode", "explanation")
-    conn = get_db()
-    session = conn.execute("SELECT * FROM sessions WHERE id=?", (session_id,)).fetchone()
-    conn.close()
-    topic = session["topic"] if session else "general"
-    subject = session["subject"] if session else "general"
+    question   = data.get("question", "").strip()
+    mode       = data.get("mode", "explanation")
 
+    conn = get_db()
+    session = conn.execute(
+        "SELECT * FROM sessions WHERE id=?", (session_id,)
+    ).fetchone()
+    conn.close()
+
+    session  = dict(session) if session else {}
+    topic    = session.get("topic", "general")
+    subject  = session.get("subject", "general")
+
+    # ✅ Build mode-aware question to send to RAG
     if mode == "simplified":
-        prompt = f"Explain simply in very basic terms: {question}"
+        rag_question = f"Explain in very simple basic terms for a beginner: {question}"
     elif mode == "example":
-        prompt = f"Explain with a clear real-world example: {question}"
+        rag_question = f"Explain with a clear real-world example: {question}"
     else:
-        prompt = question
+        rag_question = question
 
     try:
-        rag_resp = requests.post(f"{RAG_URL}/api/generate", json={
-            "topic": prompt,
-            "subject": subject,
-            "mode": mode
-        }, timeout=60)
-        answer = rag_resp.json().get("content", None)
-        if not answer:
-            raise Exception("Empty response")
-    except:
-        if mode == "simplified":
-            answer = f"Simply put: '{question}' in {topic} means understanding the core concept step by step."
-        elif mode == "example":
-            answer = f"Here's an example for '{question}' in {topic}: Think of it like a real-world scenario where this concept applies directly."
-        else:
-            answer = f"Regarding '{question}' in {topic}: this is an important concept in {subject}. Understanding the fundamentals helps in applying them practically."
+        rag_resp = requests.post(
+            f"{RAG_URL}/api/generate",
+            json={
+                "module":   session.get("module", ""),
+                "topic":    rag_question,   # ✅ send actual question as topic
+                "subtopic": session.get("subtopic", ""),
+                "subject":  subject,
+            },
+            timeout=300,  # ✅ increased timeout
+        )
+        rag_resp.raise_for_status()
+        answer = rag_resp.json().get("content")
 
+        if not answer:
+            raise Exception("Empty response from RAG")
+
+    except Exception as e:
+        print(f"RAG error in ask_question: {e}")
+        # ✅ Fallback is now question-aware
+        if mode == "simplified":
+            answer = f"Simply put: {question} — this relates to {topic} which is a core concept in {subject}."
+        elif mode == "example":
+            answer = f"For example, in {topic}: {question} can be understood by thinking about how the OS handles this in practice."
+        else:
+            answer = f"Regarding your question about {question} in {topic}: this is an important concept in {subject}."
+
+    # Log engagement
     conn = get_db()
-    conn.execute("INSERT INTO engagement_log (student_id, session_id, event_type, score_delta) VALUES (?,?,?,?)",
-                 (student_id, session_id, "asked_question", -1))
+    conn.execute(
+        "INSERT INTO engagement_log (student_id, session_id, event_type, score_delta) VALUES (?,?,?,?)",
+        (student_id, session_id, "asked_question", -1),
+    )
     conn.commit()
     conn.close()
+
     return mcp_response(data={"question": question, "answer": answer})
 
 @app.route("/mcp/log_engagement", methods=["POST"])
@@ -207,15 +252,17 @@ def seed_session():
     data = request.json
     conn = get_db()
     cursor = conn.execute(
-        "INSERT INTO sessions (subject, topic, scheduled_date, faculty_name, status) VALUES (?,?,?,?,?)",
-        (data.get("subject", "Computer Networks"), data.get("topic", "OSI Model"),
-         data.get("date", datetime.now().strftime("%Y-%m-%d")),
-         data.get("faculty", "Dr. Smith"), "active")
+    "INSERT INTO sessions (subject, topic, scheduled_date) VALUES (?,?,?)",
+    (
+        data.get("subject", "Operating Systems"),
+        data.get("topic", ""),
+        data.get("date", datetime.now().strftime("%Y-%m-%d")),
     )
+)
     conn.commit()
     session_id = cursor.lastrowid
     conn.close()
     return jsonify({"session_id": session_id, "message": "Session seeded"})
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5001, debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=False)

@@ -1,7 +1,7 @@
 [
   {
-    "id": "2_0",
-    "module": 2,
+    "id": "1_0",
+    "module": 1,
     "topic": "1.2. Process Control Block, Threads",
     "subtopic": "General",
     "lecture_order": 0,
@@ -10,8 +10,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_1",
-    "module": 2,
+    "id": "1_1",
+    "module": 1,
     "topic": "1.8. Priority scheduling, Round Robin Scheduling",
     "subtopic": "General",
     "lecture_order": 1,
@@ -20,8 +20,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_2",
-    "module": 2,
+    "id": "1_2",
+    "module": 1,
     "topic": "Contreol Block).",
     "subtopic": "General",
     "lecture_order": 2,
@@ -30,8 +30,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_3",
-    "module": 2,
+    "id": "1_3",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 3,
@@ -40,8 +40,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_4",
-    "module": 2,
+    "id": "1_4",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 4,
@@ -50,8 +50,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_5",
-    "module": 2,
+    "id": "1_5",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 5,
@@ -60,8 +60,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_6",
-    "module": 2,
+    "id": "1_6",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 6,
@@ -70,8 +70,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_7",
-    "module": 2,
+    "id": "1_7",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 7,
@@ -80,8 +80,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_8",
-    "module": 2,
+    "id": "1_8",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 8,
@@ -90,8 +90,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_9",
-    "module": 2,
+    "id": "1_9",
+    "module": 1,
     "topic": "● Process Control Block (PCB)",
     "subtopic": "General",
     "lecture_order": 9,
@@ -100,8 +100,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_10",
-    "module": 2,
+    "id": "1_10",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 10,
@@ -110,8 +110,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_11",
-    "module": 2,
+    "id": "1_11",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 11,
@@ -120,8 +120,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_12",
-    "module": 2,
+    "id": "1_12",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 12,
@@ -130,8 +130,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_13",
-    "module": 2,
+    "id": "1_13",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 13,
@@ -140,8 +140,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_14",
-    "module": 2,
+    "id": "1_14",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 14,
@@ -150,8 +150,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_15",
-    "module": 2,
+    "id": "1_15",
+    "module": 1,
     "topic": "● Process Creation",
     "subtopic": "General",
     "lecture_order": 15,
@@ -160,8 +160,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_16",
-    "module": 2,
+    "id": "1_16",
+    "module": 1,
     "topic": "● Process Creation",
     "subtopic": "Now the process is competing for the CPU.",
     "lecture_order": 16,
@@ -170,8 +170,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_17",
-    "module": 2,
+    "id": "1_17",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 17,
@@ -180,8 +180,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_18",
-    "module": 2,
+    "id": "1_18",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 18,
@@ -190,8 +190,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_19",
-    "module": 2,
+    "id": "1_19",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 19,
@@ -200,8 +200,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_20",
-    "module": 2,
+    "id": "1_20",
+    "module": 1,
     "topic": "○ Shared Memory:",
     "subtopic": "General",
     "lecture_order": 20,
@@ -210,8 +210,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_21",
-    "module": 2,
+    "id": "1_21",
+    "module": 1,
     "topic": "○ Shared Memory:",
     "subtopic": "General",
     "lecture_order": 21,
@@ -220,8 +220,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_22",
-    "module": 2,
+    "id": "1_22",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "Consumer consumes the item if needed.",
     "lecture_order": 22,
@@ -230,8 +230,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_23",
-    "module": 2,
+    "id": "1_23",
+    "module": 1,
     "topic": "● The Buffer",
     "subtopic": "General",
     "lecture_order": 23,
@@ -240,8 +240,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_24",
-    "module": 2,
+    "id": "1_24",
+    "module": 1,
     "topic": "● The Buffer",
     "subtopic": "If there are items available, consumers will consumethem.",
     "lecture_order": 24,
@@ -250,8 +250,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_25",
-    "module": 2,
+    "id": "1_25",
+    "module": 1,
     "topic": "○ Message Passing:",
     "subtopic": "General",
     "lecture_order": 25,
@@ -260,8 +260,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_26",
-    "module": 2,
+    "id": "1_26",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "We need at least two primitives:",
     "lecture_order": 26,
@@ -270,8 +270,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_27",
-    "module": 2,
+    "id": "1_27",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 27,
@@ -280,8 +280,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_28",
-    "module": 2,
+    "id": "1_28",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 28,
@@ -290,8 +290,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_29",
-    "module": 2,
+    "id": "1_29",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 29,
@@ -300,8 +300,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_30",
-    "module": 2,
+    "id": "1_30",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 30,
@@ -310,8 +310,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_31",
-    "module": 2,
+    "id": "1_31",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 31,
@@ -320,8 +320,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_32",
-    "module": 2,
+    "id": "1_32",
+    "module": 1,
     "topic": "● Process Scheduling",
     "subtopic": "General",
     "lecture_order": 32,
@@ -330,8 +330,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_33",
-    "module": 2,
+    "id": "1_33",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 33,
@@ -340,8 +340,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_34",
-    "module": 2,
+    "id": "1_34",
+    "module": 1,
     "topic": "Queues.",
     "subtopic": "General",
     "lecture_order": 34,
@@ -350,8 +350,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_35",
-    "module": 2,
+    "id": "1_35",
+    "module": 1,
     "topic": "Queues.",
     "subtopic": "General",
     "lecture_order": 35,
@@ -360,8 +360,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_36",
-    "module": 2,
+    "id": "1_36",
+    "module": 1,
     "topic": "■ Long Term Scheduler",
     "subtopic": "General",
     "lecture_order": 36,
@@ -370,8 +370,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_37",
-    "module": 2,
+    "id": "1_37",
+    "module": 1,
     "topic": "■ Medium Term Scheduler",
     "subtopic": "General",
     "lecture_order": 37,
@@ -380,8 +380,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_38",
-    "module": 2,
+    "id": "1_38",
+    "module": 1,
     "topic": "■ Medium Term Scheduler",
     "subtopic": "General",
     "lecture_order": 38,
@@ -390,8 +390,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_39",
-    "module": 2,
+    "id": "1_39",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "Block(PCB) of a process;",
     "lecture_order": 39,
@@ -400,8 +400,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_40",
-    "module": 2,
+    "id": "1_40",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 40,
@@ -410,8 +410,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_41",
-    "module": 2,
+    "id": "1_41",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 41,
@@ -420,8 +420,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_42",
-    "module": 2,
+    "id": "1_42",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 42,
@@ -430,8 +430,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_43",
-    "module": 2,
+    "id": "1_43",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 43,
@@ -440,8 +440,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_44",
-    "module": 2,
+    "id": "1_44",
+    "module": 1,
     "topic": "● FCFS Scheduling",
     "subtopic": "General",
     "lecture_order": 44,
@@ -450,8 +450,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_45",
-    "module": 2,
+    "id": "1_45",
+    "module": 1,
     "topic": "● FCFS Scheduling",
     "subtopic": "General",
     "lecture_order": 45,
@@ -460,8 +460,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_46",
-    "module": 2,
+    "id": "1_46",
+    "module": 1,
     "topic": "● FCFS Scheduling",
     "subtopic": "General",
     "lecture_order": 46,
@@ -470,8 +470,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_47",
-    "module": 2,
+    "id": "1_47",
+    "module": 1,
     "topic": "● Shortest Job First (SJF) Sncheduling",
     "subtopic": "FCFS scheduling).",
     "lecture_order": 47,
@@ -480,8 +480,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_48",
-    "module": 2,
+    "id": "1_48",
+    "module": 1,
     "topic": "● Shortest Job First (SJF) Sncheduling",
     "subtopic": "General",
     "lecture_order": 48,
@@ -490,8 +490,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_49",
-    "module": 2,
+    "id": "1_49",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 49,
@@ -500,8 +500,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_50",
-    "module": 2,
+    "id": "1_50",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 50,
@@ -510,8 +510,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_51",
-    "module": 2,
+    "id": "1_51",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 51,
@@ -520,8 +520,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_52",
-    "module": 2,
+    "id": "1_52",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 52,
@@ -530,8 +530,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_53",
-    "module": 2,
+    "id": "1_53",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 53,
@@ -540,8 +540,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_54",
-    "module": 2,
+    "id": "1_54",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 54,
@@ -550,8 +550,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_55",
-    "module": 2,
+    "id": "1_55",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 55,
@@ -560,8 +560,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_56",
-    "module": 2,
+    "id": "1_56",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 56,
@@ -570,8 +570,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_57",
-    "module": 2,
+    "id": "1_57",
+    "module": 1,
     "topic": "● Round Robin Scheduling Algorithm",
     "subtopic": "General",
     "lecture_order": 57,
@@ -580,8 +580,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_58",
-    "module": 2,
+    "id": "1_58",
+    "module": 1,
     "topic": "● Round Robin Scheduling Algorithm",
     "subtopic": "General",
     "lecture_order": 58,
@@ -590,8 +590,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_59",
-    "module": 2,
+    "id": "1_59",
+    "module": 1,
     "topic": "● Priority Scheduling",
     "subtopic": "Prioriety scheduling.",
     "lecture_order": 59,
@@ -600,8 +600,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_60",
-    "module": 2,
+    "id": "1_60",
+    "module": 1,
     "topic": "○ Non Preemptive Priority Scheduling",
     "subtopic": "General",
     "lecture_order": 60,
@@ -610,8 +610,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_61",
-    "module": 2,
+    "id": "1_61",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 61,
@@ -620,8 +620,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_62",
-    "module": 2,
+    "id": "1_62",
+    "module": 1,
     "topic": "○ Preemptive Priority Schedulting",
     "subtopic": "General",
     "lecture_order": 62,
@@ -630,8 +630,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_63",
-    "module": 2,
+    "id": "1_63",
+    "module": 1,
     "topic": "○ Preemptive Priority Schedulting",
     "subtopic": "General",
     "lecture_order": 63,
@@ -640,8 +640,8 @@
     "source_file": "CST206 M2.txt"
   },
   {
-    "id": "2_64",
-    "module": 2,
+    "id": "1_64",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 64,

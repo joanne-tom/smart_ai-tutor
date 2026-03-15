@@ -1,0 +1,267 @@
+Collecting kokoro
+  Obtaining dependency information for kokoro from https://files.pythonhosted.org/packages/ea/cc/75f41633c75224ba820a4533163bc8b070b6bf25416014074c63284c2d4e/kokoro-0.9.4-py3-none-any.whl.metadata
+  Downloading kokoro-0.9.4-py3-none-any.whl.metadata (21 kB)
+Collecting soundfile
+  Obtaining dependency information for soundfile from https://files.pythonhosted.org/packages/14/e9/6b761de83277f2f02ded7e7ea6f07828ec78e4b229b80e4ca55dd205b9dc/soundfile-0.13.1-py2.py3-none-win_amd64.whl.metadata
+  Downloading soundfile-0.13.1-py2.py3-none-win_amd64.whl.metadata (16 kB)
+Requirement already satisfied: huggingface-hub in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from kokoro) (0.36.0)
+Collecting loguru (from kokoro)
+  Obtaining dependency information for loguru from https://files.pythonhosted.org/packages/0c/29/0348de65b8cc732daa3e33e67806420b2ae89bdce2b04af740289c5c6c8c/loguru-0.7.3-py3-none-any.whl.metadata
+  Downloading loguru-0.7.3-py3-none-any.whl.metadata (22 kB)
+Collecting misaki[en]>=0.9.4 (from kokoro)
+  Obtaining dependency information for misaki[en]>=0.9.4 from https://files.pythonhosted.org/packages/82/ec/0ee4110ddb54278b8f21c40a140370ae8f687036c4edf578316602697c56/misaki-0.9.4-py3-none-any.whl.metadata
+  Downloading misaki-0.9.4-py3-none-any.whl.metadata (19 kB)
+Requirement already satisfied: numpy in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from kokoro) (2.4.0)
+Requirement already satisfied: torch in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from kokoro) (2.9.1)
+Requirement already satisfied: transformers in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from kokoro) (4.57.3)
+Requirement already satisfied: cffi>=1.0 in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from soundfile) (2.0.0)
+Requirement already satisfied: pycparser in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from cffi>=1.0->soundfile) (2.23)
+Collecting addict (from misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for addict from https://files.pythonhosted.org/packages/6a/00/b08f23b7d7e1e14ce01419a467b583edbb93c6cdb8654e54a9cc579cd61f/addict-2.4.0-py3-none-any.whl.metadata
+  Downloading addict-2.4.0-py3-none-any.whl.metadata (1.0 kB)
+Requirement already satisfied: regex in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from misaki[en]>=0.9.4->kokoro) (2025.11.3)
+Collecting espeakng-loader (from misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for espeakng-loader from https://files.pythonhosted.org/packages/9d/ed/a3d872fbad4f3a3f3db0e8c31768ab14e77cd77306de16b8b20b1e1df7ea/espeakng_loader-0.2.4-py3-none-win_amd64.whl.metadata
+  Downloading espeakng_loader-0.2.4-py3-none-win_amd64.whl.metadata (1.3 kB)
+Collecting num2words (from misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for num2words from https://files.pythonhosted.org/packages/d6/5b/545e9267a1cc080c8a1be2746113a063e34bcdd0f5173fd665a5c13cb234/num2words-0.5.14-py3-none-any.whl.metadata
+  Downloading num2words-0.5.14-py3-none-any.whl.metadata (13 kB)
+Collecting phonemizer-fork (from misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for phonemizer-fork from https://files.pythonhosted.org/packages/64/f1/0dcce21b0ae16a82df4b6583f8f3ad8e55b35f7e98b6bf536a4dd225fa08/phonemizer_fork-3.3.2-py3-none-any.whl.metadata
+  Downloading phonemizer_fork-3.3.2-py3-none-any.whl.metadata (48 kB)
+     ---------------------------------------- 48.3/48.3 kB 2.4 MB/s eta 0:00:00
+Collecting spacy (from misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for spacy from https://files.pythonhosted.org/packages/7d/48/7e9581b476df76aaf9ee182888d15322e77c38b0bbbd5e80160ba0bddd4c/spacy-3.8.11-cp312-cp312-win_amd64.whl.metadata
+  Downloading spacy-3.8.11-cp312-cp312-win_amd64.whl.metadata (28 kB)
+Collecting spacy-curated-transformers (from misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for spacy-curated-transformers from https://files.pythonhosted.org/packages/65/4a/9c2b5d676f820e2d3672d8532def8a193e8cb9530824ce16b232b707c1a0/spacy_curated_transformers-2.1.2-py2.py3-none-any.whl.metadata
+  Downloading spacy_curated_transformers-2.1.2-py2.py3-none-any.whl.metadata (2.8 kB)
+Requirement already satisfied: filelock in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from huggingface-hub->kokoro) (3.20.2)
+Requirement already satisfied: fsspec>=2023.5.0 in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from huggingface-hub->kokoro) (2025.12.0)
+Requirement already satisfied: packaging>=20.9 in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from huggingface-hub->kokoro) (25.0)
+Requirement already satisfied: pyyaml>=5.1 in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from huggingface-hub->kokoro) (6.0.3)
+Requirement already satisfied: requests in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from huggingface-hub->kokoro) (2.32.5)
+Requirement already satisfied: tqdm>=4.42.1 in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from huggingface-hub->kokoro) (4.67.1)
+Requirement already satisfied: typing-extensions>=3.7.4.3 in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from huggingface-hub->kokoro) (4.15.0)
+Requirement already satisfied: colorama>=0.3.4 in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from loguru->kokoro) (0.4.6)
+Collecting win32-setctime>=1.0.0 (from loguru->kokoro)
+  Obtaining dependency information for win32-setctime>=1.0.0 from https://files.pythonhosted.org/packages/e1/07/c6fe3ad3e685340704d314d765b7912993bcb8dc198f0e7a89382d37974b/win32_setctime-1.2.0-py3-none-any.whl.metadata
+  Downloading win32_setctime-1.2.0-py3-none-any.whl.metadata (2.4 kB)
+Requirement already satisfied: sympy>=1.13.3 in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from torch->kokoro) (1.14.0)
+Requirement already satisfied: networkx>=2.5.1 in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from torch->kokoro) (3.6.1)
+Requirement already satisfied: jinja2 in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from torch->kokoro) (3.1.6)
+Requirement already satisfied: setuptools in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from torch->kokoro) (80.9.0)
+Requirement already satisfied: tokenizers<=0.23.0,>=0.22.0 in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from transformers->kokoro) (0.22.1)
+Requirement already satisfied: safetensors>=0.4.3 in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from transformers->kokoro) (0.7.0)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from sympy>=1.13.3->torch->kokoro) (1.3.0)
+Requirement already satisfied: MarkupSafe>=2.0 in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from jinja2->torch->kokoro) (3.0.3)
+Collecting docopt>=0.6.2 (from num2words->misaki[en]>=0.9.4->kokoro)
+  Downloading docopt-0.6.2.tar.gz (25 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Requirement already satisfied: attrs>=18.1 in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from phonemizer-fork->misaki[en]>=0.9.4->kokoro) (25.4.0)
+Collecting dlinfo (from phonemizer-fork->misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for dlinfo from https://files.pythonhosted.org/packages/da/90/022c79d6e5e6f843268c10b84d4a021ee3afba0621d3c176d3ff2024bfc8/dlinfo-2.0.0-py3-none-any.whl.metadata
+  Downloading dlinfo-2.0.0-py3-none-any.whl.metadata (1.1 kB)
+Requirement already satisfied: joblib in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from phonemizer-fork->misaki[en]>=0.9.4->kokoro) (1.5.3)
+Collecting segments (from phonemizer-fork->misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for segments from https://files.pythonhosted.org/packages/be/60/eef9acce946177f92c9aabf432224d87ab908bafafac516a36ab924199f3/segments-2.4.0-py2.py3-none-any.whl.metadata
+  Downloading segments-2.4.0-py2.py3-none-any.whl.metadata (3.5 kB)
+Requirement already satisfied: charset_normalizer<4,>=2 in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from requests->huggingface-hub->kokoro) (3.4.3)
+Requirement already satisfied: idna<4,>=2.5 in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from requests->huggingface-hub->kokoro) (3.11)
+Requirement already satisfied: urllib3<3,>=1.21.1 in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from requests->huggingface-hub->kokoro) (2.3.0)
+Requirement already satisfied: certifi>=2017.4.17 in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from requests->huggingface-hub->kokoro) (2025.11.12)
+Collecting spacy-legacy<3.1.0,>=3.0.11 (from spacy->misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for spacy-legacy<3.1.0,>=3.0.11 from https://files.pythonhosted.org/packages/c3/55/12e842c70ff8828e34e543a2c7176dac4da006ca6901c9e8b43efab8bc6b/spacy_legacy-3.0.12-py2.py3-none-any.whl.metadata
+  Downloading spacy_legacy-3.0.12-py2.py3-none-any.whl.metadata (2.8 kB)
+Collecting spacy-loggers<2.0.0,>=1.0.0 (from spacy->misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for spacy-loggers<2.0.0,>=1.0.0 from https://files.pythonhosted.org/packages/33/78/d1a1a026ef3af911159398c939b1509d5c36fe524c7b644f34a5146c4e16/spacy_loggers-1.0.5-py3-none-any.whl.metadata
+  Downloading spacy_loggers-1.0.5-py3-none-any.whl.metadata (23 kB)
+Collecting murmurhash<1.1.0,>=0.28.0 (from spacy->misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for murmurhash<1.1.0,>=0.28.0 from https://files.pythonhosted.org/packages/84/a4/b249b042f5afe34d14ada2dc4afc777e883c15863296756179652e081c44/murmurhash-1.0.15-cp312-cp312-win_amd64.whl.metadata
+  Downloading murmurhash-1.0.15-cp312-cp312-win_amd64.whl.metadata (2.3 kB)
+Collecting cymem<2.1.0,>=2.0.2 (from spacy->misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for cymem<2.1.0,>=2.0.2 from https://files.pythonhosted.org/packages/dd/fe/3ee37d02ca4040f2fb22d34eb415198f955862b5dd47eee01df4c8f5454c/cymem-2.0.13-cp312-cp312-win_amd64.whl.metadata
+  Downloading cymem-2.0.13-cp312-cp312-win_amd64.whl.metadata (9.9 kB)
+Collecting preshed<3.1.0,>=3.0.2 (from spacy->misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for preshed<3.1.0,>=3.0.2 from https://files.pythonhosted.org/packages/e4/12/a2285b78bd097a1e53fb90a1743bc8ce0d35e5b65b6853f3b3c47da398ca/preshed-3.0.12-cp312-cp312-win_amd64.whl.metadata
+  Downloading preshed-3.0.12-cp312-cp312-win_amd64.whl.metadata (2.6 kB)
+Collecting thinc<8.4.0,>=8.3.4 (from spacy->misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for thinc<8.4.0,>=8.3.4 from https://files.pythonhosted.org/packages/0b/66/30f9d8d41049b78bc614213d492792fbcfeb1b28642adf661c42110a7ebd/thinc-8.3.10-cp312-cp312-win_amd64.whl.metadata
+  Downloading thinc-8.3.10-cp312-cp312-win_amd64.whl.metadata (15 kB)
+Collecting wasabi<1.2.0,>=0.9.1 (from spacy->misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for wasabi<1.2.0,>=0.9.1 from https://files.pythonhosted.org/packages/06/7c/34330a89da55610daa5f245ddce5aab81244321101614751e7537f125133/wasabi-1.1.3-py3-none-any.whl.metadata
+  Downloading wasabi-1.1.3-py3-none-any.whl.metadata (28 kB)
+Collecting srsly<3.0.0,>=2.4.3 (from spacy->misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for srsly<3.0.0,>=2.4.3 from https://files.pythonhosted.org/packages/73/aa/8393344ca7f0e81965febba07afc5cad68335ed0426408d480b861ab915b/srsly-2.5.2-cp312-cp312-win_amd64.whl.metadata
+  Downloading srsly-2.5.2-cp312-cp312-win_amd64.whl.metadata (20 kB)
+Collecting catalogue<2.1.0,>=2.0.6 (from spacy->misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for catalogue<2.1.0,>=2.0.6 from https://files.pythonhosted.org/packages/9e/96/d32b941a501ab566a16358d68b6eb4e4acc373fab3c3c4d7d9e649f7b4bb/catalogue-2.0.10-py3-none-any.whl.metadata
+  Downloading catalogue-2.0.10-py3-none-any.whl.metadata (14 kB)
+Collecting weasel<0.5.0,>=0.4.2 (from spacy->misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for weasel<0.5.0,>=0.4.2 from https://files.pythonhosted.org/packages/a4/74/a148b41572656904a39dfcfed3f84dd1066014eed94e209223ae8e9d088d/weasel-0.4.3-py3-none-any.whl.metadata
+  Downloading weasel-0.4.3-py3-none-any.whl.metadata (4.6 kB)
+Collecting typer-slim<1.0.0,>=0.3.0 (from spacy->misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for typer-slim<1.0.0,>=0.3.0 from https://files.pythonhosted.org/packages/a7/24/5480c20380dfd18cf33d14784096dca45a24eae6102e91d49a718d3b6855/typer_slim-0.24.0-py3-none-any.whl.metadata
+  Downloading typer_slim-0.24.0-py3-none-any.whl.metadata (4.2 kB)
+Requirement already satisfied: pydantic!=1.8,!=1.8.1,<3.0.0,>=1.7.4 in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from spacy->misaki[en]>=0.9.4->kokoro) (2.12.5)
+Collecting curated-transformers<3.0.0,>=2.0.0 (from spacy-curated-transformers->misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for curated-transformers<3.0.0,>=2.0.0 from https://files.pythonhosted.org/packages/1d/16/62dcf539c53ec0a7f27c308e4665aecd4e4eafa0c3b7d4fe544ab9409525/curated_transformers-2.0.1-py2.py3-none-any.whl.metadata
+  Downloading curated_transformers-2.0.1-py2.py3-none-any.whl.metadata (5.3 kB)
+Collecting curated-tokenizers<3.0.0,>=2.0.0 (from spacy-curated-transformers->misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for curated-tokenizers<3.0.0,>=2.0.0 from https://files.pythonhosted.org/packages/bd/f2/6e9b2915e031f7b6e377bccc8399dab151cc90ef2f1c6f14cce743321fc2/curated_tokenizers-2.0.0-cp312-cp312-win_amd64.whl.metadata
+  Downloading curated_tokenizers-2.0.0-cp312-cp312-win_amd64.whl.metadata (2.0 kB)
+INFO: pip is looking at multiple versions of spacy-curated-transformers to determine which version is compatible with other requirements. This could take a while.
+Collecting spacy-curated-transformers (from misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for spacy-curated-transformers from https://files.pythonhosted.org/packages/44/09/36057ddd3b750db984504d80cfbf4f2d6faab0155b01cc27cc35ea9f9fa9/spacy_curated_transformers-2.1.1-py2.py3-none-any.whl.metadata
+  Downloading spacy_curated_transformers-2.1.1-py2.py3-none-any.whl.metadata (2.8 kB)
+Collecting spacy (from misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for spacy from https://files.pythonhosted.org/packages/70/fd/39947ce507ca2724d2bdd219933144dbc5922a42f6455a57368ffbefdfdb/spacy-4.0.0.dev3-cp312-cp312-win_amd64.whl.metadata
+  Downloading spacy-4.0.0.dev3-cp312-cp312-win_amd64.whl.metadata (26 kB)
+Collecting spacy-curated-transformers (from misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for spacy-curated-transformers from https://files.pythonhosted.org/packages/86/e9/248f4fb39b1684acb0a96f27e78d45dea2c7bfae5dd39fc4ff3ee5d1fa0f/spacy_curated_transformers-2.0.0-py2.py3-none-any.whl.metadata
+  Downloading spacy_curated_transformers-2.0.0-py2.py3-none-any.whl.metadata (2.8 kB)
+  Obtaining dependency information for spacy-curated-transformers from https://files.pythonhosted.org/packages/42/d8/f053d43125ae4ad14f3e2a12a475a656128233f1f40a272c6e09a05c73e8/spacy_curated_transformers-0.3.1-py2.py3-none-any.whl.metadata
+  Downloading spacy_curated_transformers-0.3.1-py2.py3-none-any.whl.metadata (2.7 kB)
+Collecting curated-transformers<0.2.0,>=0.1.0 (from spacy-curated-transformers->misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for curated-transformers<0.2.0,>=0.1.0 from https://files.pythonhosted.org/packages/d6/67/3b72b3fdfcadab61bc8f59c17e63770e526ffabd583ed32f174a7c01af85/curated_transformers-0.1.1-py2.py3-none-any.whl.metadata
+  Downloading curated_transformers-0.1.1-py2.py3-none-any.whl.metadata (965 bytes)
+Collecting curated-tokenizers<0.1.0,>=0.0.9 (from spacy-curated-transformers->misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for curated-tokenizers<0.1.0,>=0.0.9 from https://files.pythonhosted.org/packages/0f/fc/776b7464029ea126bf55df2a5edd437178ad8e5c0126f953891dfa603f9c/curated_tokenizers-0.0.9-cp312-cp312-win_amd64.whl.metadata
+  Downloading curated_tokenizers-0.0.9-cp312-cp312-win_amd64.whl.metadata (2.0 kB)
+Requirement already satisfied: annotated-types>=0.6.0 in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from pydantic!=1.8,!=1.8.1,<3.0.0,>=1.7.4->spacy->misaki[en]>=0.9.4->kokoro) (0.7.0)
+Requirement already satisfied: pydantic-core==2.41.5 in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from pydantic!=1.8,!=1.8.1,<3.0.0,>=1.7.4->spacy->misaki[en]>=0.9.4->kokoro) (2.41.5)
+Requirement already satisfied: typing-inspection>=0.4.2 in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from pydantic!=1.8,!=1.8.1,<3.0.0,>=1.7.4->spacy->misaki[en]>=0.9.4->kokoro) (0.4.2)
+Collecting blis<1.4.0,>=1.3.0 (from thinc<8.4.0,>=8.3.4->spacy->misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for blis<1.4.0,>=1.3.0 from https://files.pythonhosted.org/packages/20/07/fb43edc2ff0a6a367e4a94fc39eb3b85aa1e55e24cc857af2db145ce9f0d/blis-1.3.3-cp312-cp312-win_amd64.whl.metadata
+  Downloading blis-1.3.3-cp312-cp312-win_amd64.whl.metadata (7.7 kB)
+Collecting confection<1.0.0,>=0.0.1 (from thinc<8.4.0,>=8.3.4->spacy->misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for confection<1.0.0,>=0.0.1 from https://files.pythonhosted.org/packages/0c/00/3106b1854b45bd0474ced037dfe6b73b90fe68a68968cef47c23de3d43d2/confection-0.1.5-py3-none-any.whl.metadata
+  Downloading confection-0.1.5-py3-none-any.whl.metadata (19 kB)
+Collecting typer>=0.24.0 (from typer-slim<1.0.0,>=0.3.0->spacy->misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for typer>=0.24.0 from https://files.pythonhosted.org/packages/4a/91/48db081e7a63bb37284f9fbcefda7c44c277b18b0e13fbc36ea2335b71e6/typer-0.24.1-py3-none-any.whl.metadata
+  Using cached typer-0.24.1-py3-none-any.whl.metadata (16 kB)
+Collecting cloudpathlib<1.0.0,>=0.7.0 (from weasel<0.5.0,>=0.4.2->spacy->misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for cloudpathlib<1.0.0,>=0.7.0 from https://files.pythonhosted.org/packages/ae/8a/c4bb04426d608be4a3171efa2e233d2c59a5c8937850c10d098e126df18e/cloudpathlib-0.23.0-py3-none-any.whl.metadata
+  Downloading cloudpathlib-0.23.0-py3-none-any.whl.metadata (16 kB)
+Collecting smart-open<8.0.0,>=5.2.1 (from weasel<0.5.0,>=0.4.2->spacy->misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for smart-open<8.0.0,>=5.2.1 from https://files.pythonhosted.org/packages/5e/ea/dcdecd68acebb49d3fd560473a43499b1635076f7f1ae8641c060fe7ce74/smart_open-7.5.1-py3-none-any.whl.metadata
+  Downloading smart_open-7.5.1-py3-none-any.whl.metadata (24 kB)
+Collecting csvw>=1.5.6 (from segments->phonemizer-fork->misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for csvw>=1.5.6 from https://files.pythonhosted.org/packages/80/cb/19e8e582fc164db200c18078bdbdcc60c012cb83c7f02ea8e876bc0b1adf/csvw-3.7.0-py2.py3-none-any.whl.metadata
+  Downloading csvw-3.7.0-py2.py3-none-any.whl.metadata (10 kB)
+Collecting isodate (from csvw>=1.5.6->segments->phonemizer-fork->misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for isodate from https://files.pythonhosted.org/packages/15/aa/0aca39a37d3c7eb941ba736ede56d689e7be91cab5d9ca846bde3999eba6/isodate-0.7.2-py3-none-any.whl.metadata
+  Downloading isodate-0.7.2-py3-none-any.whl.metadata (11 kB)
+Requirement already satisfied: python-dateutil in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from csvw>=1.5.6->segments->phonemizer-fork->misaki[en]>=0.9.4->kokoro) (2.9.0.post0)
+Collecting rfc3986<2 (from csvw>=1.5.6->segments->phonemizer-fork->misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for rfc3986<2 from https://files.pythonhosted.org/packages/c4/e5/63ca2c4edf4e00657584608bee1001302bbf8c5f569340b78304f2f446cb/rfc3986-1.5.0-py2.py3-none-any.whl.metadata
+  Downloading rfc3986-1.5.0-py2.py3-none-any.whl.metadata (6.5 kB)
+Collecting uritemplate>=3.0.0 (from csvw>=1.5.6->segments->phonemizer-fork->misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for uritemplate>=3.0.0 from https://files.pythonhosted.org/packages/a9/99/3ae339466c9183ea5b8ae87b34c0b897eda475d2aec2307cae60e5cd4f29/uritemplate-4.2.0-py3-none-any.whl.metadata
+  Downloading uritemplate-4.2.0-py3-none-any.whl.metadata (2.6 kB)
+Collecting babel (from csvw>=1.5.6->segments->phonemizer-fork->misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for babel from https://files.pythonhosted.org/packages/77/f5/21d2de20e8b8b0408f0681956ca2c69f1320a3848ac50e6e7f39c6159675/babel-2.18.0-py3-none-any.whl.metadata
+  Downloading babel-2.18.0-py3-none-any.whl.metadata (2.2 kB)
+Collecting language-tags (from csvw>=1.5.6->segments->phonemizer-fork->misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for language-tags from https://files.pythonhosted.org/packages/b0/42/327554649ed2dd5ce59d3f5da176c7be20f9352c7c6c51597293660b7b08/language_tags-1.2.0-py3-none-any.whl.metadata
+  Downloading language_tags-1.2.0-py3-none-any.whl.metadata (2.1 kB)
+Requirement already satisfied: rdflib in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from csvw>=1.5.6->segments->phonemizer-fork->misaki[en]>=0.9.4->kokoro) (7.5.0)
+Collecting termcolor (from csvw>=1.5.6->segments->phonemizer-fork->misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for termcolor from https://files.pythonhosted.org/packages/33/d1/8bb87d21e9aeb323cc03034f5eaf2c8f69841e40e4853c2627edf8111ed3/termcolor-3.3.0-py3-none-any.whl.metadata
+  Downloading termcolor-3.3.0-py3-none-any.whl.metadata (6.5 kB)
+Requirement already satisfied: jsonschema in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from csvw>=1.5.6->segments->phonemizer-fork->misaki[en]>=0.9.4->kokoro) (4.25.1)
+Collecting wrapt (from smart-open<8.0.0,>=5.2.1->weasel<0.5.0,>=0.4.2->spacy->misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for wrapt from https://files.pythonhosted.org/packages/8e/b2/feecfe29f28483d888d76a48f03c4c4d8afea944dbee2b0cd3380f9df032/wrapt-2.1.2-cp312-cp312-win_amd64.whl.metadata
+  Downloading wrapt-2.1.2-cp312-cp312-win_amd64.whl.metadata (7.6 kB)
+Requirement already satisfied: click>=8.2.1 in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from typer>=0.24.0->typer-slim<1.0.0,>=0.3.0->spacy->misaki[en]>=0.9.4->kokoro) (8.3.1)
+Requirement already satisfied: shellingham>=1.3.0 in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from typer>=0.24.0->typer-slim<1.0.0,>=0.3.0->spacy->misaki[en]>=0.9.4->kokoro) (1.5.4)
+Requirement already satisfied: rich>=12.3.0 in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from typer>=0.24.0->typer-slim<1.0.0,>=0.3.0->spacy->misaki[en]>=0.9.4->kokoro) (14.2.0)
+Collecting annotated-doc>=0.0.2 (from typer>=0.24.0->typer-slim<1.0.0,>=0.3.0->spacy->misaki[en]>=0.9.4->kokoro)
+  Obtaining dependency information for annotated-doc>=0.0.2 from https://files.pythonhosted.org/packages/1e/d3/26bf1008eb3d2daa8ef4cacc7f3bfdc11818d111f7e2d0201bc6e3b49d45/annotated_doc-0.0.4-py3-none-any.whl.metadata
+  Using cached annotated_doc-0.0.4-py3-none-any.whl.metadata (6.6 kB)
+Requirement already satisfied: markdown-it-py>=2.2.0 in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from rich>=12.3.0->typer>=0.24.0->typer-slim<1.0.0,>=0.3.0->spacy->misaki[en]>=0.9.4->kokoro) (4.0.0)
+Requirement already satisfied: pygments<3.0.0,>=2.13.0 in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from rich>=12.3.0->typer>=0.24.0->typer-slim<1.0.0,>=0.3.0->spacy->misaki[en]>=0.9.4->kokoro) (2.19.2)
+Requirement already satisfied: jsonschema-specifications>=2023.03.6 in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from jsonschema->csvw>=1.5.6->segments->phonemizer-fork->misaki[en]>=0.9.4->kokoro) (2025.9.1)
+Requirement already satisfied: referencing>=0.28.4 in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from jsonschema->csvw>=1.5.6->segments->phonemizer-fork->misaki[en]>=0.9.4->kokoro) (0.37.0)
+Requirement already satisfied: rpds-py>=0.7.1 in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from jsonschema->csvw>=1.5.6->segments->phonemizer-fork->misaki[en]>=0.9.4->kokoro) (0.30.0)
+Requirement already satisfied: six>=1.5 in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from python-dateutil->csvw>=1.5.6->segments->phonemizer-fork->misaki[en]>=0.9.4->kokoro) (1.17.0)
+Requirement already satisfied: pyparsing<4,>=2.1.0 in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from rdflib->csvw>=1.5.6->segments->phonemizer-fork->misaki[en]>=0.9.4->kokoro) (3.3.1)
+Requirement already satisfied: mdurl~=0.1 in c:\users\joanne\documents\smart_ai_tutor\smartaivenv\lib\site-packages (from markdown-it-py>=2.2.0->rich>=12.3.0->typer>=0.24.0->typer-slim<1.0.0,>=0.3.0->spacy->misaki[en]>=0.9.4->kokoro) (0.1.2)
+Downloading kokoro-0.9.4-py3-none-any.whl (32 kB)
+Downloading soundfile-0.13.1-py2.py3-none-win_amd64.whl (1.0 MB)
+   ---------------------------------------- 1.0/1.0 MB 5.9 MB/s eta 0:00:00
+Downloading loguru-0.7.3-py3-none-any.whl (61 kB)
+   ---------------------------------------- 61.6/61.6 kB ? eta 0:00:00
+Downloading win32_setctime-1.2.0-py3-none-any.whl (4.1 kB)
+Downloading addict-2.4.0-py3-none-any.whl (3.8 kB)
+Downloading espeakng_loader-0.2.4-py3-none-win_amd64.whl (9.4 MB)
+   ---------------------------------------- 9.4/9.4 MB 9.0 MB/s eta 0:00:00
+Downloading misaki-0.9.4-py3-none-any.whl (3.6 MB)
+   ---------------------------------------- 3.6/3.6 MB 8.5 MB/s eta 0:00:00
+Downloading num2words-0.5.14-py3-none-any.whl (163 kB)
+   ---------------------------------------- 163.5/163.5 kB 9.6 MB/s eta 0:00:00
+Downloading phonemizer_fork-3.3.2-py3-none-any.whl (82 kB)
+   ---------------------------------------- 82.7/82.7 kB 4.8 MB/s eta 0:00:00
+Downloading spacy-3.8.11-cp312-cp312-win_amd64.whl (14.2 MB)
+   ---------------------------------------- 14.2/14.2 MB 8.5 MB/s eta 0:00:00
+Downloading spacy_curated_transformers-0.3.1-py2.py3-none-any.whl (237 kB)
+   ---------------------------------------- 237.9/237.9 kB 7.3 MB/s eta 0:00:00
+Downloading catalogue-2.0.10-py3-none-any.whl (17 kB)
+Downloading curated_tokenizers-0.0.9-cp312-cp312-win_amd64.whl (731 kB)
+   ---------------------------------------- 731.5/731.5 kB 7.7 MB/s eta 0:00:00
+Downloading curated_transformers-0.1.1-py2.py3-none-any.whl (25 kB)
+Downloading cymem-2.0.13-cp312-cp312-win_amd64.whl (40 kB)
+   ---------------------------------------- 40.2/40.2 kB ? eta 0:00:00
+Downloading murmurhash-1.0.15-cp312-cp312-win_amd64.whl (25 kB)
+Downloading preshed-3.0.12-cp312-cp312-win_amd64.whl (118 kB)
+   ---------------------------------------- 118.3/118.3 kB 3.5 MB/s eta 0:00:00
+Downloading spacy_legacy-3.0.12-py2.py3-none-any.whl (29 kB)
+Downloading spacy_loggers-1.0.5-py3-none-any.whl (22 kB)
+Downloading srsly-2.5.2-cp312-cp312-win_amd64.whl (654 kB)
+   ---------------------------------------- 654.8/654.8 kB 8.3 MB/s eta 0:00:00
+Downloading thinc-8.3.10-cp312-cp312-win_amd64.whl (1.7 MB)
+   ---------------------------------------- 1.7/1.7 MB 6.8 MB/s eta 0:00:00
+Downloading typer_slim-0.24.0-py3-none-any.whl (3.4 kB)
+Downloading wasabi-1.1.3-py3-none-any.whl (27 kB)
+Downloading weasel-0.4.3-py3-none-any.whl (50 kB)
+   ---------------------------------------- 50.8/50.8 kB 2.7 MB/s eta 0:00:00
+Downloading dlinfo-2.0.0-py3-none-any.whl (3.7 kB)
+Downloading segments-2.4.0-py2.py3-none-any.whl (16 kB)
+Downloading blis-1.3.3-cp312-cp312-win_amd64.whl (6.2 MB)
+   ---------------------------------------- 6.2/6.2 MB 7.9 MB/s eta 0:00:00
+Downloading cloudpathlib-0.23.0-py3-none-any.whl (62 kB)
+   ---------------------------------------- 62.8/62.8 kB 3.3 MB/s eta 0:00:00
+Downloading confection-0.1.5-py3-none-any.whl (35 kB)
+Downloading csvw-3.7.0-py2.py3-none-any.whl (60 kB)
+   ---------------------------------------- 60.7/60.7 kB 3.4 MB/s eta 0:00:00
+Downloading smart_open-7.5.1-py3-none-any.whl (64 kB)
+   ---------------------------------------- 64.1/64.1 kB 3.6 MB/s eta 0:00:00
+Using cached typer-0.24.1-py3-none-any.whl (56 kB)
+Using cached annotated_doc-0.0.4-py3-none-any.whl (5.3 kB)
+Downloading rfc3986-1.5.0-py2.py3-none-any.whl (31 kB)
+Downloading uritemplate-4.2.0-py3-none-any.whl (11 kB)
+Downloading babel-2.18.0-py3-none-any.whl (10.2 MB)
+   ---------------------------------------- 10.2/10.2 MB 8.7 MB/s eta 0:00:00
+Downloading isodate-0.7.2-py3-none-any.whl (22 kB)
+Downloading language_tags-1.2.0-py3-none-any.whl (213 kB)
+   --------------------------------------- 213.4/213.4 kB 12.7 MB/s eta 0:00:00
+Downloading termcolor-3.3.0-py3-none-any.whl (7.7 kB)
+Downloading wrapt-2.1.2-cp312-cp312-win_amd64.whl (60 kB)
+   ---------------------------------------- 60.4/60.4 kB 3.3 MB/s eta 0:00:00
+Building wheels for collected packages: docopt
+  Building wheel for docopt (pyproject.toml): started
+  Building wheel for docopt (pyproject.toml): finished with status 'done'
+  Created wheel for docopt: filename=docopt-0.6.2-py2.py3-none-any.whl size=13856 sha256=92af043408817eb673bec5818ad17493f7830ca3c3eb58184a223ae34f46c498
+  Stored in directory: c:\users\joanne\appdata\local\pip\cache\wheels\1a\bf\a1\4cee4f7678c68c5875ca89eaccf460593539805c3906722228
+Successfully built docopt
+Installing collected packages: rfc3986, language-tags, docopt, addict, wrapt, win32-setctime, wasabi, uritemplate, termcolor, spacy-loggers, spacy-legacy, num2words, murmurhash, misaki, isodate, espeakng-loader, dlinfo, cymem, curated-tokenizers, cloudpathlib, catalogue, blis, babel, annotated-doc, srsly, soundfile, smart-open, preshed, loguru, typer, curated-transformers, confection, typer-slim, thinc, spacy-curated-transformers, csvw, weasel, segments, spacy, phonemizer-fork, kokoro
+  Attempting uninstall: typer
+    Found existing installation: typer 0.21.0
+    Uninstalling typer-0.21.0:
+      Successfully uninstalled typer-0.21.0
+Successfully installed addict-2.4.0 annotated-doc-0.0.4 babel-2.18.0 blis-1.3.3 catalogue-2.0.10 cloudpathlib-0.23.0 confection-0.1.5 csvw-3.7.0 curated-tokenizers-0.0.9 curated-transformers-0.1.1 cymem-2.0.13 dlinfo-2.0.0 docopt-0.6.2 espeakng-loader-0.2.4 isodate-0.7.2 kokoro-0.9.4 language-tags-1.2.0 loguru-0.7.3 misaki-0.9.4 murmurhash-1.0.15 num2words-0.5.14 phonemizer-fork-3.3.2 preshed-3.0.12 rfc3986-1.5.0 segments-2.4.0 smart-open-7.5.1 soundfile-0.13.1 spacy-3.8.11 spacy-curated-transformers-0.3.1 spacy-legacy-3.0.12 spacy-loggers-1.0.5 srsly-2.5.2 termcolor-3.3.0 thinc-8.3.10 typer-0.24.1 typer-slim-0.24.0 uritemplate-4.2.0 wasabi-1.1.3 weasel-0.4.3 win32-setctime-1.2.0 wrapt-2.1.2

@@ -1,7 +1,7 @@
 [
   {
-    "id": "4_0",
-    "module": 4,
+    "id": "1_0",
+    "module": 1,
     "topic": "1. MAIN MEMORY",
     "subtopic": "General",
     "lecture_order": 0,
@@ -10,8 +10,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_1",
-    "module": 4,
+    "id": "1_1",
+    "module": 1,
     "topic": "1. MAIN MEMORY",
     "subtopic": "General",
     "lecture_order": 1,
@@ -20,8 +20,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_2",
-    "module": 4,
+    "id": "1_2",
+    "module": 1,
     "topic": "1. MAIN MEMORY",
     "subtopic": "CPU clock to complete, in which case the",
     "lecture_order": 2,
@@ -30,8 +30,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_3",
-    "module": 4,
+    "id": "1_3",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 3,
@@ -40,8 +40,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_4",
-    "module": 4,
+    "id": "1_4",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "Protection c",
     "lecture_order": 4,
@@ -50,8 +50,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_5",
-    "module": 4,
+    "id": "1_5",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 5,
@@ -60,8 +60,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_6",
-    "module": 4,
+    "id": "1_6",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 6,
@@ -70,8 +70,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_7",
-    "module": 4,
+    "id": "1_7",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "Depending on the memory",
     "lecture_order": 7,
@@ -80,8 +80,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_8",
-    "module": 4,
+    "id": "1_8",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 8,
@@ -90,8 +90,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_9",
-    "module": 4,
+    "id": "1_9",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 9,
@@ -100,8 +100,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_10",
-    "module": 4,
+    "id": "1_10",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 10,
@@ -110,8 +110,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_11",
-    "module": 4,
+    "id": "1_11",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 11,
@@ -120,8 +120,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_12",
-    "module": 4,
+    "id": "1_12",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 12,
@@ -130,8 +130,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_13",
-    "module": 4,
+    "id": "1_13",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 13,
@@ -140,8 +140,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_14",
-    "module": 4,
+    "id": "1_14",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 14,
@@ -150,8 +150,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_15",
-    "module": 4,
+    "id": "1_15",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 15,
@@ -160,8 +160,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_16",
-    "module": 4,
+    "id": "1_16",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 16,
@@ -170,8 +170,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_17",
-    "module": 4,
+    "id": "1_17",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 17,
@@ -180,8 +180,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_18",
-    "module": 4,
+    "id": "1_18",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 18,
@@ -190,8 +190,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_19",
-    "module": 4,
+    "id": "1_19",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 19,
@@ -200,8 +200,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_20",
-    "module": 4,
+    "id": "1_20",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 20,
@@ -210,8 +210,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_21",
-    "module": 4,
+    "id": "1_21",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 21,
@@ -220,8 +220,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_22",
-    "module": 4,
+    "id": "1_22",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 22,
@@ -230,8 +230,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_23",
-    "module": 4,
+    "id": "1_23",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 23,
@@ -240,8 +240,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_24",
-    "module": 4,
+    "id": "1_24",
+    "module": 1,
     "topic": "2. SWAPPING",
     "subtopic": "General",
     "lecture_order": 24,
@@ -250,8 +250,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_25",
-    "module": 4,
+    "id": "1_25",
+    "module": 1,
     "topic": "2. SWAPPING",
     "subtopic": "General",
     "lecture_order": 25,
@@ -260,8 +260,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_26",
-    "module": 4,
+    "id": "1_26",
+    "module": 1,
     "topic": "2. SWAPPING",
     "subtopic": "General",
     "lecture_order": 26,
@@ -270,8 +270,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_27",
-    "module": 4,
+    "id": "1_27",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 27,
@@ -280,8 +280,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_28",
-    "module": 4,
+    "id": "1_28",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 28,
@@ -290,8 +290,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_29",
-    "module": 4,
+    "id": "1_29",
+    "module": 1,
     "topic": "3. CONTIGUOUS MEMORY AnLLOCATION",
     "subtopic": "General",
     "lecture_order": 29,
@@ -300,8 +300,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_30",
-    "module": 4,
+    "id": "1_30",
+    "module": 1,
     "topic": "3. CONTIGUOUS MEMORY AnLLOCATION",
     "subtopic": "General",
     "lecture_order": 30,
@@ -310,8 +310,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_31",
-    "module": 4,
+    "id": "1_31",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "Fig:4.3Hardware supportfor relocation and limit registers.",
     "lecture_order": 31,
@@ -320,8 +320,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_32",
-    "module": 4,
+    "id": "1_32",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 32,
@@ -330,8 +330,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_33",
-    "module": 4,
+    "id": "1_33",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 33,
@@ -340,8 +340,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_34",
-    "module": 4,
+    "id": "1_34",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 34,
@@ -350,8 +350,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_35",
-    "module": 4,
+    "id": "1_35",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 35,
@@ -360,8 +360,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_36",
-    "module": 4,
+    "id": "1_36",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 36,
@@ -370,8 +370,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_37",
-    "module": 4,
+    "id": "1_37",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 37,
@@ -380,8 +380,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_38",
-    "module": 4,
+    "id": "1_38",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 38,
@@ -390,8 +390,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_39",
-    "module": 4,
+    "id": "1_39",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 39,
@@ -400,8 +400,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_40",
-    "module": 4,
+    "id": "1_40",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 40,
@@ -410,8 +410,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_41",
-    "module": 4,
+    "id": "1_41",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 41,
@@ -420,8 +420,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_42",
-    "module": 4,
+    "id": "1_42",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 42,
@@ -430,8 +430,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_43",
-    "module": 4,
+    "id": "1_43",
+    "module": 1,
     "topic": "4. SEGMENTATION",
     "subtopic": "Segmentation is a memory-",
     "lecture_order": 43,
@@ -440,8 +440,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_44",
-    "module": 4,
+    "id": "1_44",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 44,
@@ -450,8 +450,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_45",
-    "module": 4,
+    "id": "1_45",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "Fig:4.12 User's view of a program.",
     "lecture_order": 45,
@@ -460,8 +460,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_46",
-    "module": 4,
+    "id": "1_46",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "When an offset is legal, it is added",
     "lecture_order": 46,
@@ -470,8 +470,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_47",
-    "module": 4,
+    "id": "1_47",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 47,
@@ -480,8 +480,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_48",
-    "module": 4,
+    "id": "1_48",
+    "module": 1,
     "topic": "5. PAGING",
     "subtopic": "General",
     "lecture_order": 48,
@@ -490,8 +490,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_49",
-    "module": 4,
+    "id": "1_49",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 49,
@@ -500,8 +500,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_50",
-    "module": 4,
+    "id": "1_50",
+    "module": 1,
     "topic": "Fig:4.4 Paging Hardware",
     "subtopic": "General",
     "lecture_order": 50,
@@ -510,8 +510,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_51",
-    "module": 4,
+    "id": "1_51",
+    "module": 1,
     "topic": "Fig:4.4 Paging Hardware",
     "subtopic": "General",
     "lecture_order": 51,
@@ -520,8 +520,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_52",
-    "module": 4,
+    "id": "1_52",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "Fig:4.5 Paging model of logical ando physical memory.",
     "lecture_order": 52,
@@ -530,8 +530,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_53",
-    "module": 4,
+    "id": "1_53",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 53,
@@ -540,8 +540,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_54",
-    "module": 4,
+    "id": "1_54",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 54,
@@ -550,8 +550,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_55",
-    "module": 4,
+    "id": "1_55",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 55,
@@ -560,8 +560,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_56",
-    "module": 4,
+    "id": "1_56",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 56,
@@ -570,8 +570,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_57",
-    "module": 4,
+    "id": "1_57",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 57,
@@ -580,8 +580,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_58",
-    "module": 4,
+    "id": "1_58",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 58,
@@ -590,8 +590,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_59",
-    "module": 4,
+    "id": "1_59",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 59,
@@ -600,8 +600,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_60",
-    "module": 4,
+    "id": "1_60",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "TLB consists of two parts: a",
     "lecture_order": 60,
@@ -610,8 +610,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_61",
-    "module": 4,
+    "id": "1_61",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 61,
@@ -620,8 +620,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_62",
-    "module": 4,
+    "id": "1_62",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 62,
@@ -630,8 +630,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_63",
-    "module": 4,
+    "id": "1_63",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 63,
@@ -640,8 +640,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_64",
-    "module": 4,
+    "id": "1_64",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "For a 98-percent hit ratio, we have",
     "lecture_order": 64,
@@ -650,8 +650,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_65",
-    "module": 4,
+    "id": "1_65",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "For a 98-percent hit ratio, we have",
     "lecture_order": 65,
@@ -660,8 +660,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_66",
-    "module": 4,
+    "id": "1_66",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "One additional bit",
     "lecture_order": 66,
@@ -670,8 +670,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_67",
-    "module": 4,
+    "id": "1_67",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "When this bit is set to",
     "lecture_order": 67,
@@ -680,8 +680,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_68",
-    "module": 4,
+    "id": "1_68",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 68,
@@ -690,8 +690,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_69",
-    "module": 4,
+    "id": "1_69",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "Fig:4.7 Sharing of code in a paging environment.",
     "lecture_order": 69,
@@ -700,8 +700,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_70",
-    "module": 4,
+    "id": "1_70",
+    "module": 1,
     "topic": "6. DEMAND PAGING",
     "subtopic": "General",
     "lecture_order": 70,
@@ -710,8 +710,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_71",
-    "module": 4,
+    "id": "1_71",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 71,
@@ -720,8 +720,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_72",
-    "module": 4,
+    "id": "1_72",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 72,
@@ -730,8 +730,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_73",
-    "module": 4,
+    "id": "1_73",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "Fig 4.14:Transfer of a pagedn",
     "lecture_order": 73,
@@ -740,8 +740,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_74",
-    "module": 4,
+    "id": "1_74",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 74,
@@ -750,8 +750,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_75",
-    "module": 4,
+    "id": "1_75",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "Fig 4.15:Page table when",
     "lecture_order": 75,
@@ -760,8 +760,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_76",
-    "module": 4,
+    "id": "1_76",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 76,
@@ -770,8 +770,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_77",
-    "module": 4,
+    "id": "1_77",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 77,
@@ -780,8 +780,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_78",
-    "module": 4,
+    "id": "1_78",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 78,
@@ -790,8 +790,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_79",
-    "module": 4,
+    "id": "1_79",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 79,
@@ -800,8 +800,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_80",
-    "module": 4,
+    "id": "1_80",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 80,
@@ -810,8 +810,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_81",
-    "module": 4,
+    "id": "1_81",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 81,
@@ -820,8 +820,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_82",
-    "module": 4,
+    "id": "1_82",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 82,
@@ -830,8 +830,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_83",
-    "module": 4,
+    "id": "1_83",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 83,
@@ -840,8 +840,8 @@
     "source_file": "CST206 M4.txt"
   },
   {
-    "id": "4_84",
-    "module": 4,
+    "id": "1_84",
+    "module": 1,
     "topic": "Module 4 Memory Management",
     "subtopic": "General",
     "lecture_order": 84,

@@ -11,3 +11,11 @@ __pycache__/
 
 # outputs
 output_folder/
+
+ckpts/
+chroma_db/
+*.db
+.vscode/
+__pycache__/
+*.pyc
+*.log

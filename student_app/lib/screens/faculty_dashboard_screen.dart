@@ -42,7 +42,10 @@ class _FacultyDashboardScreenState extends State<FacultyDashboardScreen> {
       return;
     }
 
-    setState(() { _isScheduling = true; _scheduleMessage = null; });
+    setState(() {
+      _isScheduling = true;
+      _scheduleMessage = null;
+    });
 
     try {
       await ApiService.seedSession(
@@ -58,16 +61,17 @@ class _FacultyDashboardScreenState extends State<FacultyDashboardScreen> {
         _isScheduling = false;
       });
       _loadSessions();
+      // Replace the catch block in _scheduleSession()
     } catch (e) {
       setState(() {
-        _scheduleMessage = '❌ Failed to schedule. Check connection.';
+        _scheduleMessage = '❌ Failed: ${e.toString()}'; // ✅ shows actual error
         _isScheduling = false;
       });
     }
   }
 
   void _openFacultyPortal() {
-    html.window.open('http://localhost:5000', '_blank');
+    html.window.open('http://localhost:5001', '_blank');
   }
 
   @override
@@ -80,10 +84,21 @@ class _FacultyDashboardScreenState extends State<FacultyDashboardScreen> {
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Faculty Dashboard',
-              style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
-            Text('Welcome, ${widget.facultyName}',
-              style: TextStyle(color: Colors.white.withOpacity(0.5), fontSize: 12)),
+            const Text(
+              'Faculty Dashboard',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              'Welcome, ${widget.facultyName}',
+              style: TextStyle(
+                color: Colors.white.withOpacity(0.5),
+                fontSize: 12,
+              ),
+            ),
           ],
         ),
         iconTheme: const IconThemeData(color: Colors.white),
@@ -108,7 +123,9 @@ class _FacultyDashboardScreenState extends State<FacultyDashboardScreen> {
                     backgroundColor: const Color(0xFF1E88E5),
                     foregroundColor: Colors.white,
                     padding: const EdgeInsets.symmetric(vertical: 14),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                     elevation: 0,
                   ),
                 ),
@@ -123,11 +140,23 @@ class _FacultyDashboardScreenState extends State<FacultyDashboardScreen> {
               subtitle: 'Students will be notified immediately',
               child: Column(
                 children: [
-                  _buildField(_subjectController, 'Subject (e.g. Computer Networks)', Icons.book_outlined),
+                  _buildField(
+                    _subjectController,
+                    'Subject (e.g. Computer Networks)',
+                    Icons.book_outlined,
+                  ),
                   const SizedBox(height: 12),
-                  _buildField(_topicController, 'Topic (e.g. OSI Model)', Icons.topic_outlined),
+                  _buildField(
+                    _topicController,
+                    'Topic (e.g. OSI Model)',
+                    Icons.topic_outlined,
+                  ),
                   const SizedBox(height: 12),
-                  _buildField(_dateController, 'Date (YYYY-MM-DD)', Icons.date_range_outlined),
+                  _buildField(
+                    _dateController,
+                    'Date (YYYY-MM-DD)',
+                    Icons.date_range_outlined,
+                  ),
                   const SizedBox(height: 16),
                   if (_scheduleMessage != null)
                     Container(
@@ -135,15 +164,19 @@ class _FacultyDashboardScreenState extends State<FacultyDashboardScreen> {
                       margin: const EdgeInsets.only(bottom: 12),
                       decoration: BoxDecoration(
                         color: _scheduleMessage!.startsWith('✅')
-                          ? Colors.green.withOpacity(0.1)
-                          : Colors.red.withOpacity(0.1),
+                            ? Colors.green.withOpacity(0.1)
+                            : Colors.red.withOpacity(0.1),
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child: Text(_scheduleMessage!,
+                      child: Text(
+                        _scheduleMessage!,
                         style: TextStyle(
-                          color: _scheduleMessage!.startsWith('✅') ? Colors.greenAccent : Colors.redAccent,
+                          color: _scheduleMessage!.startsWith('✅')
+                              ? Colors.greenAccent
+                              : Colors.redAccent,
                           fontSize: 13,
-                        )),
+                        ),
+                      ),
                     ),
                   SizedBox(
                     width: double.infinity,
@@ -155,13 +188,22 @@ class _FacultyDashboardScreenState extends State<FacultyDashboardScreen> {
                         padding: const EdgeInsets.symmetric(vertical: 14),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
-                          side: const BorderSide(color: Colors.greenAccent, width: 1),
+                          side: const BorderSide(
+                            color: Colors.greenAccent,
+                            width: 1,
+                          ),
                         ),
                         elevation: 0,
                       ),
                       child: _isScheduling
-                        ? const CircularProgressIndicator(color: Colors.greenAccent, strokeWidth: 2)
-                        : const Text('Schedule Session', style: TextStyle(fontWeight: FontWeight.w600)),
+                          ? const CircularProgressIndicator(
+                              color: Colors.greenAccent,
+                              strokeWidth: 2,
+                            )
+                          : const Text(
+                              'Schedule Session',
+                              style: TextStyle(fontWeight: FontWeight.w600),
+                            ),
                     ),
                   ),
                 ],
@@ -175,51 +217,91 @@ class _FacultyDashboardScreenState extends State<FacultyDashboardScreen> {
               title: 'Scheduled Sessions',
               subtitle: '${_sessions.length} session(s)',
               child: _sessions.isEmpty
-                ? Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Text('No sessions yet.',
-                        style: TextStyle(color: Colors.white.withOpacity(0.3))),
+                  ? Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: Text(
+                          'No sessions yet.',
+                          style: TextStyle(
+                            color: Colors.white.withOpacity(0.3),
+                          ),
+                        ),
+                      ),
+                    )
+                  : Column(
+                      children: _sessions
+                          .map(
+                            (s) => Container(
+                              margin: const EdgeInsets.only(bottom: 8),
+                              padding: const EdgeInsets.all(12),
+                              decoration: BoxDecoration(
+                                color: const Color(0xFF0F1B2D),
+                                borderRadius: BorderRadius.circular(8),
+                                border: Border.all(
+                                  color: Colors.white.withOpacity(0.05),
+                                ),
+                              ),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 8,
+                                      vertical: 3,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: Colors.greenAccent.withOpacity(
+                                        0.1,
+                                      ),
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: Text(
+                                      (s['status'] ?? 'scheduled')
+                                          .toUpperCase(),
+                                      style: const TextStyle(
+                                        color: Colors.greenAccent,
+                                        fontSize: 10,
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 10),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          s['topic'] ?? '',
+                                          style: const TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 13,
+                                          ),
+                                        ),
+                                        Text(
+                                          s['subject'] ?? '',
+                                          style: TextStyle(
+                                            color: Colors.white.withOpacity(
+                                              0.4,
+                                            ),
+                                            fontSize: 11,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Text(
+                                    s['scheduled_date'] ?? '',
+                                    style: TextStyle(
+                                      color: Colors.white.withOpacity(0.3),
+                                      fontSize: 11,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          )
+                          .toList(),
                     ),
-                  )
-                : Column(
-                    children: _sessions.map((s) => Container(
-                      margin: const EdgeInsets.only(bottom: 8),
-                      padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFF0F1B2D),
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: Colors.white.withOpacity(0.05)),
-                      ),
-                      child: Row(
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                            decoration: BoxDecoration(
-                              color: Colors.greenAccent.withOpacity(0.1),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Text((s['status'] ?? 'scheduled').toUpperCase(),
-                              style: const TextStyle(color: Colors.greenAccent, fontSize: 10)),
-                          ),
-                          const SizedBox(width: 10),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(s['topic'] ?? '',
-                                  style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13)),
-                                Text(s['subject'] ?? '',
-                                  style: TextStyle(color: Colors.white.withOpacity(0.4), fontSize: 11)),
-                              ],
-                            ),
-                          ),
-                          Text(s['scheduled_date'] ?? '',
-                            style: TextStyle(color: Colors.white.withOpacity(0.3), fontSize: 11)),
-                        ],
-                      ),
-                    )).toList(),
-                  ),
             ),
           ],
         ),
@@ -227,7 +309,12 @@ class _FacultyDashboardScreenState extends State<FacultyDashboardScreen> {
     );
   }
 
-  Widget _buildCard({required IconData icon, required String title, required String subtitle, required Widget child}) {
+  Widget _buildCard({
+    required IconData icon,
+    required String title,
+    required String subtitle,
+    required Widget child,
+  }) {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -238,14 +325,32 @@ class _FacultyDashboardScreenState extends State<FacultyDashboardScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(children: [
-            Icon(icon, color: const Color(0xFF1E88E5), size: 20),
-            const SizedBox(width: 8),
-            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(title, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14)),
-              Text(subtitle, style: TextStyle(color: Colors.white.withOpacity(0.4), fontSize: 11)),
-            ]),
-          ]),
+          Row(
+            children: [
+              Icon(icon, color: const Color(0xFF1E88E5), size: 20),
+              const SizedBox(width: 8),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14,
+                    ),
+                  ),
+                  Text(
+                    subtitle,
+                    style: TextStyle(
+                      color: Colors.white.withOpacity(0.4),
+                      fontSize: 11,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
           const SizedBox(height: 16),
           child,
         ],
@@ -253,22 +358,35 @@ class _FacultyDashboardScreenState extends State<FacultyDashboardScreen> {
     );
   }
 
-  Widget _buildField(TextEditingController controller, String hint, IconData icon) {
+  Widget _buildField(
+    TextEditingController controller,
+    String hint,
+    IconData icon,
+  ) {
     return TextField(
       controller: controller,
       style: const TextStyle(color: Colors.white, fontSize: 14),
       decoration: InputDecoration(
         hintText: hint,
-        hintStyle: TextStyle(color: Colors.white.withOpacity(0.3), fontSize: 13),
+        hintStyle: TextStyle(
+          color: Colors.white.withOpacity(0.3),
+          fontSize: 13,
+        ),
         prefixIcon: Icon(icon, color: const Color(0xFF1E88E5), size: 18),
         filled: true,
         fillColor: const Color(0xFF0F1B2D),
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide.none),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide.none,
+        ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: const BorderSide(color: Color(0xFF1E88E5), width: 1.5),
         ),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 14,
+          vertical: 12,
+        ),
       ),
     );
   }

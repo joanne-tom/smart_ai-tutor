@@ -2,17 +2,19 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class ApiService {
-  static const String baseUrl = 'http://localhost:5001';  // Your student backend
+  static const String baseUrl = 'http://localhost:5000'; // Your student backend
 
   static Future<Map<String, dynamic>> _post(
     String endpoint,
     Map<String, dynamic> body,
   ) async {
-    final response = await http.post(
-      Uri.parse('$baseUrl$endpoint'),
-      headers: {'Content-Type': 'application/json'},
-      body: jsonEncode(body),
-    ).timeout(const Duration(seconds: 30));
+    final response = await http
+        .post(
+          Uri.parse('$baseUrl$endpoint'),
+          headers: {'Content-Type': 'application/json'},
+          body: jsonEncode(body),
+        )
+        .timeout(const Duration(seconds: 30));
 
     if (response.statusCode == 200) {
       return jsonDecode(response.body);
@@ -109,31 +111,45 @@ class ApiService {
       'session_id': sessionId,
     });
   }
+
+  // api_service.dart — replace seedSession method
   static Future<void> seedSession({
-  required String subject,
-  required String topic,
-  required String date,
-  required String faculty,
-}) async {
-  await _post('/admin/seed_session', {
-    'subject': subject,
-    'topic': topic,
-    'date': date,
-    'faculty': faculty,
-  });
-}
-static Future<Map<String, dynamic>> askQuestionWithMode({
-  required int studentId,
-  required int sessionId,
-  required String question,
-  required String mode,
-}) async {
-  final res = await _post('/mcp/ask_question', {
-    'student_id': studentId,
-    'session_id': sessionId,
-    'question': question,
-    'mode': mode,
-  });
-  return res['data'];
-}
+    required String subject,
+    required String topic,
+    required String date,
+    required String faculty,
+  }) async {
+    final response = await http.post(
+      Uri.parse('$baseUrl/admin/seed_session'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: jsonEncode({
+        'subject': subject,
+        'topic': topic,
+        'scheduled_date': date,
+        'faculty': faculty,
+      }),
+    );
+
+    if (response.statusCode != 200 && response.statusCode != 201) {
+      throw Exception('Failed: ${response.statusCode} ${response.body}');
+    }
+  }
+
+  static Future<Map<String, dynamic>> askQuestionWithMode({
+    required int studentId,
+    required int sessionId,
+    required String question,
+    required String mode,
+  }) async {
+    final res = await _post('/mcp/ask_question', {
+      'student_id': studentId,
+      'session_id': sessionId,
+      'question': question,
+      'mode': mode,
+    });
+    return res['data'];
+  }
 }

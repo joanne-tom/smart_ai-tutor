@@ -26,6 +26,61 @@ from chunking import chunk_os_txt                    # your chunking.py
 app = Flask(__name__, static_folder="static")
 CORS(app)
 
+# app.py — add this import at top
+from kokoro import KPipeline
+import soundfile as sf
+import io
+from flask import send_file
+import torch
+
+# ✅ Initialize Kokoro once globally (loads ~350MB model)
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
+tts_pipeline = KPipeline(lang_code='a')  # 'a' = American English
+
+# ─────────────────────────────────────────
+# ROUTE 6 — Text to Speech
+# ─────────────────────────────────────────
+@app.route("/api/tts", methods=["POST"])
+def tts():
+    data = request.json
+    text = data.get("text", "").strip()
+
+    if not text:
+        return jsonify({"error": "No text provided"}), 400
+
+    try:
+        # ✅ af_sarah = natural female professor voice
+        # Other good voices: af_nova, af_jessica, am_adam (male)
+        generator = tts_pipeline(
+            text,
+            voice='af_sarah',
+            speed=0.95   # slightly slower = clearer for students
+        )
+
+        # Collect all audio chunks
+        import numpy as np
+        audio_chunks = []
+        for _, _, audio in generator:
+            audio_chunks.append(audio)
+
+        full_audio = np.concatenate(audio_chunks)
+
+        # Write to buffer and send as WAV
+        buffer = io.BytesIO()
+        sf.write(buffer, full_audio, 24000, format='WAV')
+        buffer.seek(0)
+
+        return send_file(
+            buffer,
+            mimetype='audio/wav',
+            as_attachment=False,
+            download_name='lecture.wav'
+        )
+
+    except Exception as e:
+        print(f"TTS error: {e}")
+        return jsonify({"error": str(e)}), 500
+
 UPLOAD_FOLDER = pathlib.Path("uploads")
 UPLOAD_FOLDER.mkdir(exist_ok=True)
 TEXT_FOLDER = pathlib.Path("output_text")
@@ -288,68 +343,98 @@ def get_topics():
 
 # ─────────────────────────────────────────
 # ROUTE 5 — Generate lecture (full RAG pipeline)
-# Runs: debug_query → round_robin → run_phi3_draft x3 → verify_drafts
+# Runs: debug_query → round_robin → run_qwen2.5_draft x3 → verify_drafts
 # ─────────────────────────────────────────
 @app.route("/api/generate", methods=["POST"])
 def generate():
-    data    = request.json
-    topic   = data.get("topic", "").strip()
+
+    data = request.json
+
+    module = str(data.get("module", "")).strip()
+    topic = data.get("topic", "").strip()
+    subtopic = data.get("subtopic", "").strip()
     subject = data.get("subject", "").strip()
 
     if not topic:
         return jsonify({"error": "Topic is required"}), 400
+
     if collection.count() == 0:
         return jsonify({"error": "No notes indexed yet. Please upload a PDF first."}), 400
 
-    # ── YOUR rag_pipeline.py logic, line by line ──
 
-    # Step 1: retrieve (your debug_query from embedding.py)
-    results = debug_query(topic, k=9)
+    # Build syllabus-aware query
+    query = f"""
+Explain this Operating Systems topic clearly for students.
+
+Module: {module}
+Topic: {topic}
+Subtopic: {subtopic}
+
+Your explanation must cover:
+• definitions
+• working principle
+• examples if applicable
+• key concepts required for exams
+"""
+
+
+    # STEP 1 — Retrieve chunks
+    results = debug_query(f"{topic} {subtopic}", k=15)
 
     if not results["documents"][0]:
-        return jsonify({"error": "No relevant content found for this topic"}), 404
+        return jsonify({"error": "No relevant content found"}), 404
 
-    # Step 2: round-robin groups (your chunk_subsets.py)
-    groups = round_robin_from_results(results, num_groups=3)
+
+    # STEP 2 — Speculative grouping
+    groups = round_robin_from_results(results, num_groups=2)
+
 
     chunk_lookup = {}
+
     for group in groups:
         for ch in group:
             chunk_lookup[ch["chunk_id"]] = {
-                "content":   ch["content"],
-                "topic":     ch["metadata"].get("topic", ""),
-                "page_hint": ch["metadata"].get("page_hint", ""),
+                "content": ch["content"],
+                "topic": ch["metadata"].get("topic", ""),
+                "page_hint": ch["metadata"].get("page_hint", "")
             }
 
-    # Step 3: draft x3 (your drafter.py)
+
+    # STEP 3 — Draft generation
     drafts = []
+
     for group in groups:
+
         context_chunks = [
             {
-                "id":        ch["metadata"]["id"],
-                "content":   ch["content"],
-                "topic":     ch["metadata"].get("topic", ""),
-                "page_hint": ch["metadata"].get("page_hint", ""),
+                "id": ch["metadata"]["id"],
+                "content": ch["content"],
+                "topic": ch["metadata"].get("topic", ""),
+                "page_hint": ch["metadata"].get("page_hint", "")
             }
             for ch in group
         ]
-        draft = run_phi3_draft(topic, context_chunks)
+
+        draft = run_phi3_draft(query, context_chunks)
         drafts.append(draft)
 
-    # Step 4: verify (your verifier.py with Patronus)
-    answer = verify_drafts(topic, drafts, chunk_lookup)
+
+    # STEP 4 — Verification
+    answer = verify_drafts(query, drafts, chunk_lookup)
+
 
     return jsonify({
-        "topic":     topic,
-        "content":   answer["final_answer"],
+        "module": module,
+        "topic": topic,
+        "subtopic": subtopic,
+        "content": answer["final_answer"],
         "rationale": answer["verification_rationale"],
-        "status":    "success",
+        "status": "success"
     })
-
 
     
     # ... (remaining code unchanged)
 if __name__ == "__main__":
     print("\n🤖 Smart AI Tutor — starting...")
-    print("📌 Open: http://localhost:5000\n")
-    app.run(debug=True, port=5000)
+    print("📌 Open: http://localhost:5001\n")
+    app.run(debug=False, port=5001)

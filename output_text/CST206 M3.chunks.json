@@ -1,7 +1,7 @@
 [
   {
-    "id": "3_0",
-    "module": 3,
+    "id": "1_0",
+    "module": 1,
     "topic": "Synchronization",
     "subtopic": "General",
     "lecture_order": 0,
@@ -10,8 +10,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_1",
-    "module": 3,
+    "id": "1_1",
+    "module": 1,
     "topic": "Synchronization",
     "subtopic": "I* produce an item in nextProduced*I",
     "lecture_order": 1,
@@ -20,8 +20,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_2",
-    "module": 3,
+    "id": "1_2",
+    "module": 1,
     "topic": "Synchronization",
     "subtopic": "I* consume the item in nextConsumed*I",
     "lecture_order": 2,
@@ -30,8 +30,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_3",
-    "module": 3,
+    "id": "1_3",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 3,
@@ -40,8 +40,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_4",
-    "module": 3,
+    "id": "1_4",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "To: producer execute register1 =counter {register1 = 5}",
     "lecture_order": 4,
@@ -50,8 +50,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_5",
-    "module": 3,
+    "id": "1_5",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 5,
@@ -60,8 +60,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_6",
-    "module": 3,
+    "id": "1_6",
+    "module": 1,
     "topic": "3.1 The Critical Section Problem",
     "subtopic": "General",
     "lecture_order": 6,
@@ -70,8 +70,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_7",
-    "module": 3,
+    "id": "1_7",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 7,
@@ -80,8 +80,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_8",
-    "module": 3,
+    "id": "1_8",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "Fig:3.1General nstructure of a typical process Pi",
     "lecture_order": 8,
@@ -90,8 +90,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_9",
-    "module": 3,
+    "id": "1_9",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 9,
@@ -100,8 +100,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_10",
-    "module": 3,
+    "id": "1_10",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 10,
@@ -110,8 +110,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_11",
-    "module": 3,
+    "id": "1_11",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 11,
@@ -120,8 +120,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_12",
-    "module": 3,
+    "id": "1_12",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 12,
@@ -130,8 +130,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_13",
-    "module": 3,
+    "id": "1_13",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 13,
@@ -140,8 +140,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_14",
-    "module": 3,
+    "id": "1_14",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 14,
@@ -150,8 +150,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_15",
-    "module": 3,
+    "id": "1_15",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 15,
@@ -160,8 +160,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_16",
-    "module": 3,
+    "id": "1_16",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 16,
@@ -170,8 +170,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_17",
-    "module": 3,
+    "id": "1_17",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 17,
@@ -180,8 +180,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_18",
-    "module": 3,
+    "id": "1_18",
+    "module": 1,
     "topic": "3.3 Synchronization Hardware",
     "subtopic": "Hardware based solution for critical section problem",
     "lecture_order": 18,
@@ -190,8 +190,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_19",
-    "module": 3,
+    "id": "1_19",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "Fig:3.3 Solution to the critical-section problem using locks.",
     "lecture_order": 19,
@@ -200,8 +200,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_20",
-    "module": 3,
+    "id": "1_20",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "Swap() instructions. o",
     "lecture_order": 20,
@@ -210,8 +210,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_21",
-    "module": 3,
+    "id": "1_21",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "Fig: 3.5 Mutual-exclusion implementation with TestAndSet ().",
     "lecture_order": 21,
@@ -220,8 +220,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_22",
-    "module": 3,
+    "id": "1_22",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "Fig:3.7 Mutual-exclusion implementation with the Swap() instruction",
     "lecture_order": 22,
@@ -230,8 +230,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_23",
-    "module": 3,
+    "id": "1_23",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "The definition of signal() is as follows:",
     "lecture_order": 23,
@@ -240,8 +240,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_24",
-    "module": 3,
+    "id": "1_24",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "Usage o",
     "lecture_order": 24,
@@ -250,8 +250,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_25",
-    "module": 3,
+    "id": "1_25",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 25,
@@ -260,8 +260,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_26",
-    "module": 3,
+    "id": "1_26",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 26,
@@ -270,8 +270,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_27",
-    "module": 3,
+    "id": "1_27",
+    "module": 1,
     "topic": "S2;",
     "subtopic": "General",
     "lecture_order": 27,
@@ -280,8 +280,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_28",
-    "module": 3,
+    "id": "1_28",
+    "module": 1,
     "topic": "Implementation",
     "subtopic": "General",
     "lecture_order": 28,
@@ -290,8 +290,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_29",
-    "module": 3,
+    "id": "1_29",
+    "module": 1,
     "topic": "Implementation",
     "subtopic": "General",
     "lecture_order": 29,
@@ -300,8 +300,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_30",
-    "module": 3,
+    "id": "1_30",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 30,
@@ -310,8 +310,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_31",
-    "module": 3,
+    "id": "1_31",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 31,
@@ -320,8 +320,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_32",
-    "module": 3,
+    "id": "1_32",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 32,
@@ -330,8 +330,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_33",
-    "module": 3,
+    "id": "1_33",
+    "module": 1,
     "topic": "Deadlocks and Starvation",
     "subtopic": "General",
     "lecture_order": 33,
@@ -340,8 +340,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_34",
-    "module": 3,
+    "id": "1_34",
+    "module": 1,
     "topic": "Deadlocks and Starvation",
     "subtopic": "General",
     "lecture_order": 34,
@@ -350,8 +350,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_35",
-    "module": 3,
+    "id": "1_35",
+    "module": 1,
     "topic": "Priority Inversion",
     "subtopic": "General",
     "lecture_order": 35,
@@ -360,8 +360,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_36",
-    "module": 3,
+    "id": "1_36",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 36,
@@ -370,8 +370,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_37",
-    "module": 3,
+    "id": "1_37",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 37,
@@ -380,8 +380,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_38",
-    "module": 3,
+    "id": "1_38",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 38,
@@ -390,8 +390,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_39",
-    "module": 3,
+    "id": "1_39",
+    "module": 1,
     "topic": "3.5 Classic Problems of Synchronization",
     "subtopic": "General",
     "lecture_order": 39,
@@ -400,8 +400,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_40",
-    "module": 3,
+    "id": "1_40",
+    "module": 1,
     "topic": "3.5.1 The Bounded-Buffer Problem",
     "subtopic": "General",
     "lecture_order": 40,
@@ -410,8 +410,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_41",
-    "module": 3,
+    "id": "1_41",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "Fig:3.9 The structure of the producer process.",
     "lecture_order": 41,
@@ -420,8 +420,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_42",
-    "module": 3,
+    "id": "1_42",
+    "module": 1,
     "topic": "3.5.2 The Readers-Wrirters Problem",
     "subtopic": "General",
     "lecture_order": 42,
@@ -430,8 +430,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_43",
-    "module": 3,
+    "id": "1_43",
+    "module": 1,
     "topic": "3.5.2 The Readers-Wrirters Problem",
     "subtopic": "General",
     "lecture_order": 43,
@@ -440,8 +440,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_44",
-    "module": 3,
+    "id": "1_44",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "Semaphore mutex, wrt;",
     "lecture_order": 44,
@@ -450,8 +450,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_45",
-    "module": 3,
+    "id": "1_45",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "Semaphore mutex, wrt;",
     "lecture_order": 45,
@@ -460,8 +460,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_46",
-    "module": 3,
+    "id": "1_46",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "Fig 3.10 The structure of a writer process",
     "lecture_order": 46,
@@ -470,8 +470,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_47",
-    "module": 3,
+    "id": "1_47",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 47,
@@ -480,8 +480,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_48",
-    "module": 3,
+    "id": "1_48",
+    "module": 1,
     "topic": "3.5.3 The Dining-Philosophers Problem",
     "subtopic": "General",
     "lecture_order": 48,
@@ -490,8 +490,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_49",
-    "module": 3,
+    "id": "1_49",
+    "module": 1,
     "topic": "3.5.3 The Dining-Philosophers Problem",
     "subtopic": "Fig 3.11 The situation of the dining philosophers",
     "lecture_order": 49,
@@ -500,8 +500,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_50",
-    "module": 3,
+    "id": "1_50",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "Fig:3.12 The structure of philosopher i..",
     "lecture_order": 50,
@@ -510,8 +510,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_51",
-    "module": 3,
+    "id": "1_51",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "Fig:3.12 The structure of philosopher i..",
     "lecture_order": 51,
@@ -520,8 +520,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_52",
-    "module": 3,
+    "id": "1_52",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 52,
@@ -530,8 +530,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_53",
-    "module": 3,
+    "id": "1_53",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "In this case, a deadlock will occur. .",
     "lecture_order": 53,
@@ -540,8 +540,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_54",
-    "module": 3,
+    "id": "1_54",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "In this case, a deadlock will occur. .",
     "lecture_order": 54,
@@ -550,8 +550,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_55",
-    "module": 3,
+    "id": "1_55",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "Usage e",
     "lecture_order": 55,
@@ -560,8 +560,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_56",
-    "module": 3,
+    "id": "1_56",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 56,
@@ -570,8 +570,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_57",
-    "module": 3,
+    "id": "1_57",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "Fig 3.13 Syntax ofs a monitor",
     "lecture_order": 57,
@@ -580,8 +580,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_58",
-    "module": 3,
+    "id": "1_58",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "The operation",
     "lecture_order": 58,
@@ -590,8 +590,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_59",
-    "module": 3,
+    "id": "1_59",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "Fig:3.14 Schematic view of a monitor",
     "lecture_order": 59,
@@ -600,8 +600,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_60",
-    "module": 3,
+    "id": "1_60",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 60,
@@ -610,8 +610,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_61",
-    "module": 3,
+    "id": "1_61",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "Hence, Q is immediately resumed.",
     "lecture_order": 61,
@@ -620,8 +620,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_62",
-    "module": 3,
+    "id": "1_62",
+    "module": 1,
     "topic": "3.6.2Dining-Philosophers Solution Using Monitors",
     "subtopic": "General",
     "lecture_order": 62,
@@ -630,8 +630,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_63",
-    "module": 3,
+    "id": "1_63",
+    "module": 1,
     "topic": "enum{THINKING, HUNGRY, EATING}state[5];",
     "subtopic": "We also need to declare n",
     "lecture_order": 63,
@@ -640,8 +640,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_64",
-    "module": 3,
+    "id": "1_64",
+    "module": 1,
     "topic": "enum{THINKING, HUNGRY, EATING}state[5];",
     "subtopic": "General",
     "lecture_order": 64,
@@ -650,8 +650,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_65",
-    "module": 3,
+    "id": "1_65",
+    "module": 1,
     "topic": "3.6.3 Implementing a Monitor Using Semaphores",
     "subtopic": "General",
     "lecture_order": 65,
@@ -660,8 +660,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_66",
-    "module": 3,
+    "id": "1_66",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "Mutual exclusion within a monitor is ensured.",
     "lecture_order": 66,
@@ -670,8 +670,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_67",
-    "module": 3,
+    "id": "1_67",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 67,
@@ -680,8 +680,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_68",
-    "module": 3,
+    "id": "1_68",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 68,
@@ -690,8 +690,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_69",
-    "module": 3,
+    "id": "1_69",
+    "module": 1,
     "topic": "MODULE 3",
     "subtopic": "DEADLOCKS",
     "lecture_order": 69,
@@ -700,8 +700,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_70",
-    "module": 3,
+    "id": "1_70",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 70,
@@ -710,8 +710,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_71",
-    "module": 3,
+    "id": "1_71",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 71,
@@ -720,8 +720,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_72",
-    "module": 3,
+    "id": "1_72",
+    "module": 1,
     "topic": "Necessary Conditions a",
     "subtopic": "General",
     "lecture_order": 72,
@@ -730,8 +730,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_73",
-    "module": 3,
+    "id": "1_73",
+    "module": 1,
     "topic": "Necessary Conditions a",
     "subtopic": "General",
     "lecture_order": 73,
@@ -740,8 +740,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_74",
-    "module": 3,
+    "id": "1_74",
+    "module": 1,
     "topic": "Resource-Allocation Graph",
     "subtopic": "General",
     "lecture_order": 74,
@@ -750,8 +750,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_75",
-    "module": 3,
+    "id": "1_75",
+    "module": 1,
     "topic": "Resource-Allocation Graph",
     "subtopic": "General",
     "lecture_order": 75,
@@ -760,8 +760,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_76",
-    "module": 3,
+    "id": "1_76",
+    "module": 1,
     "topic": "Resource-Allocation Graph",
     "subtopic": "General",
     "lecture_order": 76,
@@ -770,8 +770,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_77",
-    "module": 3,
+    "id": "1_77",
+    "module": 1,
     "topic": "The sets P, R and E:",
     "subtopic": "Resource instances:",
     "lecture_order": 77,
@@ -780,8 +780,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_78",
-    "module": 3,
+    "id": "1_78",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "Fig 3.17:Resource allocation grapmh",
     "lecture_order": 78,
@@ -790,8 +790,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_79",
-    "module": 3,
+    "id": "1_79",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 79,
@@ -800,8 +800,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_80",
-    "module": 3,
+    "id": "1_80",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "Fig:3.18 Resource allocation graph with a deadlock",
     "lecture_order": 80,
@@ -810,8 +810,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_81",
-    "module": 3,
+    "id": "1_81",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 81,
@@ -820,8 +820,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_82",
-    "module": 3,
+    "id": "1_82",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 82,
@@ -830,8 +830,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_83",
-    "module": 3,
+    "id": "1_83",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 83,
@@ -840,8 +840,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_84",
-    "module": 3,
+    "id": "1_84",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 84,
@@ -850,8 +850,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_85",
-    "module": 3,
+    "id": "1_85",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 85,
@@ -860,8 +860,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_86",
-    "module": 3,
+    "id": "1_86",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 86,
@@ -870,8 +870,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_87",
-    "module": 3,
+    "id": "1_87",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 87,
@@ -880,8 +880,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_88",
-    "module": 3,
+    "id": "1_88",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 88,
@@ -890,8 +890,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_89",
-    "module": 3,
+    "id": "1_89",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "F might be defined as follows:",
     "lecture_order": 89,
@@ -900,8 +900,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_90",
-    "module": 3,
+    "id": "1_90",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 90,
@@ -910,8 +910,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_91",
-    "module": 3,
+    "id": "1_91",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 91,
@@ -920,8 +920,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_92",
-    "module": 3,
+    "id": "1_92",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 92,
@@ -930,8 +930,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_93",
-    "module": 3,
+    "id": "1_93",
+    "module": 1,
     "topic": "Safe State",
     "subtopic": "General",
     "lecture_order": 93,
@@ -940,8 +940,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_94",
-    "module": 3,
+    "id": "1_94",
+    "module": 1,
     "topic": "Safe State",
     "subtopic": "General",
     "lecture_order": 94,
@@ -950,8 +950,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_95",
-    "module": 3,
+    "id": "1_95",
+    "module": 1,
     "topic": "Safe State",
     "subtopic": "General",
     "lecture_order": 95,
@@ -960,8 +960,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_96",
-    "module": 3,
+    "id": "1_96",
+    "module": 1,
     "topic": "Safe State",
     "subtopic": "General",
     "lecture_order": 96,
@@ -970,8 +970,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_97",
-    "module": 3,
+    "id": "1_97",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "Deadlock avoidance algorithms",
     "lecture_order": 97,
@@ -980,8 +980,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_98",
-    "module": 3,
+    "id": "1_98",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "Deadlock avoidance algorithms",
     "lecture_order": 98,
@@ -990,8 +990,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_99",
-    "module": 3,
+    "id": "1_99",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 99,
@@ -1000,8 +1000,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_100",
-    "module": 3,
+    "id": "1_100",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 100,
@@ -1010,8 +1010,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_101",
-    "module": 3,
+    "id": "1_101",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "Fig:3.21 Resource-allocation graph for deadlock avoidance.",
     "lecture_order": 101,
@@ -1020,8 +1020,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_102",
-    "module": 3,
+    "id": "1_102",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 102,
@@ -1030,8 +1030,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_103",
-    "module": 3,
+    "id": "1_103",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 103,
@@ -1040,8 +1040,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_104",
-    "module": 3,
+    "id": "1_104",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "Rj to complete its task. Note that",
     "lecture_order": 104,
@@ -1050,8 +1050,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_105",
-    "module": 3,
+    "id": "1_105",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 105,
@@ -1060,8 +1060,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_106",
-    "module": 3,
+    "id": "1_106",
+    "module": 1,
     "topic": "2.2) Resource-Request Algorithm",
     "subtopic": "General",
     "lecture_order": 106,
@@ -1070,8 +1070,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_107",
-    "module": 3,
+    "id": "1_107",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 107,
@@ -1080,8 +1080,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_108",
-    "module": 3,
+    "id": "1_108",
+    "module": 1,
     "topic": "Example",
     "subtopic": "P3, P4, P2, Po> satisfies the safety criteria.",
     "lecture_order": 108,
@@ -1090,8 +1090,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_109",
-    "module": 3,
+    "id": "1_109",
+    "module": 1,
     "topic": "Example",
     "subtopic": "General",
     "lecture_order": 109,
@@ -1100,8 +1100,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_110",
-    "module": 3,
+    "id": "1_110",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 110,
@@ -1110,8 +1110,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_111",
-    "module": 3,
+    "id": "1_111",
+    "module": 1,
     "topic": "3.1)Single Instance of Each Resource Type",
     "subtopic": "General",
     "lecture_order": 111,
@@ -1120,8 +1120,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_112",
-    "module": 3,
+    "id": "1_112",
+    "module": 1,
     "topic": "3.1)Single Instance of Each Resource Type",
     "subtopic": "Fig:3.23 (a) Resource-allocation graph. (b) Corresponding wait-for graph.",
     "lecture_order": 112,
@@ -1130,8 +1130,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_113",
-    "module": 3,
+    "id": "1_113",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 113,
@@ -1140,8 +1140,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_114",
-    "module": 3,
+    "id": "1_114",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "T0, we have the following resource-allocation state:",
     "lecture_order": 114,
@@ -1150,8 +1150,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_115",
-    "module": 3,
+    "id": "1_115",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "C. The Request matrix is modified as follows:",
     "lecture_order": 115,
@@ -1160,8 +1160,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_116",
-    "module": 3,
+    "id": "1_116",
+    "module": 1,
     "topic": "For More Study Materials : https://www.keralanotes.com/",
     "subtopic": "General",
     "lecture_order": 116,
@@ -1170,8 +1170,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_117",
-    "module": 3,
+    "id": "1_117",
+    "module": 1,
     "topic": "P1, P2, P3, and P4.",
     "subtopic": "Recovery form deadlock",
     "lecture_order": 117,
@@ -1180,8 +1180,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_118",
-    "module": 3,
+    "id": "1_118",
+    "module": 1,
     "topic": "P1, P2, P3, and P4.",
     "subtopic": "General",
     "lecture_order": 118,
@@ -1190,8 +1190,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_119",
-    "module": 3,
+    "id": "1_119",
+    "module": 1,
     "topic": "P1, P2, P3, and P4.",
     "subtopic": "General",
     "lecture_order": 119,
@@ -1200,8 +1200,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_120",
-    "module": 3,
+    "id": "1_120",
+    "module": 1,
     "topic": "2) Resource Preemption",
     "subtopic": "General",
     "lecture_order": 120,
@@ -1210,8 +1210,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_121",
-    "module": 3,
+    "id": "1_121",
+    "module": 1,
     "topic": "2) Resource Preemption",
     "subtopic": "General",
     "lecture_order": 121,
@@ -1220,8 +1220,8 @@
     "source_file": "CST206 M3.txt"
   },
   {
-    "id": "3_122",
-    "module": 3,
+    "id": "1_122",
+    "module": 1,
     "topic": "2) Resource Preemption",
     "subtopic": "General",
     "lecture_order": 122,
