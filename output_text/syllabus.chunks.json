@@ -1,0 +1,92 @@
+[
+  {
+    "id": "1_0",
+    "module": 1,
+    "topic": "Course Objectives:",
+    "subtopic": "SYLLABUS",
+    "lecture_order": 0,
+    "page_hint": null,
+    "content": "1. To introduce the structure of a typical operating system and its core functionalities\n 2. To impart to the students, a practical understanding of OS implementation nuances based on\n the Linux operating system\n SYLLABUS",
+    "source_file": "syllabus.txt"
+  },
+  {
+    "id": "1_1",
+    "module": 1,
+    "topic": "No. Hours",
+    "subtopic": "Multithreading models (Book 3 Ch 4)",
+    "lecture_order": 1,
+    "page_hint": null,
+    "content": "Introduction to Operating Systems (Book 1 Ch 2 introductory part),\n Operating System Services (Book 3 Ch 2) Overview of Operating Systems\n and Kernels, Linux Versus Classic Unix Kernels (Book 2 Ch 1)\n Process concepts: Process Creation, Process States, Data Structures, Process\n API (Book 1 Ch 4, 5), Sharing processor among processes - user and kernel\n modes, context switching (Book 1 Ch 6), System boot sequence (Book 3 Ch\n 2)\n Case study: Linux kernel process management (Book 2, Ch 3)\n 1 11\n Threads and Concurrency: Concept of a thread, Multithreading benefits,\n Multithreading models (Book 3 Ch 4)\n Case study: The Linux Implementation of Threads (Book 2, Ch 3)\n Process scheduling: Concepts and basic algorithms (Book 1 Ch 7), The\n Multilevel Feedback Queue: Basic Rules (Book 1 Ch 8)",
+    "source_file": "syllabus.txt"
+  },
+  {
+    "id": "1_2",
+    "module": 1,
+    "topic": "No. Hours",
+    "subtopic": "General",
+    "lecture_order": 2,
+    "page_hint": null,
+    "content": "Process scheduling: Concepts and basic algorithms (Book 1 Ch 7), The\n Multilevel Feedback Queue: Basic Rules (Book 1 Ch 8)\n Case study: The Linux Completely Fair Scheduler (CFS) (Book 1 Ch 9,\n Implementation with RB trees not required), The Linux Scheduling Implementation,",
+    "source_file": "syllabus.txt"
+  },
+  {
+    "id": "1_3",
+    "module": 1,
+    "topic": "No. Hours",
+    "subtopic": "Preemption and Context Switching (Book 2, Ch 4)",
+    "lecture_order": 3,
+    "page_hint": "Page 2",
+    "content": "--- Page 2 ---\n Preemption and Context Switching (Book 2, Ch 4)\n Concurrency and Synchronization - Basic principles (Book 3 Sections 6.1,\n 6.2), Mechanisms - Locks: The Basic Idea, Building Spin Locks with Test-\n And-Set, Compare and Swap, Using Queues: Sleeping Instead Of Spinning\n (Book 1 Ch 28), Semaphores - Definition, Binary Semaphores, The\n Producer/Consumer (Bounded Buffer) Problem and its solution using\n semaphores, Reader-Writer Locks (Book 1 Ch 31)\n 2\n Case study: Linux Kernel Synchronization Methods - Spin Locks,\n 12\n Semaphores, Mutexes (Book 2 Ch 10)\n Concurrency: Deadlock and Starvation - Deadlock Characterization, Deadlock\n Prevention and Avoidance, Deadlock Detection and recovery (Book 3 Ch 8), Dining\n Philosophers Problem and its solution (Book 1 Ch 31)",
+    "source_file": "syllabus.txt"
+  },
+  {
+    "id": "1_4",
+    "module": 1,
+    "topic": "No. Hours",
+    "subtopic": "Generalized Base/Bounds, Address translation in segmentation, Support for",
+    "lecture_order": 4,
+    "page_hint": null,
+    "content": "Prevention and Avoidance, Deadlock Detection and recovery (Book 3 Ch 8), Dining\n Philosophers Problem and its solution (Book 1 Ch 31)\n Memory management - Address Space, Memory API, Address Translation\n - An Example, Dynamic (Hardware-based) Relocation, Segmentation:\n Generalized Base/Bounds, Address translation in segmentation, Support for\n Sharing (Book 1 Ch 13 to 16)\n Virtual memory - Paging: Introduction, page tables and hardware support,\n 3 11\n TLBs, Example: Accessing An Array, - TLB hits and misses, Handling TLB\n misses, TLB structure, Reducing the page table size (Book 1 Ch 18 to 20)\n Going beyond physical memory - Swap space, page fault and its control flow,\n page replacement policies, Thrashing (Book 1 Ch 21, 22)",
+    "source_file": "syllabus.txt"
+  },
+  {
+    "id": "1_5",
+    "module": 1,
+    "topic": "No. Hours",
+    "subtopic": "I/O system: Modern System architecture, Programmed I/O, Interrupts,",
+    "lecture_order": 5,
+    "page_hint": null,
+    "content": "Going beyond physical memory - Swap space, page fault and its control flow,\n page replacement policies, Thrashing (Book 1 Ch 21, 22)\n I/O system: Modern System architecture, Programmed I/O, Interrupts,\n DMA, Device interaction methods, The Device Driver (Book 1 Ch 36),\n Hard disk: Geometry (Book 1 Ch 37), disk scheduling (Book 3 Section\n 11.2)\n Case study: Linux I/O schedulers - Elevator, Complete Fair Queuing (Book\n 4 10\n 2 Ch 14)\n Files and Directories: The File System Interface - File descriptor, reading\n and writing files (sequential and random access), Removing files - Hard links\n and Symbolic links, Creating, reading and deleting directories, Permission\n bits and Access Control Lists, Mounting a file system (Book 1 Ch 39)",
+    "source_file": "syllabus.txt"
+  },
+  {
+    "id": "1_6",
+    "module": 1,
+    "topic": "No. Hours",
+    "subtopic": "Operations (Book 2 Ch 13)",
+    "lecture_order": 6,
+    "page_hint": "Page 3",
+    "content": "--- Page 3 ---\n File Organization: The Inode, The Multi-Level Index (Book 1 Ch 40)\n Case study: VFS Objects and Their Data Structures - The Inode Object, Inode\n Operations (Book 2 Ch 13)",
+    "source_file": "syllabus.txt"
+  },
+  {
+    "id": "1_7",
+    "module": 1,
+    "topic": "Part A Part B Total",
+    "subtopic": "General",
+    "lecture_order": 7,
+    "page_hint": null,
+    "content": "● 2 Questions from each ● Each question carries 9 marks.\n module. ● Two questions will be given from each module, out\n ● Total of 8 Questions, each of which 1 question should be answered.\n 60\n carrying 3 marks ● Each question can have a maximum of 3 sub-\n divisions.\n (8x3 =24marks) (4x9 = 36 marks)",
+    "source_file": "syllabus.txt"
+  },
+  {
+    "id": "1_8",
+    "module": 1,
+    "topic": "CO3 K3",
+    "subtopic": "General",
+    "lecture_order": 8,
+    "page_hint": "Page 4",
+    "content": "systems.\n CO4 Select various memory management techniques in operating systems. K3\n CO5 Understand the storage management in operating systems. K2\n Note: K1- Remember, K2- Understand, K3- Apply, K4- Analyse, K5- Evaluate, K6- Create\n\n--- Page 4 ---\n CO-PO Mapping Table (Mapping of Course Outcomes to Program Outcomes)\n PO1 PO2 PO3 PO4 PO5 PO6 PO7 PO8 PO9 PO10 PO11 PO12\n 3 3 3 3",
+    "source_file": "syllabus.txt"
+  }
+]

@@ -1,0 +1,154 @@
+
+
+--- Page 1 ---
+                                    SEMESTER  S4
+                                OPERATING   SYSTEMS
+                      (Common to CS/CD/CM/CR/CA/AD/AI/CB/CN/CC/CU/CI/CG)
+             Course Code           PCCST403    CIE Marks        40
+             Teaching Hours/Week
+                                    3:1:0:0    ESE Marks        60
+             (L: T:P: R)
+             Credits                  4        Exam Hours   2 Hrs. 30 Min.
+             Prerequisites (if any)  None      Course Type    Theory
+             Course Objectives:
+               1. To introduce the structure of a typical operating system and its core functionalities
+               2. To impart to the students, a practical understanding of OS implementation nuances based on
+                  the Linux operating system
+                                        SYLLABUS
+             Module                                               Contact
+                                  Syllabus Description
+               No.                                                 Hours
+                    Introduction to Operating Systems (Book 1 Ch 2 introductory part),
+                    Operating System Services (Book 3 Ch 2) Overview of Operating Systems
+                    and Kernels, Linux Versus Classic Unix Kernels (Book 2 Ch 1)
+                    Process concepts: Process Creation, Process States, Data Structures, Process
+                    API (Book 1 Ch 4, 5), Sharing processor among processes - user and kernel
+                    modes, context switching (Book 1 Ch 6), System boot sequence (Book 3 Ch
+                    2)
+                    Case study: Linux kernel process management (Book 2, Ch 3)
+               1                                                    11
+                    Threads and Concurrency: Concept of a thread, Multithreading benefits,
+                    Multithreading models (Book 3 Ch 4)
+                    Case study: The Linux Implementation of Threads (Book 2, Ch 3)
+                    Process scheduling: Concepts and basic algorithms (Book 1 Ch 7), The
+                    Multilevel Feedback Queue: Basic Rules (Book 1 Ch 8)
+                    Case study: The Linux Completely Fair Scheduler (CFS) (Book 1 Ch 9,
+                    Implementation with RB trees not required), The Linux Scheduling Implementation,
+
+--- Page 2 ---
+                    Preemption and Context Switching (Book 2, Ch 4)
+                    Concurrency and Synchronization - Basic principles (Book 3 Sections 6.1,
+                    6.2), Mechanisms - Locks: The Basic Idea, Building Spin Locks with Test-
+                    And-Set, Compare and Swap, Using Queues: Sleeping Instead Of Spinning
+                    (Book 1 Ch 28), Semaphores - Definition, Binary Semaphores, The
+                    Producer/Consumer (Bounded Buffer) Problem and its solution using
+                    semaphores, Reader-Writer Locks (Book 1 Ch 31)
+                2
+                    Case study: Linux Kernel Synchronization Methods - Spin Locks,
+                                                                    12
+                    Semaphores, Mutexes (Book 2 Ch 10)
+                    Concurrency: Deadlock and Starvation - Deadlock Characterization, Deadlock
+                    Prevention and Avoidance, Deadlock Detection and recovery (Book 3 Ch 8), Dining
+                    Philosophers Problem and its solution (Book 1 Ch 31)
+                    Memory management - Address Space, Memory API, Address Translation
+                    - An Example, Dynamic (Hardware-based) Relocation, Segmentation:
+                    Generalized Base/Bounds, Address translation in segmentation, Support for
+                    Sharing (Book 1 Ch 13 to 16)
+                    Virtual memory - Paging: Introduction, page tables and hardware support,
+               3                                                    11
+                    TLBs, Example: Accessing An Array, - TLB hits and misses, Handling TLB
+                    misses, TLB structure, Reducing the page table size (Book 1 Ch 18 to 20)
+                    Going beyond physical memory - Swap space, page fault and its control flow,
+                    page replacement policies, Thrashing (Book 1 Ch 21, 22)
+                    I/O system: Modern System architecture, Programmed I/O, Interrupts,
+                    DMA, Device interaction methods, The Device Driver (Book 1 Ch 36),
+                    Hard disk: Geometry (Book 1 Ch 37), disk scheduling (Book 3 Section
+                    11.2)
+                    Case study: Linux I/O schedulers - Elevator, Complete Fair Queuing (Book
+               4                                                    10
+                    2 Ch 14)
+                    Files and Directories: The File System Interface - File descriptor, reading
+                    and writing files (sequential and random access), Removing files - Hard links
+                    and Symbolic links, Creating, reading and deleting directories, Permission
+                    bits and Access Control Lists, Mounting a file system (Book 1 Ch 39)
+
+--- Page 3 ---
+                    File Organization: The Inode, The Multi-Level Index (Book 1 Ch 40)
+                    Case study: VFS Objects and Their Data Structures - The Inode Object, Inode
+                    Operations (Book 2 Ch 13)
+                                 Course Assessment Method
+                               (CIE: 40 marks, ESE: 60 marks)
+             Continuous Internal Evaluation Marks (CIE):
+                                     Internal      Internal
+                        Assignment/
+              Attendance           Examination-1 Examination- 2 Total
+                       Micro project
+                                     (Written)    (Written )
+                 5         15          10            10          40
+             End Semester Examination Marks (ESE)
+             In Part A, all questions need to be answered and in Part B, each student can choose any one
+             full question out of two questions
+                    Part A                     Part B              Total
+             ● 2 Questions from each ● Each question carries 9 marks.
+               module.           ● Two questions will be given from each module, out
+             ● Total of 8 Questions, each of which 1 question should be answered.
+                                                                    60
+               carrying 3 marks  ● Each question can have a maximum of 3 sub-
+                                   divisions.
+                  (8x3 =24marks)              (4x9 = 36 marks)
+                                  Course Outcomes (COs)
+             At the end of the course students should be able to:
+                                                               Bloom’s
+                              Course Outcome                  Knowledge
+                                                              Level (KL)
+                  Apply the concepts of process management and process scheduling
+              CO1                                               K3
+                  mechanisms employed in operating systems.
+                  Choose various process synchronization mechanisms employed in
+              CO2                                               K3
+                  operating systems.
+                  Use deadlock prevention and avoidance mechanisms in operating
+              CO3                                               K3
+                  systems.
+              CO4 Select various memory management techniques in operating systems. K3
+              CO5 Understand the storage management in operating systems. K2
+             Note: K1- Remember, K2- Understand, K3- Apply, K4- Analyse, K5- Evaluate, K6- Create
+
+--- Page 4 ---
+                CO-PO Mapping Table (Mapping of Course Outcomes to Program Outcomes)
+                 PO1  PO2 PO3  PO4  PO5  PO6  PO7  PO8 PO9  PO10 PO11 PO12
+                  3    3    3                                          3
+           CO1
+                  3    3    3                                          3
+           CO2
+                  3    3    3                                          3
+           CO3
+                  3    3    3                                          3
+           CO4
+                  3    3    3                                          3
+           CO5
+             Note: 1: Slight (Low), 2: Moderate (Medium), 3: Substantial (High), -: No Correlation
+                                       Text Books
+                                                         Name of the Edition
+           Sl. No    Title of the Book Name of the Author/s
+                                                          Publisher and Year
+                 Operating Systems: Three Easy Andrea Arpaci-Dusseau,
+             1   Pieces             Remzi Arpaci-Dusseau CreateSpace 1/e, 2018
+             2   Linux Kernel Development Robert Love     Pearson   3/e, 2018
+                                    Abraham Silberschatz, Peter
+             3   Operating System Concepts B. Galvin, Greg Gagne Wiley 10/e, 2018
+                                     Reference Books
+                                                       Name of the  Edition
+           Sl. No    Title of the Book Name of the Author/s
+                                                        Publisher   and Year
+                                     Andrew S. Tanenbaum
+             1   Modern Operating Systems                Pearson    5/e, 2012
+                                        Herbert Bos
+                 The Design of the UNIX
+             2                         Maurice J. Bach Prentice Hall of India 1/e, 1994
+                 Operating System
+             3   The Little Book of Semaphores Allen B. Downey Green Tea Press 1/e, 2016
+                              Video Links (NPTEL, SWAYAM…)
+             No.                            Link ID
+              1    https://archive.nptel.ac.in/courses/106/105/106105214/
+              2    https://www.youtube.com/playlist?list=PLDW872573QAb4bj0URobvQTD41IV6gRkx

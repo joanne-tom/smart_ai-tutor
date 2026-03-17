@@ -92,7 +92,7 @@ Stay strictly on the topic of "{main_topic}". Do not drift to other topics.
 """.strip()
 
     resp = ollama.chat(
-        model="qwen2.5:7b",   # ✅ fixed casing
+        model="gemma3:4b",   # ✅ fixed casing
         messages=[
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": prompt}

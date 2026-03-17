@@ -14,6 +14,7 @@ class TtsService {
     await _tts.setSpeechRate(1.0);
     await _tts.setVolume(1.0);
     await _tts.setPitch(1.0);
+    await _tts.awaitSpeakCompletion(true);
 
     _tts.setStartHandler(() => _isPlaying = true);
     _tts.setCompletionHandler(() => _isPlaying = false);

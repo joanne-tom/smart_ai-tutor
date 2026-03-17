@@ -14,7 +14,7 @@ class ApiService {
           headers: {'Content-Type': 'application/json'},
           body: jsonEncode(body),
         )
-        .timeout(const Duration(seconds: 30));
+        .timeout(const Duration(seconds: 600));
 
     if (response.statusCode == 200) {
       return jsonDecode(response.body);
@@ -112,12 +112,13 @@ class ApiService {
     });
   }
 
-  // api_service.dart — replace seedSession method
-  static Future<void> seedSession({
+  static Future<int> seedSession({
     required String subject,
     required String topic,
     required String date,
     required String faculty,
+    required String startTime,
+    required String endTime,
   }) async {
     final response = await http.post(
       Uri.parse('$baseUrl/admin/seed_session'),
@@ -128,14 +129,55 @@ class ApiService {
       body: jsonEncode({
         'subject': subject,
         'topic': topic,
-        'scheduled_date': date,
+        'date': date,
         'faculty': faculty,
+        'start_time': startTime,
+        'end_time': endTime,
       }),
     );
 
     if (response.statusCode != 200 && response.statusCode != 201) {
       throw Exception('Failed: ${response.statusCode} ${response.body}');
     }
+    return jsonDecode(response.body)['session_id'];
+  }
+
+  static Future<void> uploadAndGenerateLecture({
+    required int sessionId,
+    required String subject,
+    required String topic,
+    required dynamic fileBytes,
+    required String fileName,
+  }) async {
+    var uri = Uri.parse('$baseUrl/admin/upload_and_generate_lecture');
+    var request = http.MultipartRequest('POST', uri)
+      ..fields['session_id'] = sessionId.toString()
+      ..fields['subject'] = subject
+      ..fields['topic'] = topic;
+
+    request.files.add(
+      http.MultipartFile.fromBytes('notes', fileBytes, filename: fileName),
+    );
+
+    var response = await request.send();
+    if (response.statusCode != 200 && response.statusCode != 201) {
+      var responseData = await response.stream.bytesToString();
+      throw Exception(
+        'Generation failed: ${response.statusCode} $responseData',
+      );
+    }
+  }
+
+  static Future<void> deleteSession(int sessionId) async {
+    await _post('/admin/delete_session', {'session_id': sessionId});
+  }
+
+  static Future<List<dynamic>> getAttendanceReport(int sessionId) async {
+    final res = await _get(
+      '/admin/get_attendance_report',
+      params: {'session_id': sessionId.toString()},
+    );
+    return res['attendance'] ?? [];
   }
 
   static Future<Map<String, dynamic>> askQuestionWithMode({

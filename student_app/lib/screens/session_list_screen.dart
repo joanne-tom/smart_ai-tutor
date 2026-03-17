@@ -33,7 +33,8 @@ class _SessionListScreenState extends State<SessionListScreen> {
     try {
       final raw = await ApiService.getSessions();
       setState(() {
-        _sessions = raw.map((s) => Session.fromJson(s)).toList();
+        final all = raw.map((s) => Session.fromJson(s)).toList();
+        _sessions = all.where((session) => session.isActive).toList();
         _isLoading = false;
       });
     } catch (e) {

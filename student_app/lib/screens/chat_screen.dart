@@ -34,11 +34,15 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
   bool _sessionActive = true;
 
   String _currentLectureText = '';
+  List<String> _lectureChunks = [];
+  int _currentChunkIndex = 0;
+  bool _isLecturePlaying = false;
+
   int _doubtCount = 0;
   String _lastQuestion = '';
   String _lastAnswer = '';
 
-  // Teaching modes
+  // Teaching modes — adapts based on how many doubts student has asked
   String get _teachingMode {
     if (_doubtCount >= 3) return 'simplified';
     if (_doubtCount == 2) return 'example';
@@ -74,18 +78,21 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
 
   Future<void> _loadLecture() async {
     setState(() => _isLoadingLecture = true);
-    _addMessage(Message(
-      text: 'Loading lecture for "${widget.session.topic}"...',
-      role: MessageRole.tutor,
-      isLoading: true,
-    ));
+    _addMessage(
+      Message(
+        text: 'Loading lecture for "${widget.session.topic}"...',
+        role: MessageRole.tutor,
+        isLoading: true,
+      ),
+    );
 
     try {
       final data = await ApiService.startLecture(
         sessionId: widget.session.id,
         studentId: widget.studentId,
       );
-      final lectureText = data['lecture_text'] ?? 'Lecture content not available.';
+      final lectureText =
+          data['lecture_text'] ?? 'Lecture content not available.';
       _currentLectureText = lectureText;
 
       setState(() {
@@ -93,18 +100,55 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
         _isLoadingLecture = false;
       });
 
-      _addMessage(Message(
-        text: '📚 ${widget.session.topic} — ${widget.session.subject}\n\n$lectureText',
-        role: MessageRole.tutor,
-      ));
+      _addMessage(
+        Message(
+          text:
+              '📚 ${widget.session.topic} — ${widget.session.subject}\n\n$lectureText',
+          role: MessageRole.tutor,
+        ),
+      );
 
-      await _speakText(lectureText);
+      _lectureChunks = _splitIntoSentences(lectureText);
+      _currentChunkIndex = 0;
+      _playLectureChunks();
     } catch (e) {
       setState(() => _isLoadingLecture = false);
-      _addMessage(Message(
-        text: 'Could not load lecture. Please check your connection.',
-        role: MessageRole.tutor,
-      ));
+      _addMessage(
+        Message(
+          text: 'Could not load lecture. Please check your connection.',
+          role: MessageRole.tutor,
+        ),
+      );
+    }
+  }
+
+  List<String> _splitIntoSentences(String text) {
+    return text
+        .split(RegExp(r'(?<=[.!?])\s+'))
+        .where((s) => s.trim().isNotEmpty)
+        .toList();
+  }
+
+  Future<void> _playLectureChunks() async {
+    if (_isLecturePlaying) return;
+    setState(() {
+      _isSpeaking = true;
+      _isLecturePlaying = true;
+    });
+
+    while (_currentChunkIndex < _lectureChunks.length && _isLecturePlaying) {
+      await _tts.speak(_lectureChunks[_currentChunkIndex]);
+      if (_isLecturePlaying) {
+        _currentChunkIndex++;
+      }
+    }
+
+    if (mounted && _currentChunkIndex >= _lectureChunks.length) {
+      setState(() {
+        _isSpeaking = false;
+        _isLecturePlaying = false;
+        _currentChunkIndex = 0;
+      });
     }
   }
 
@@ -117,24 +161,34 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
   void _toggleSpeech() {
     if (_isSpeaking) {
       _tts.stop();
-      setState(() => _isSpeaking = false);
+      setState(() {
+        _isSpeaking = false;
+        _isLecturePlaying = false;
+      });
     } else {
-      _speakText(_currentLectureText);
+      if (_currentChunkIndex < _lectureChunks.length) {
+        _playLectureChunks();
+      } else {
+        _currentChunkIndex = 0;
+        _playLectureChunks();
+      }
     }
   }
 
-  // Student presses interrupt button
   void _interruptLecture() {
     _tts.stop();
     setState(() {
       _isSpeaking = false;
+      _isLecturePlaying = false;
       _showDoubtInput = true;
       _showStillConfused = false;
     });
-    _addMessage(Message(
-      text: '⏸ Lecture paused. Type your doubt below.',
-      role: MessageRole.tutor,
-    ));
+    _addMessage(
+      Message(
+        text: '⏸ Lecture paused. Type your doubt below.',
+        role: MessageRole.tutor,
+      ),
+    );
   }
 
   Future<void> _askQuestion() async {
@@ -152,9 +206,18 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
     });
 
     _addMessage(Message(text: question, role: MessageRole.student));
-    _addMessage(Message(text: '...', role: MessageRole.tutor, isLoading: true));
+
+    // ✅ Better loading message — student knows to wait
+    _addMessage(
+      Message(
+        text: '🤔 Thinking... (this may take 1-2 minutes)',
+        role: MessageRole.tutor,
+        isLoading: true,
+      ),
+    );
 
     try {
+      // ✅ Uses updated askQuestionWithMode with 600s timeout
       final data = await ApiService.askQuestionWithMode(
         studentId: widget.studentId,
         sessionId: widget.session.id,
@@ -171,41 +234,49 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
         _showStillConfused = true;
       });
 
-      // Show teaching mode used
+      // Show teaching mode label
       String modeLabel = '';
-      if (_teachingMode == 'simplified') modeLabel = '💡 Simplified explanation:';
-      if (_teachingMode == 'example') modeLabel = '📖 Example-based explanation:';
+      if (_teachingMode == 'simplified')
+        modeLabel = '💡 Simplified explanation:';
+      if (_teachingMode == 'example')
+        modeLabel = '📖 Example-based explanation:';
 
-      _addMessage(Message(
-        text: modeLabel.isEmpty ? answer : '$modeLabel\n\n$answer',
-        role: MessageRole.tutor,
-      ));
+      _addMessage(
+        Message(
+          text: modeLabel.isEmpty ? answer : '$modeLabel\n\n$answer',
+          role: MessageRole.tutor,
+        ),
+      );
 
       await _speakText(answer);
     } catch (e) {
       setState(() {
         _messages.removeWhere((m) => m.isLoading);
         _isAskingQuestion = false;
+        _showDoubtInput = true; // ✅ Re-show input so student can retry
       });
-      _addMessage(Message(
-        text: 'Could not process your question. Please try again.',
-        role: MessageRole.tutor,
-      ));
+      _addMessage(
+        Message(
+          text: '⚠️ Could not process your question. Please try again.',
+          role: MessageRole.tutor,
+        ),
+      );
     }
   }
 
-  // Still confused → simplified explanation
   Future<void> _stillConfused() async {
     setState(() {
       _showStillConfused = false;
       _isAskingQuestion = true;
     });
 
-    _addMessage(Message(
-      text: '😕 Still confused — let me explain more simply...',
-      role: MessageRole.tutor,
-      isLoading: true,
-    ));
+    _addMessage(
+      Message(
+        text: '😕 Still confused — let me explain more simply...',
+        role: MessageRole.tutor,
+        isLoading: true,
+      ),
+    );
 
     try {
       final data = await ApiService.askQuestionWithMode(
@@ -222,32 +293,36 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
         _isAskingQuestion = false;
       });
 
-      _addMessage(Message(
-        text: '🔄 Simpler explanation:\n\n$answer',
-        role: MessageRole.tutor,
-      ));
+      _addMessage(
+        Message(
+          text: '🔄 Simpler explanation:\n\n$answer',
+          role: MessageRole.tutor,
+        ),
+      );
 
       await _speakText(answer);
-
-      // Resume lecture after answering
       _resumeLecture();
     } catch (e) {
       setState(() {
         _messages.removeWhere((m) => m.isLoading);
         _isAskingQuestion = false;
       });
+      _addMessage(
+        Message(
+          text: '⚠️ Could not get a simpler explanation. Please try again.',
+          role: MessageRole.tutor,
+        ),
+      );
     }
   }
 
-  // Resume lecture after doubt
   void _resumeLecture() {
     setState(() => _showStillConfused = false);
-    _addMessage(Message(
-      text: '▶ Resuming lecture...',
-      role: MessageRole.tutor,
-    ));
+    _addMessage(
+      Message(text: '▶ Resuming lecture...', role: MessageRole.tutor),
+    );
     Future.delayed(const Duration(seconds: 1), () {
-      _speakText(_currentLectureText);
+      _playLectureChunks();
     });
   }
 
@@ -270,7 +345,6 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
 
   Future<bool> _onWillPop() async {
     if (_sessionActive) {
-      // Block back button during active session
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Cannot leave during an active session!'),
@@ -319,7 +393,11 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
       automaticallyImplyLeading: false,
       title: Text(
         widget.session.topic,
-        style: const TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+        style: const TextStyle(
+          color: Colors.white,
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+        ),
       ),
       actions: [
         IconButton(
@@ -353,7 +431,10 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
           Expanded(
             child: Text(
               '${widget.session.subject} • ${widget.session.facultyName}',
-              style: TextStyle(color: Colors.white.withOpacity(0.6), fontSize: 12),
+              style: TextStyle(
+                color: Colors.white.withOpacity(0.6),
+                fontSize: 12,
+              ),
             ),
           ),
           if (_doubtCount > 0)
@@ -368,7 +449,36 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                 style: const TextStyle(color: Colors.orange, fontSize: 10),
               ),
             ),
-          if (_isSpeaking) ...[
+          // ✅ Show processing indicator when asking question
+          if (_isAskingQuestion) ...[
+            const SizedBox(width: 8),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+              decoration: BoxDecoration(
+                color: Colors.blueAccent.withOpacity(0.1),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: const Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SizedBox(
+                    width: 10,
+                    height: 10,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 1.5,
+                      color: Colors.blueAccent,
+                    ),
+                  ),
+                  SizedBox(width: 4),
+                  Text(
+                    'Processing',
+                    style: TextStyle(color: Colors.blueAccent, fontSize: 11),
+                  ),
+                ],
+              ),
+            ),
+          ],
+          if (_isSpeaking && !_isAskingQuestion) ...[
             const SizedBox(width: 8),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
@@ -381,7 +491,10 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                 children: [
                   Icon(Icons.graphic_eq, size: 12, color: Colors.greenAccent),
                   SizedBox(width: 4),
-                  Text('Speaking', style: TextStyle(color: Colors.greenAccent, fontSize: 11)),
+                  Text(
+                    'Speaking',
+                    style: TextStyle(color: Colors.greenAccent, fontSize: 11),
+                  ),
                 ],
               ),
             ),
@@ -393,17 +506,19 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
 
   Widget _buildMessageList() {
     if (_isLoadingLecture && _messages.isEmpty) {
-      return const Center(child: CircularProgressIndicator(color: Color(0xFF1E88E5)));
+      return const Center(
+        child: CircularProgressIndicator(color: Color(0xFF1E88E5)),
+      );
     }
     return ListView.builder(
       controller: _scrollController,
       padding: const EdgeInsets.fromLTRB(12, 12, 12, 8),
       itemCount: _messages.length,
-      itemBuilder: (context, index) => _MessageBubble(message: _messages[index]),
+      itemBuilder: (context, index) =>
+          _MessageBubble(message: _messages[index]),
     );
   }
 
-  // Bottom bar with interrupt button
   Widget _buildBottomBar() {
     return Container(
       padding: const EdgeInsets.fromLTRB(12, 8, 12, 16),
@@ -415,13 +530,20 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
         width: double.infinity,
         height: 50,
         child: ElevatedButton.icon(
-          onPressed: _isLoadingLecture || _isAskingQuestion ? null : _interruptLecture,
+          onPressed: _isLoadingLecture || _isAskingQuestion
+              ? null
+              : _interruptLecture,
           icon: const Icon(Icons.pan_tool, size: 18),
-          label: const Text('Ask Doubt', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600)),
+          label: const Text(
+            'Ask Doubt',
+            style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+          ),
           style: ElevatedButton.styleFrom(
             backgroundColor: const Color(0xFF1E3A5F),
             foregroundColor: Colors.white,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
             elevation: 0,
           ),
         ),
@@ -429,13 +551,14 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
     );
   }
 
-  // Doubt input bar
   Widget _buildDoubtInputBar() {
     return Container(
       padding: const EdgeInsets.fromLTRB(12, 8, 12, 16),
       decoration: BoxDecoration(
         color: const Color(0xFF0F1B2D),
-        border: Border(top: BorderSide(color: const Color(0xFF1E88E5).withOpacity(0.3))),
+        border: Border(
+          top: BorderSide(color: const Color(0xFF1E88E5).withOpacity(0.3)),
+        ),
       ),
       child: Row(
         children: [
@@ -447,7 +570,10 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
               onSubmitted: (_) => _askQuestion(),
               decoration: InputDecoration(
                 hintText: 'Type your doubt...',
-                hintStyle: TextStyle(color: Colors.white.withOpacity(0.3), fontSize: 14),
+                hintStyle: TextStyle(
+                  color: Colors.white.withOpacity(0.3),
+                  fontSize: 14,
+                ),
                 filled: true,
                 fillColor: const Color(0xFF1A2840),
                 border: OutlineInputBorder(
@@ -456,13 +582,22 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(24),
-                  borderSide: const BorderSide(color: Color(0xFF1E88E5), width: 1),
+                  borderSide: const BorderSide(
+                    color: Color(0xFF1E88E5),
+                    width: 1,
+                  ),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(24),
-                  borderSide: const BorderSide(color: Color(0xFF1E88E5), width: 2),
+                  borderSide: const BorderSide(
+                    color: Color(0xFF1E88E5),
+                    width: 2,
+                  ),
                 ),
-                contentPadding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 18,
+                  vertical: 12,
+                ),
               ),
             ),
           ),
@@ -470,17 +605,23 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
           GestureDetector(
             onTap: _isAskingQuestion ? null : _askQuestion,
             child: Container(
-              width: 46, height: 46,
+              width: 46,
+              height: 46,
               decoration: BoxDecoration(
-                color: _isAskingQuestion ? Colors.white.withOpacity(0.1) : const Color(0xFF1E88E5),
+                color: _isAskingQuestion
+                    ? Colors.white.withOpacity(0.1)
+                    : const Color(0xFF1E88E5),
                 shape: BoxShape.circle,
               ),
               child: _isAskingQuestion
-                ? const Padding(
-                    padding: EdgeInsets.all(12),
-                    child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
-                  )
-                : const Icon(Icons.send, color: Colors.white, size: 20),
+                  ? const Padding(
+                      padding: EdgeInsets.all(12),
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                        color: Colors.white,
+                      ),
+                    )
+                  : const Icon(Icons.send, color: Colors.white, size: 20),
             ),
           ),
           const SizedBox(width: 8),
@@ -491,7 +632,8 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
               _resumeLecture();
             },
             child: Container(
-              width: 46, height: 46,
+              width: 46,
+              height: 46,
               decoration: BoxDecoration(
                 color: Colors.redAccent.withOpacity(0.2),
                 shape: BoxShape.circle,
@@ -505,7 +647,6 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
     );
   }
 
-  // Still confused bar
   Widget _buildStillConfusedBar() {
     return Container(
       margin: const EdgeInsets.fromLTRB(12, 0, 12, 8),
@@ -520,17 +661,31 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
           const Icon(Icons.help_outline, color: Colors.orange, size: 18),
           const SizedBox(width: 8),
           const Expanded(
-            child: Text('Did this clarify your doubt?',
-              style: TextStyle(color: Colors.white70, fontSize: 13)),
+            child: Text(
+              'Did this clarify your doubt?',
+              style: TextStyle(color: Colors.white70, fontSize: 13),
+            ),
           ),
           TextButton(
             onPressed: _resumeLecture,
-            child: const Text('Yes ✓', style: TextStyle(color: Colors.greenAccent, fontWeight: FontWeight.bold)),
+            child: const Text(
+              'Yes ✓',
+              style: TextStyle(
+                color: Colors.greenAccent,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
           const SizedBox(width: 4),
           TextButton(
             onPressed: _stillConfused,
-            child: const Text('Still confused', style: TextStyle(color: Colors.orange, fontWeight: FontWeight.bold)),
+            child: const Text(
+              'Still confused',
+              style: TextStyle(
+                color: Colors.orange,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
         ],
       ),
@@ -542,16 +697,24 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
       context: context,
       builder: (_) => AlertDialog(
         backgroundColor: const Color(0xFF1A2840),
-        title: const Text('Leave Session?', style: TextStyle(color: Colors.white)),
-        content: const Text('Your attendance will be recorded.',
-          style: TextStyle(color: Colors.white54)),
+        title: const Text(
+          'Leave Session?',
+          style: TextStyle(color: Colors.white),
+        ),
+        content: const Text(
+          'Your attendance will be recorded.',
+          style: TextStyle(color: Colors.white54),
+        ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
             child: const Text('Stay', style: TextStyle(color: Colors.white54)),
           ),
           ElevatedButton(
-            onPressed: () { Navigator.pop(context); _leaveSession(); },
+            onPressed: () {
+              Navigator.pop(context);
+              _leaveSession();
+            },
             style: ElevatedButton.styleFrom(backgroundColor: Colors.redAccent),
             child: const Text('Leave'),
           ),
@@ -580,14 +743,24 @@ class _MessageBubble extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: Row(
-        mainAxisAlignment: isTutor ? MainAxisAlignment.start : MainAxisAlignment.end,
+        mainAxisAlignment: isTutor
+            ? MainAxisAlignment.start
+            : MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (isTutor) ...[
             Container(
-              width: 32, height: 32,
-              decoration: const BoxDecoration(color: Color(0xFF1E88E5), shape: BoxShape.circle),
-              child: const Icon(Icons.smart_toy_outlined, color: Colors.white, size: 18),
+              width: 32,
+              height: 32,
+              decoration: const BoxDecoration(
+                color: Color(0xFF1E88E5),
+                shape: BoxShape.circle,
+              ),
+              child: const Icon(
+                Icons.smart_toy_outlined,
+                color: Colors.white,
+                size: 18,
+              ),
             ),
             const SizedBox(width: 8),
           ],
@@ -595,7 +768,9 @@ class _MessageBubble extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
               decoration: BoxDecoration(
-                color: isTutor ? const Color(0xFF1A2840) : const Color(0xFF1E88E5),
+                color: isTutor
+                    ? const Color(0xFF1A2840)
+                    : const Color(0xFF1E88E5),
                 borderRadius: BorderRadius.only(
                   topLeft: const Radius.circular(16),
                   topRight: const Radius.circular(16),
@@ -604,23 +779,36 @@ class _MessageBubble extends StatelessWidget {
                 ),
               ),
               child: message.isLoading
-                ? Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: List.generate(3, (i) => Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 2),
-                      child: Container(
-                        width: 6, height: 6,
-                        decoration: const BoxDecoration(color: Colors.white38, shape: BoxShape.circle),
+                  ? Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        // ✅ Show animated dots + loading text
+                        const SizedBox(
+                          width: 14,
+                          height: 14,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                            color: Colors.white38,
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        Text(
+                          message.text == '...' ? 'Thinking...' : message.text,
+                          style: const TextStyle(
+                            color: Colors.white54,
+                            fontSize: 13,
+                          ),
+                        ),
+                      ],
+                    )
+                  : Text(
+                      message.text,
+                      style: TextStyle(
+                        color: Colors.white.withOpacity(isTutor ? 0.9 : 1.0),
+                        fontSize: 14,
+                        height: 1.5,
                       ),
-                    )),
-                  )
-                : Text(
-                    message.text,
-                    style: TextStyle(
-                      color: Colors.white.withOpacity(isTutor ? 0.9 : 1.0),
-                      fontSize: 14, height: 1.5,
                     ),
-                  ),
             ),
           ),
           if (!isTutor) const SizedBox(width: 8),
