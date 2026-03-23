@@ -93,6 +93,10 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
       );
       final lectureText =
           data['lecture_text'] ?? 'Lecture content not available.';
+          
+      final rawImages = data['images'] as List<dynamic>?;
+      final images = rawImages?.map((e) => e.toString()).toList() ?? [];
+
       _currentLectureText = lectureText;
 
       setState(() {
@@ -105,6 +109,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
           text:
               '📚 ${widget.session.topic} — ${widget.session.subject}\n\n$lectureText',
           role: MessageRole.tutor,
+          imageUrls: images,
         ),
       );
 
@@ -801,13 +806,35 @@ class _MessageBubble extends StatelessWidget {
                         ),
                       ],
                     )
-                  : Text(
-                      message.text,
-                      style: TextStyle(
-                        color: Colors.white.withOpacity(isTutor ? 0.9 : 1.0),
-                        fontSize: 14,
-                        height: 1.5,
-                      ),
+                  : Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          message.text,
+                          style: TextStyle(
+                            color: Colors.white.withOpacity(isTutor ? 0.9 : 1.0),
+                            fontSize: 14,
+                            height: 1.5,
+                          ),
+                        ),
+                        if (message.imageUrls != null && message.imageUrls!.isNotEmpty) ...[
+                          const SizedBox(height: 12),
+                          Wrap(
+                            spacing: 8,
+                            runSpacing: 8,
+                            children: message.imageUrls!.map((url) => ClipRRect(
+                                  borderRadius: BorderRadius.circular(8),
+                                  child: Image.network(
+                                    url,
+                                    width: 250,
+                                    fit: BoxFit.contain,
+                                    errorBuilder: (context, error, stackTrace) =>
+                                        const SizedBox.shrink(),
+                                  ),
+                                )).toList(),
+                          )
+                        ],
+                      ],
                     ),
             ),
           ),

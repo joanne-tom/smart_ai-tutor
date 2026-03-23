@@ -45,6 +45,7 @@ def init_db():
     faculty_name TEXT,
     status TEXT DEFAULT 'scheduled',
     lecture_text TEXT,
+    image_urls TEXT,
     start_time TEXT,
     end_time TEXT
 );
@@ -70,6 +71,7 @@ def init_db():
     # Try adding the columns if they don't exist
     columns_to_add = [
         ("sessions", "lecture_text TEXT"),
+        ("sessions", "image_urls TEXT"),
         ("sessions", "start_time TEXT"),
         ("sessions", "end_time TEXT"),
         ("attendance", "is_late BOOLEAN DEFAULT 0")
@@ -170,6 +172,15 @@ def start_lecture():
     topic    = session["topic"]
     subject  = session["subject"]
     lecture_text = session.get("lecture_text")
+    image_urls_str = session.get("image_urls")
+    
+    import json
+    images = []
+    if image_urls_str:
+        try:
+            images = json.loads(image_urls_str)
+        except Exception:
+            images = []
 
     if not lecture_text:
         # Fallback if no lecture text was pre-generated
@@ -202,6 +213,7 @@ def start_lecture():
         "lecture_text": lecture_text,
         "topic":        topic,
         "subject":      subject,
+        "images":       images,
     })
 
 @app.route("/mcp/ask_question", methods=["POST"])
@@ -323,7 +335,9 @@ def upload_and_generate_lecture():
     topic = request.form.get("topic", "")
     notes_file = request.files.get("notes") # PDF file
 
+    import json
     lecture_content = ""
+    images = []
 
     if notes_file:
         try:
@@ -342,12 +356,13 @@ def upload_and_generate_lecture():
             if rag_gen_resp.status_code == 200:
                 gen_data = rag_gen_resp.json()
                 lecture_content = gen_data.get("content", "")
+                images = gen_data.get("images", [])
         except Exception as e:
             print(f"Error communicating with RAG backend: {e}")
             return jsonify({"error": str(e)}), 500
 
     conn = get_db()
-    conn.execute("UPDATE sessions SET lecture_text=? WHERE id=?", (lecture_content, session_id))
+    conn.execute("UPDATE sessions SET lecture_text=?, image_urls=? WHERE id=?", (lecture_content, json.dumps(images), session_id))
     conn.commit()
     conn.close()
 

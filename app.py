@@ -25,6 +25,7 @@ from chunk_subsets import round_robin_from_results
 from drafter import run_phi3_draft
 from verifier import verify_drafts
 from chunking import chunk_os_txt
+from extract_images import extract_images_from_pdf
 
 # ── Tutor Agent imports ──
 from tutor_agent.adaptive_router import route_doubt
@@ -33,9 +34,8 @@ from tutor_agent.pedagogical_agent import teach_response
 from tutor_agent.syllabus_guard import check_syllabus
 from tutor_agent.misconception_detector import detect_misconception
 
-# ── Tools imports ──
-from tools.rag_tool import rag_answer
-from tools.mcp_tools import wiki_search
+# ── MCP Client — all tool calls go through the real MCP protocol ──
+from tools.mcp_client import call_mcp_tool
 
 # ── Memory import ──
 from memory.context_memory import store_doubt, get_context
@@ -131,6 +131,9 @@ def upload():
     pdf_path = UPLOAD_FOLDER / file.filename
     file.save(pdf_path)
 
+    # Extract images
+    extract_images_from_pdf(str(pdf_path))
+
     txt_path = TEXT_FOLDER / (pdf_path.stem + ".txt")
     parts = []
     with pdfplumber.open(pdf_path) as pdf:
@@ -200,6 +203,9 @@ def upload_notes():
         try:
             pdf_path = UPLOAD_FOLDER / file.filename
             file.save(pdf_path)
+
+            # Extract images
+            extract_images_from_pdf(str(pdf_path))
 
             txt_path = TEXT_FOLDER / (pdf_path.stem + ".txt")
             parts = []
@@ -356,7 +362,8 @@ CRITICAL CONSTRAINT: Although you must be highly expansive and illustrative, DO 
             chunk_lookup[ch["chunk_id"]] = {
                 "content":   ch["content"],
                 "topic":     ch["metadata"].get("topic", ""),
-                "page_hint": ch["metadata"].get("page_hint", "")
+                "page_hint": ch["metadata"].get("page_hint", ""),
+                "source_file": ch["metadata"].get("source_file", "")
             }
 
     # STEP 3 — Draft
@@ -367,7 +374,8 @@ CRITICAL CONSTRAINT: Although you must be highly expansive and illustrative, DO 
                 "id":        ch["metadata"]["id"],
                 "content":   ch["content"],
                 "topic":     ch["metadata"].get("topic", ""),
-                "page_hint": ch["metadata"].get("page_hint", "")
+                "page_hint": ch["metadata"].get("page_hint", ""),
+                "source_file": ch["metadata"].get("source_file", "")
             }
             for ch in group
         ]
@@ -377,7 +385,39 @@ CRITICAL CONSTRAINT: Although you must be highly expansive and illustrative, DO 
     # STEP 4 — Verify
     answer = verify_drafts(query, drafts, chunk_lookup)
 
+    # Collect relevant images based on chunk page_hints
     import re
+    images = []
+    
+    # Use the server's base URL for static images. In production, this would be an env var.
+    base_url = "http://localhost:5001/static/images"
+    
+    for ch_id, ch_info in chunk_lookup.items():
+        page_hint = ch_info.get("page_hint", "")
+        if not page_hint:
+            continue
+            
+        # Example page_hint: "Page 4-5" or "Page 4"
+        pages_found = re.findall(r'\d+', page_hint)
+        if not pages_found:
+            continue
+            
+        start_page = int(pages_found[0])
+        end_page = int(pages_found[-1]) if len(pages_found) > 1 else start_page
+        
+        source_file = ch_info.get("source_file", "")
+        if not source_file:
+            continue
+            
+        source_stem = source_file.replace(".txt", "")
+        for p in range(start_page, end_page + 1):
+            image_dir = pathlib.Path("static/images") / source_stem
+            if image_dir.exists():
+                for img_path in image_dir.glob(f"page_{p}_*"):
+                    url = f"{base_url}/{source_stem}/{img_path.name}"
+                    if url not in images:
+                        images.append(url)
+                        
     cleaned_lecture = re.sub(r'[*#_~`]', '', answer["final_answer"])
 
     return jsonify({
@@ -386,7 +426,8 @@ CRITICAL CONSTRAINT: Although you must be highly expansive and illustrative, DO 
         "subtopic": subtopic,
         "content":  cleaned_lecture,
         "rationale": answer["verification_rationale"],
-        "status":   "success"
+        "status":   "success",
+        "images":   images
     })
 
 
@@ -468,23 +509,36 @@ def doubt():
         print(f"Misconception detector error: {e}")
 
     # ── Step 5: Tool Selection ──
+    # Pass the doubt text so the selector can apply OS-keyword heuristic
+    route["doubt"] = doubt_text
     tool = choose_tool(route)
 
-    # ── Step 6: Execute Tool ──
+    # ── Step 6: Execute Tool via MCP Protocol ──
+    # Map internal tool names → MCP tool names on the server
+    _TOOL_MAP = {
+        "rag":       "rag_answer",
+        "os_docs":   "os_docs_search",
+        "wikipedia": "wikipedia_search",
+    }
+    mcp_tool_name = _TOOL_MAP.get(tool, "rag_answer")
     try:
-        if tool == "rag":
-            raw_answer = rag_answer(doubt_text)
-        else:
-            raw_answer = wiki_search(doubt_text)
+        print(f"[MCP] Calling tool '{mcp_tool_name}' for doubt: {doubt_text[:60]}...")
+        raw_answer = call_mcp_tool(mcp_tool_name, {"query": doubt_text})
     except Exception as e:
-        print(f"Tool error: {e}")
+        print(f"MCP tool error: {e}")
         raw_answer = f"I found some information about {doubt_text} but encountered an issue retrieving it. Please try again."
 
     # ── Step 7: Pedagogical Agent ──
-    try:
-        final_response = teach_response(doubt_text, raw_answer)
-    except Exception as e:
-        print(f"Pedagogical agent error: {e}")
+    # Only run for RAG — wikipedia & os_docs already return clean readable text,
+    # so we skip the extra LLM call for speed.
+    if tool == "rag":
+        try:
+            final_response = teach_response(doubt_text, raw_answer)
+        except Exception as e:
+            print(f"Pedagogical agent error: {e}")
+            final_response = raw_answer
+    else:
+        print(f"[Pedagogical Agent] Skipped for tool='{tool}' — returning raw MCP result.")
         final_response = raw_answer
 
     # ── Output Cleaning (Remove Markdown) ──
